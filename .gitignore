@@ -4,3 +4,6 @@ data/
 __pycache__/
 .venv/
 .cache/
+.pytest_cache/
+*.pyc
+.orchestrator/logs/
