@@ -7,7 +7,8 @@ Built solo for the **Meta Global AI Developer Hackathon** (Indie Developer track
 Oct 26 – Nov 4, 2026. All code in this repo was written during the event; the commit history is the
 record.
 
-> **Status: day 1 (Oct 26).** Setup and API research are done. The core pipeline is not built yet.
+> **Status: day 1 (Oct 26).** Setup, API research and the SAM layer are done. The check compiler,
+> executor and calibration loop are not built yet.
 > The table below is the source of truth for what works.
 
 - Demo: _not yet_
@@ -52,9 +53,9 @@ them, and the before/after is measurable.
 |---|---|
 | Repo setup, secrets handling, dataset license handling | Done |
 | SAM 3.1 API probed; output format verified ([notes](docs/sam-output-format.md)) | Done |
-| Dataset download script (`scripts/download_loco.sh`) | In progress |
-| SAM client with disk cache (`inspec/sam_client.py`) | In progress |
-| SAM output parser (`inspec/segments.py`) | In progress |
+| Dataset download script (`scripts/download_loco.sh`) | Done (tested) |
+| SAM client with disk cache (`inspec/sam_client.py`) | Done (tested) |
+| SAM output parser (`inspec/segments.py`) | Done (tested) |
 | Check-program schema (`inspec/schema.py`) | Planned |
 | Packing-list compiler (`inspec/compiler.py`) | Planned |
 | Check executor (`inspec/executor.py`) | Planned |
@@ -82,13 +83,15 @@ category: Screw Bag. Stretch: Breakfast Box.
 
 ## Run locally
 
-> Only setup works today. App and eval commands will be added as they're built.
+> App and eval commands will be added as they're built.
 
 ```bash
 git clone https://github.com/Mallard64/inspec.git && cd inspec
 uv venv --python 3.11 .venv
 uv pip install --python .venv/bin/python -r requirements.txt
 cp .env.example .env   # then put your Meta Model API key in .env
+scripts/download_loco.sh   # Screw Bag, about 1 GB, into data/
+.venv/bin/python -m pytest -q
 ```
 
 ### Environment variables
@@ -137,10 +140,15 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   orientation, both mask encodings, and empty results
   ([notes](docs/sam-output-format.md)). Chose `one_bit` masks: identical output on test shapes,
   roughly 5× smaller.
+  Built the dataset script, the SAM client with a disk cache, and the SAM parser (23 unit tests).
+  First real run on one good Screw Bag image: SAM returned 2 screws, 3 nuts and 2 washers. One
+  "nut" mask overlaps a washer mask at IoU 0.98, so it's the same washer under a second label.
+  A naive "count nuts" rule would fail this *good* kit. That's the kind of check the calibration
+  loop is meant to catch and repair.
 
 ## Limits
 
-- Nothing beyond setup works yet. See Status.
+- Only the SAM layer works so far. See Status.
 - Designed for kits photographed from a fixed overhead camera, like MVTec LOCO. It hasn't been
   tested on other setups.
 - SAM is unreliable with spatial words and negation, so those checks are done in code. Parts SAM
