@@ -1,7 +1,7 @@
 # Inspec — orchestration rules for Claude Code
 
 Inspec is a kit-completeness inspector for the Meta Global AI Developer Hackathon (indie track, solo).
-A user types a packing list ("2 long screws, 2 short screws, 2 nuts, 2 washers"), Muse Spark compiles it
+A user types a packing list ("1 long screw, 1 short screw, 2 nuts, 2 washers"), Muse Spark compiles it
 into a JSON check program, SAM 3.1 segments and counts the parts in each kit image, and a calibration
 loop repairs checks that fail on known-good kits. Build window: Oct 26 – Nov 4, 2026. Submission due
 Nov 4, 9:00 PM ET.
