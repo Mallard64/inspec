@@ -7,8 +7,8 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 28):** the SAM 3.1 layer (dataset download, API client with a disk cache, and mask
-> parser) and the check-program schema are built and tested. The check compiler, executor, calibration loop, evaluation and UI
+> **Status (Oct 28):** the pipeline runs end to end. The packing-list compiler (Muse Spark), the
+> SAM 3.1 layer and the check executor are built and tested. The calibration loop, evaluation and UI
 > are designed but **not built yet**. The [Status](#status) table is the source of truth. No
 > results are claimed until they're measured.
 
@@ -32,13 +32,17 @@ in this repo was written during the event; the commit history is the record.
 
 ## Why this is hard (and a real example)
 
-On the first real image we ran, a **good** Screw Bag, SAM 3.1 returned 2 screws, 2 washers and
-**3 nuts**. One "nut" mask overlaps a washer mask at IoU 0.98: it's the same washer under two labels.
-A naive "count nuts = 2" rule would reject this correct kit.
+We ran the freshly compiled program on 5 **good** Screw Bags, and it rejected all 5:
 
-This is the failure the calibration loop is built for: the rule is wrong, the good kit proves it,
-and the evidence (two masks on one object) says how to fix it. This is one image, an observation and
-not a result; the eval will show whether it generalises.
+- SAM ignores size words, so "long screw" and "short screw" both match both screws.
+- SAM labels hex nuts **and** washers as both "nut" and "washer", and calls the cylindrical screw
+  heads "nuts" too. One good kit came back with 6 "nuts" and 4 "washers".
+
+Labels alone can't separate these parts, but size can. After merging duplicate detections into
+objects, every one of those 5 images held exactly 6 objects: screws at about 290 px and 418 px long,
+nuts at 6,900–7,400 px² and washers at 4,700–6,500 px². So the program's labels are right but its
+limits are missing, and measurements of known-good kits say what the limits should be. That's the
+calibration loop's job.
 
 ## How it works
 
@@ -68,10 +72,9 @@ Bag (size limits are illustrative; real ones come from calibration):
   "parts": [
     {"id": "long_screw",  "concept": "screw", "min_length": 300},
     {"id": "short_screw", "concept": "screw", "max_length": 300},
-    {"id": "nut",         "concept": "nut"},
-    {"id": "washer",      "concept": "washer"}
+    {"id": "nut",         "concept": "nut",    "min_area": 6700, "max_area": 10000},
+    {"id": "washer",      "concept": "washer", "max_area": 6700}
   ],
-  "dedupe": [{"keep": "washer", "drop": "nut", "min_iou": 0.8}],
   "checks": [
     {"id": "nut_count",    "type": "count",   "part": "nut",    "min": 2, "max": 2},
     {"id": "washer_count", "type": "count",   "part": "washer", "min": 2, "max": 2},
@@ -86,7 +89,9 @@ Bag (size limits are illustrative; real ones come from calibration):
 - **Parts** map a name to one SAM concept, plus optional size limits. "Long screw" and "short
   screw" share the concept `screw` and are split by length, because SAM ignores size words (see
   the build log).
-- **Dedupe** rules drop an instance when SAM gives one object two labels.
+- **Merging** happens before any check. A detection mostly inside a larger one (default 80%) is the
+  same object with an extra label, so an object can carry {nut, washer}, or {screw, nut} for a screw
+  plus its head. A part matches objects that carry its concept and fit its size limits.
 - **Checks** are `count` (how many instances of a part) or `measure` (bounds on `area` or `length`
   for every instance). The schema is kept flat so Muse Spark's structured output fills it reliably.
 
@@ -114,10 +119,10 @@ the image, so a human can see *why*.
 
 1. Run the program on a handful of known-good training images.
 2. Any check that fails on a good image is a wrong rule. Send Muse Spark the check, the measured
-   values and a summary of the masks involved (e.g. "nut mask 3 overlaps washer mask 2 at
-   IoU 0.98").
-3. Muse Spark returns a repaired check (a new dedupe rule, a widened range, a different concept
-   phrase), constrained to the same schema.
+   values and the objects involved (e.g. "long_screw_count found 2; screw objects measure 289 px
+   and 422 px long").
+3. Muse Spark returns a repaired program (new or tightened size limits, a widened range, a
+   different concept phrase), constrained to the same schema.
 4. Re-run. Stop when all good images pass or after a fixed number of rounds. Every repair is logged
    and shown in the UI.
 
@@ -158,14 +163,15 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | SAM client with disk cache (`inspec/sam_client.py`) | Done (tested) |
 | SAM output parser (`inspec/segments.py`) | Done (tested) |
 | Check-program schema (`inspec/schema.py`) | Done (tested) |
-| Packing-list compiler (`inspec/compiler.py`) | Next |
-| Check executor (`inspec/executor.py`) | Planned |
-| Calibration loop (`inspec/calibrate.py`) | Planned |
+| LLM client: Meta default, optional Baseten (`inspec/llm.py`) | Done (tested); Baseten untested live (no key yet) |
+| Packing-list compiler (`inspec/compiler.py`) | Done (tested) |
+| Check executor (`inspec/executor.py`) | Done (tested) |
+| Calibration loop (`inspec/calibrate.py`) | Next |
 | Vision-only baseline (`inspec/baseline.py`) | Planned |
 | Evaluation on MVTec LOCO AD (`eval/run_eval.py`) | Planned |
 | Streamlit app (`app.py`) | Planned |
 
-Unit tests: 49 passing (SAM client, parser, schema). No evaluation results yet.
+Unit tests: 80 passing (SAM client, parser, schema, LLM client, compiler, executor). No evaluation results yet.
 
 ## Roadmap
 
@@ -189,6 +195,9 @@ UI polish → stretch goals (Breakfast Box, voice input).
 - **SAM 3.1** (Meta Model API): instance segmentation by text concept
 - Python 3.11, OpenAI Python SDK (the Meta Model API is OpenAI-compatible), `meta-sam-parser`
   (Meta's mask decoder), NumPy, Pillow, pytest
+- **Baseten** (optional): set `INSPEC_LLM_PROVIDER=baseten` to run the compiler on a Baseten-hosted
+  model such as Muse Spark Open. It has no structured output, so the client asks for JSON, validates
+  it against the schema and retries with the error.
 - Streamlit for the UI (planned)
 
 ## Run locally
@@ -219,6 +228,10 @@ print([(s.box, s.area) for s in segs])
 | Name | Purpose |
 |---|---|
 | `META_API_KEY` | Meta Model API key (Muse Spark and SAM 3.1). Read from `.env`, never committed. |
+| `INSPEC_LLM_PROVIDER` | `meta` (default) or `baseten`: which provider runs the compiler |
+| `META_LLM_MODEL` | Override the Muse Spark model (default `muse-spark-1.3`) |
+| `BASETEN_API_KEY` | Baseten key, only for `INSPEC_LLM_PROVIDER=baseten` |
+| `BASETEN_MODEL` | Baseten model slug; `scripts/check_baseten.py` lists them |
 
 ## Project structure
 
@@ -226,9 +239,10 @@ print([(s.box, s.area) for s in segs])
 inspec/
   sam_client.py   # ✅ SAM 3.1 calls, disk cache keyed by (image hash, concept)
   segments.py     # ✅ parse SAM output into boxes and boolean masks
-  schema.py       # check-program schema (pydantic)
-  compiler.py     # packing list + good images -> check program (Muse Spark)
-  executor.py     # run a check program on one image -> verdicts with evidence
+  schema.py       # ✅ check-program schema (pydantic)
+  llm.py          # ✅ Muse Spark / Baseten client with validate-and-retry
+  compiler.py     # ✅ packing list (+ good images) -> check program (Muse Spark)
+  executor.py     # ✅ merge detections into objects, run checks -> verdicts with evidence
   calibrate.py    # run on good images, repair failing checks, re-run
   baseline.py     # Muse Spark vision-only pass/fail baseline
 eval/run_eval.py  # recall, false-alarm rate, AUROC
@@ -266,13 +280,22 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   cropped to the box), both mask encodings, and empty results. Chose `one_bit` masks: identical on
   test shapes, 5–170× smaller. Built the dataset script, the SAM client with a disk cache, and the
   parser (23 unit tests). First real run on a good Screw Bag image found the washer that SAM also
-  labels as a nut (see [above](#why-this-is-hard-and-a-real-example)).
+  labels as a nut.
 - **Oct 28.** Wrote the check-program schema (26 tests). Confirmed that `muse-spark-1.3` structured
   output fills the schema and passes validation from a plain packing list. Found that **SAM ignores
   size words**: on a good Screw Bag image, "screw", "long screw" and "short screw" each return the
   same 2 screws. Muse Spark's first-try program used "long screw" as a SAM concept, which would
   wrongly fail a good kit. So the compiler prompt must use shared concepts split by measured
   length, and this is a second concrete case for the calibration loop.
+  Later the same day: built the compiler (`muse-spark-1.3`, valid on the first attempt in 3 of 3
+  runs, both screws correctly given concept "screw") and the executor (Muse Code, task 04). Set up
+  an optional Baseten provider for Muse Spark Open (not yet tested live). **First end-to-end run:**
+  the compiled program, with no size limits yet, rejected 5 of 5 good kits (see
+  [above](#why-this-is-hard-and-a-real-example)). Replaced dedupe rules with automatic object
+  merging, because SAM calls screw heads "nuts" and labels nuts and washers both ways.
+  Feasibility check, **not a result**: with size limits I set by hand from 5 training images, 19 of
+  the next 20 good training images pass. The one failure is a washer at 6,715 px² against a
+  6,700 px² cut-off, which is the kind of boundary calibration should learn from data.
 
 ## Limits
 

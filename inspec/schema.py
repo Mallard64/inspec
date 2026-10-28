@@ -1,16 +1,19 @@
 """Check-program schema: what the compiler emits and the executor runs.
 
-A program has three parts:
+A program has two lists:
 
 - ``parts``: named things to find. Each part is one SAM concept plus optional size limits, so two
   parts can share a concept ("long screw" and "short screw" are both ``screw``, split by length).
-- ``dedupe``: rules that drop a SAM instance of one concept when it overlaps an instance of another
-  (SAM sometimes labels one washer as both "washer" and "nut").
 - ``checks``: assertions on parts. ``count`` bounds how many instances a part has; ``measure``
   bounds a metric of every instance of a part.
 
 Models are deliberately flat (nullable fields, no nested unions) so the JSON schema stays simple
 enough for LLM structured output.
+
+Before checks run, the executor merges SAM segments into objects: a segment mostly inside a larger
+one (``merge_overlap``) is the same object with an extra label. On Screw Bag, SAM labels hex nuts and
+washers as both "nut" and "washer", and calls screw heads "nuts", so labels alone can't separate
+parts; size limits do.
 
 Units: pixels of the source image. ``length`` is the extent of the mask along its principal axis;
 ``area`` is the mask pixel count.
@@ -74,21 +77,6 @@ class Part(_Strict):
         return self
 
 
-class Dedupe(_Strict):
-    keep: str = Field(description="Concept whose instance is kept")
-    drop: str = Field(description="Concept whose overlapping instance is removed")
-    min_iou: float = Field(description="Drop when mask IoU is at least this (0-1)")
-    reason: str = ""
-
-    @model_validator(mode="after")
-    def _validate(self) -> Dedupe:
-        self.keep = validate_concept(self.keep)
-        self.drop = validate_concept(self.drop)
-        if not 0 < self.min_iou <= 1:
-            raise ValueError("min_iou must be in (0, 1]")
-        return self
-
-
 class Check(_Strict):
     id: str = Field(description="snake_case name, e.g. nut_count")
     type: Literal["count", "measure"]
@@ -119,8 +107,9 @@ class CheckProgram(_Strict):
     version: Literal[1] = 1
     kit_name: str
     parts: list[Part]
-    dedupe: list[Dedupe] = Field(default_factory=list)
     checks: list[Check]
+    merge_overlap: float = Field(0.8, description="Segments with at least this fraction inside "
+                                 "a larger segment are the same object")
     notes: str = Field("", description="Compiler's short rationale")
 
     @model_validator(mode="after")
@@ -137,13 +126,8 @@ class CheckProgram(_Strict):
         for check in self.checks:
             if check.part not in known:
                 raise ValueError(f"check {check.id} refers to unknown part {check.part!r}")
-        concepts = {p.concept.lower() for p in self.parts}
-        for rule in self.dedupe:
-            for concept in (rule.keep, rule.drop):
-                if concept.lower() not in concepts:
-                    raise ValueError(f"dedupe concept {concept!r} is not used by any part")
-            if rule.keep.lower() == rule.drop.lower():
-                raise ValueError("dedupe keep and drop must differ")
+        if not 0 < self.merge_overlap <= 1:
+            raise ValueError("merge_overlap must be in (0, 1]")
         return self
 
     def concepts(self) -> list[str]:

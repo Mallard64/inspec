@@ -8,7 +8,7 @@ from inspec.executor import (
     ProgramResult,
     SegmentRef,
     fetch_segments,
-    mask_iou,
+    mask_overlap,
     mask_length,
     run_program,
 )
@@ -46,12 +46,10 @@ def _bar(length: int, x0: int = 0, y0: int = 0) -> Segment:
 def _program(
     parts: list[dict],
     checks: list[dict],
-    dedupe: list[dict] | None = None,
 ) -> CheckProgram:
     return CheckProgram(
         kit_name="test",
         parts=parts,  # type: ignore[arg-type]
-        dedupe=dedupe or [],  # type: ignore[arg-type]
         checks=checks,  # type: ignore[arg-type]
     )
 
@@ -92,64 +90,71 @@ def test_mask_length_degenerate() -> None:
     assert mask_length(_segment(np.ones((1, 1), dtype=bool))) == 1.0
 
 
-# --- mask_iou ---
+# --- mask_overlap ---
 
 
-def test_mask_iou_identical() -> None:
-    a = _bar(30)
-    assert mask_iou(a, _bar(30)) == pytest.approx(1.0)
+def test_mask_overlap_identical() -> None:
+    assert mask_overlap(_bar(30), _bar(30)) == pytest.approx(1.0)
 
 
-def test_mask_iou_disjoint() -> None:
-    a = _bar(30, x0=0)
-    b = _bar(30, x0=200)
-    assert mask_iou(a, b) == 0.0
+def test_mask_overlap_disjoint() -> None:
+    assert mask_overlap(_bar(30, x0=0), _bar(30, x0=200)) == 0.0
 
 
-def test_mask_iou_half_overlap() -> None:
+def test_mask_overlap_half() -> None:
     a = _segment(np.ones((10, 10), dtype=bool), x0=0, y0=0)
     b = _segment(np.ones((10, 10), dtype=bool), x0=5, y0=0)
-    assert mask_iou(a, b) == pytest.approx(1 / 3)
+    assert mask_overlap(a, b) == pytest.approx(0.5)
 
 
-def test_mask_iou_empty_union() -> None:
-    a = _segment(np.zeros((10, 10), dtype=bool), x0=0, y0=0)
-    b = _segment(np.zeros((10, 10), dtype=bool), x0=0, y0=0)
-    assert mask_iou(a, b) == 0.0
+def test_mask_overlap_small_inside_large() -> None:
+    big = _segment(np.ones((100, 100), dtype=bool), x0=0, y0=0)
+    small = _segment(np.ones((10, 10), dtype=bool), x0=40, y0=40)
+    assert mask_overlap(small, big) == pytest.approx(1.0)
+    assert mask_overlap(big, small) == pytest.approx(1.0)
 
 
-# --- dedupe ---
+def test_mask_overlap_empty() -> None:
+    a = _segment(np.zeros((10, 10), dtype=bool))
+    assert mask_overlap(a, a) == 0.0
 
 
-def _nut_washer_program() -> CheckProgram:
-    return _program(
-        parts=[
-            {"id": "nut", "concept": "nut"},
-            {"id": "washer", "concept": "washer"},
-        ],
-        dedupe=[{"keep": "washer", "drop": "nut", "min_iou": 0.5}],
+# --- merging ---
+
+
+def test_double_labelled_object_merges_and_counts_for_both_parts() -> None:
+    program = _program(
+        parts=[{"id": "nut", "concept": "nut"}, {"id": "washer", "concept": "washer"}],
         checks=[
-            {"id": "nut_count", "type": "count", "part": "nut", "min": 1, "max": 1},
+            {"id": "nut_count", "type": "count", "part": "nut", "min": 2, "max": 2},
+            {"id": "washer_count", "type": "count", "part": "washer", "min": 1, "max": 1},
         ],
     )
-
-
-def test_dedupe_drops_overlapping_segment() -> None:
     washer = _segment(np.ones((20, 20), dtype=bool), x0=10, y0=10)
     nut_same = _segment(np.ones((20, 20), dtype=bool), x0=10, y0=10)
     nut_far = _segment(np.ones((20, 20), dtype=bool), x0=500, y0=500)
-    result = run_program(
-        _nut_washer_program(),
-        {"nut": [nut_same, nut_far], "washer": [washer]},
+    result = run_program(program, {"nut": [nut_same, nut_far], "washer": [washer]})
+    assert len(result.merged) == 1
+    absorbed, obj, overlap = result.merged[0]
+    assert {absorbed, obj} == {SegmentRef("nut", 0), SegmentRef("washer", 0)}
+    assert overlap == pytest.approx(1.0)
+    assert result.labels[obj] == {"nut", "washer"}
+    assert absorbed not in result.metrics
+    assert result.passed, [c.message for c in result.checks]
+
+
+def test_screw_head_folds_into_screw() -> None:
+    program = _program(
+        parts=[{"id": "screw", "concept": "screw"},
+               {"id": "nut", "concept": "nut", "max_area": 1000}],
+        checks=[{"id": "nut_count", "type": "count", "part": "nut", "min": 0, "max": 0}],
     )
-    assert result.dropped == [
-        (SegmentRef("nut", 0), SegmentRef("washer", 0), pytest.approx(1.0))
-    ]
-    (check,) = result.checks
-    assert check.passed
-    assert check.value == 1
-    assert check.evidence == [SegmentRef("nut", 1)]
-    assert SegmentRef("nut", 0) not in result.metrics
+    screw = _segment(np.ones((20, 300), dtype=bool), x0=0, y0=0)
+    head = _segment(np.ones((20, 30), dtype=bool), x0=0, y0=0)
+    result = run_program(program, {"screw": [screw], "nut": [head]})
+    assert result.merged[0][:2] == (SegmentRef("nut", 0), SegmentRef("screw", 0))
+    assert result.labels[SegmentRef("screw", 0)] == {"screw", "nut"}
+    assert result.passed  # the merged object is too big to be a nut
 
 
 # --- count checks ---

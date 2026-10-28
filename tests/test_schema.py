@@ -13,7 +13,6 @@ def screw_bag(**overrides) -> dict:
             {"id": "nut", "concept": "nut"},
             {"id": "washer", "concept": "washer"},
         ],
-        "dedupe": [{"keep": "washer", "drop": "nut", "min_iou": 0.8}],
         "checks": [
             {"id": "nut_count", "type": "count", "part": "nut", "min": 2, "max": 2},
             {"id": "long_len", "type": "measure", "part": "long_screw", "metric": "length",
@@ -58,11 +57,11 @@ def bad_check(**fields) -> dict:
     bad_check(type="measure"),                                                  # measure, no metric
     bad_check(id="Nut-Count"),                                                  # bad id
     bad_check(colour="red"),                                                    # extra field
-    screw_bag(dedupe=[{"keep": "washer", "drop": "bolt", "min_iou": 0.8}]),     # unknown concept
-    screw_bag(dedupe=[{"keep": "nut", "drop": "nut", "min_iou": 0.8}]),         # keep == drop
-    screw_bag(dedupe=[{"keep": "washer", "drop": "nut", "min_iou": 0}]),        # iou out of range
+    screw_bag(merge_overlap=0),                                                 # overlap range
+    screw_bag(merge_overlap=1.5),                                               # overlap range
+    screw_bag(dedupe=[]),                                                       # removed field
     screw_bag(parts=[{"id": "nut", "concept": "nut", "min_area": 9, "max_area": 1}],
-              dedupe=[], checks=screw_bag()["checks"][:1]),                     # part range
+              checks=screw_bag()["checks"][:1]),                                # part range
     screw_bag(checks=[]),                                                       # no checks
 ])
 def test_rejects_invalid_programs(program):
@@ -72,4 +71,4 @@ def test_rejects_invalid_programs(program):
 
 def test_json_schema_is_generated():
     schema = CheckProgram.model_json_schema()
-    assert {"parts", "checks", "dedupe"} <= set(schema["properties"])
+    assert {"parts", "checks", "merge_overlap"} <= set(schema["properties"])

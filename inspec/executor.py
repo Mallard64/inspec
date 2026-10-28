@@ -42,9 +42,10 @@ class CheckResult:
 class ProgramResult:
     passed: bool  # all checks passed
     checks: list[CheckResult] = field(default_factory=list)
-    dropped: list[tuple[SegmentRef, SegmentRef, float]] = field(default_factory=list)
-    unassigned: list[SegmentRef] = field(default_factory=list)
-    metrics: dict[SegmentRef, dict[str, float]] = field(default_factory=dict)
+    merged: list[tuple[SegmentRef, SegmentRef, float]] = field(default_factory=list)  # (absorbed, object, overlap)
+    unassigned: list[SegmentRef] = field(default_factory=list)  # objects that match no part
+    metrics: dict[SegmentRef, dict[str, float]] = field(default_factory=dict)  # per object
+    labels: dict[SegmentRef, set[str]] = field(default_factory=dict)  # every concept SAM gave the object
 
     def failed(self) -> list[CheckResult]:
         return [c for c in self.checks if not c.passed]
@@ -71,10 +72,11 @@ class ProgramResult:
                 }
                 for c in self.checks
             ],
-            "dropped": [
-                {"dropped": str(d), "kept": str(k), "iou": float(iou)}
-                for d, k, iou in self.dropped
+            "merged": [
+                {"absorbed": str(a), "object": str(o), "overlap": float(v)}
+                for a, o, v in self.merged
             ],
+            "labels": {str(r): sorted(ls) for r, ls in self.labels.items()},
             "unassigned": [str(r) for r in self.unassigned],
             "metrics": {
                 str(r): {"area": float(m["area"]), "length": float(m["length"])}
@@ -114,8 +116,8 @@ def mask_length(segment: Segment) -> float:
     return float(proj.max() - proj.min() + 1.0)
 
 
-def mask_iou(a: Segment, b: Segment) -> float:
-    """IoU of two segments' full-image masks, via their box intersection."""
+def mask_overlap(a: Segment, b: Segment) -> float:
+    """Fraction of the smaller mask that lies inside the other (1.0 = fully contained)."""
     ax1, ay1, ax2, ay2 = a.box
     bx1, by1, bx2, by2 = b.box
     x1, y1 = max(ax1, bx1), max(ay1, by1)
@@ -125,10 +127,10 @@ def mask_iou(a: Segment, b: Segment) -> float:
     ma = np.asarray(a.mask, dtype=bool)[y1 - ay1 : y2 - ay1 + 1, x1 - ax1 : x2 - ax1 + 1]
     mb = np.asarray(b.mask, dtype=bool)[y1 - by1 : y2 - by1 + 1, x1 - bx1 : x2 - bx1 + 1]
     inter = int(np.logical_and(ma, mb).sum())
-    union = int(a.mask.sum()) + int(b.mask.sum()) - inter
-    if union == 0:
+    smaller = min(int(a.mask.sum()), int(b.mask.sum()))
+    if smaller == 0:
         return 0.0
-    return inter / union
+    return inter / smaller
 
 
 def _format_bound(value: float | None) -> str:
@@ -165,42 +167,40 @@ def run_program(
         for i, seg in enumerate(segs):
             seg_of[refs[concept][i]] = seg
 
-    # Dedupe first, rule by rule. Dropped segments leave the pool entirely.
-    dropped_set: set[SegmentRef] = set()
-    dropped: list[tuple[SegmentRef, SegmentRef, float]] = []
-    for rule in program.dedupe:
-        keep_c = rule.keep.lower()
-        drop_c = rule.drop.lower()
-        keep_refs = [r for r in refs.get(keep_c, []) if r not in dropped_set]
-        drop_refs = [r for r in refs.get(drop_c, []) if r not in dropped_set]
-        for drop_ref in drop_refs:
-            best_ref: SegmentRef | None = None
-            best_iou = 0.0
-            for keep_ref in keep_refs:
-                iou = mask_iou(seg_of[drop_ref], seg_of[keep_ref])
-                if best_ref is None or iou > best_iou:
-                    best_ref = keep_ref
-                    best_iou = iou
-            if best_ref is not None and best_iou >= rule.min_iou:
-                dropped_set.add(drop_ref)
-                dropped.append((drop_ref, best_ref, float(best_iou)))
+    # Merge duplicates into objects. SAM gives one physical object several labels (a hex nut is
+    # also a "washer") and finds parts of objects (a screw head is a "nut"), so any segment mostly
+    # inside a larger one joins it. Largest first, so small pieces fold into whole objects.
+    order = sorted(seg_of, key=lambda r: (-seg_of[r].area, r.concept, r.index))
+    kept: list[SegmentRef] = []
+    labels: dict[SegmentRef, set[str]] = {}
+    merged: list[tuple[SegmentRef, SegmentRef, float]] = []
+    for ref in order:
+        best_ref: SegmentRef | None = None
+        best = 0.0
+        for obj in kept:
+            overlap = mask_overlap(seg_of[ref], seg_of[obj])
+            if overlap > best:
+                best_ref, best = obj, overlap
+        if best_ref is not None and best >= program.merge_overlap:
+            labels[best_ref].add(ref.concept)
+            merged.append((ref, best_ref, float(best)))
+        else:
+            kept.append(ref)
+            labels[ref] = {ref.concept}
 
-    kept = [r for r in seg_of if r not in dropped_set]
-
-    # Metrics for every kept segment.
+    # Metrics for every object.
     metrics: dict[SegmentRef, dict[str, float]] = {}
     for ref in kept:
         seg = seg_of[ref]
         metrics[ref] = {"area": float(seg.area), "length": float(mask_length(seg))}
 
-    # Assign kept segments to parts.
+    # An object belongs to every part whose concept is among its labels and whose limits it meets.
     part_instances: dict[str, list[SegmentRef]] = {p.id: [] for p in program.parts}
     claimed: set[SegmentRef] = set()
     for ref in kept:
-        concept = ref.concept
         m = metrics[ref]
         for part in program.parts:
-            if part.concept.lower() != concept:
+            if part.concept.lower() not in labels[ref]:
                 continue
             if part.min_length is not None and m["length"] < part.min_length:
                 continue
@@ -255,9 +255,10 @@ def run_program(
     return ProgramResult(
         passed=all(c.passed for c in results),
         checks=results,
-        dropped=dropped,
+        merged=merged,
         unassigned=unassigned,
         metrics=metrics,
+        labels=labels,
     )
 
 
