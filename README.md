@@ -7,8 +7,8 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 27):** the SAM 3.1 layer (dataset download, API client with a disk cache, and mask
-> parser) is built and tested. The check compiler, executor, calibration loop, evaluation and UI
+> **Status (Oct 28):** the SAM 3.1 layer (dataset download, API client with a disk cache, and mask
+> parser) and the check-program schema are built and tested. The check compiler, executor, calibration loop, evaluation and UI
 > are designed but **not built yet**. The [Status](#status) table is the source of truth. No
 > results are claimed until they're measured.
 
@@ -59,33 +59,43 @@ known-good kits ► 4. Calibrate: run checks on good kits;     │
 ### 1. Compile: packing list → check program (Muse Spark)
 
 Muse Spark reads the packing list (plus a few good example images) and emits a typed check program
-using structured output. Draft of the shape, **not final**:
+using structured output, validated by [`inspec/schema.py`](inspec/schema.py). Example for Screw
+Bag (size limits are illustrative; real ones come from calibration):
 
 ```json
 {
+  "kit_name": "screw bag",
   "parts": [
-    {"id": "long_screw",  "sam_concept": "screw",  "select": {"area_rank": "largest", "n": 1}},
-    {"id": "short_screw", "sam_concept": "screw",  "select": {"area_rank": "smallest", "n": 1}},
-    {"id": "nut",         "sam_concept": "nut"},
-    {"id": "washer",      "sam_concept": "washer"}
+    {"id": "long_screw",  "concept": "screw", "min_length": 300},
+    {"id": "short_screw", "concept": "screw", "max_length": 300},
+    {"id": "nut",         "concept": "nut"},
+    {"id": "washer",      "concept": "washer"}
   ],
+  "dedupe": [{"keep": "washer", "drop": "nut", "min_iou": 0.8}],
   "checks": [
-    {"id": "nut_count",    "type": "count", "part": "nut",    "expect": 2},
-    {"id": "washer_count", "type": "count", "part": "washer", "expect": 2},
-    {"id": "screw_count",  "type": "count", "part": "screw",  "expect": 2},
-    {"id": "short_screw_size", "type": "area_ratio", "part": "short_screw",
-     "relative_to": "long_screw", "range": [0.4, 0.8]}
-  ],
-  "dedupe": [{"keep": "washer", "drop": "nut", "iou_above": 0.8}]
+    {"id": "nut_count",    "type": "count",   "part": "nut",    "min": 2, "max": 2},
+    {"id": "washer_count", "type": "count",   "part": "washer", "min": 2, "max": 2},
+    {"id": "long_count",   "type": "count",   "part": "long_screw",  "min": 1, "max": 1},
+    {"id": "short_count",  "type": "count",   "part": "short_screw", "min": 1, "max": 1},
+    {"id": "long_length",  "type": "measure", "part": "long_screw", "metric": "length",
+     "min": 350, "max": 420}
+  ]
 }
 ```
+
+- **Parts** map a name to one SAM concept, plus optional size limits. "Long screw" and "short
+  screw" share the concept `screw` and are split by length, because SAM ignores size words (see
+  the build log).
+- **Dedupe** rules drop an instance when SAM gives one object two labels.
+- **Checks** are `count` (how many instances of a part) or `measure` (bounds on `area` or `length`
+  for every instance). The schema is kept flat so Muse Spark's structured output fills it reliably.
 
 Design rules, taken from what SAM 3.1 actually does well:
 - **One short noun phrase per SAM call** ("nut", not "nuts and washers"). Verified behaviour.
 - **No spatial words or negation in SAM prompts.** Size, position, "missing" and "extra" are all
   computed in Python from masks, where they're exact and testable.
-- **Check types are a small fixed set** (count, present, area or area ratio, relative position), so
-  every check is executable and explainable.
+- **Check types are a small fixed set** (count and measure for now; relative position comes later if
+  Breakfast Box needs it), so every check is executable and explainable.
 
 ### 2. Segment (SAM 3.1)
 
@@ -147,15 +157,15 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | Dataset download script (`scripts/download_loco.sh`) | Done (tested) |
 | SAM client with disk cache (`inspec/sam_client.py`) | Done (tested) |
 | SAM output parser (`inspec/segments.py`) | Done (tested) |
-| Check-program schema (`inspec/schema.py`) | Next |
-| Packing-list compiler (`inspec/compiler.py`) | Planned |
+| Check-program schema (`inspec/schema.py`) | Done (tested) |
+| Packing-list compiler (`inspec/compiler.py`) | Next |
 | Check executor (`inspec/executor.py`) | Planned |
 | Calibration loop (`inspec/calibrate.py`) | Planned |
 | Vision-only baseline (`inspec/baseline.py`) | Planned |
 | Evaluation on MVTec LOCO AD (`eval/run_eval.py`) | Planned |
 | Streamlit app (`app.py`) | Planned |
 
-Unit tests: 23 passing (SAM client and parser). No evaluation results yet.
+Unit tests: 49 passing (SAM client, parser, schema). No evaluation results yet.
 
 ## Roadmap
 
@@ -257,6 +267,12 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   test shapes, 5–170× smaller. Built the dataset script, the SAM client with a disk cache, and the
   parser (23 unit tests). First real run on a good Screw Bag image found the washer that SAM also
   labels as a nut (see [above](#why-this-is-hard-and-a-real-example)).
+- **Oct 28.** Wrote the check-program schema (26 tests). Confirmed that `muse-spark-1.3` structured
+  output fills the schema and passes validation from a plain packing list. Found that **SAM ignores
+  size words**: on a good Screw Bag image, "screw", "long screw" and "short screw" each return the
+  same 2 screws. Muse Spark's first-try program used "long screw" as a SAM concept, which would
+  wrongly fail a good kit. So the compiler prompt must use shared concepts split by measured
+  length, and this is a second concrete case for the calibration loop.
 
 ## Limits
 
