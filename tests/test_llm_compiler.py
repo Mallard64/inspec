@@ -108,3 +108,16 @@ def test_compile_rejects_empty_list(monkeypatch):
     llm, _ = make_llm("meta", [], monkeypatch)
     with pytest.raises(ValueError):
         compile_program("  ", llm=llm)
+
+
+def test_validate_hook_rejects_and_feeds_back(monkeypatch):
+    two_nuts = {**GOOD, "checks": [{**GOOD["checks"][0], "min": 1}]}
+    llm, fake = make_llm("meta", [two_nuts, GOOD], monkeypatch)
+
+    def keep_counts(program):
+        if program.checks[0].min != 2:
+            raise ValueError("count checks must not change")
+
+    result = llm.generate("x", [], CheckProgram, validate=keep_counts)
+    assert result.attempts == 2 and result.errors == ["count checks must not change"]
+    assert "must not change" in fake.calls[1]["input"][-1]["content"][0]["text"]

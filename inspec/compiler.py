@@ -30,7 +30,7 @@ Rules for parts:
   concept.
 - Items that differ only by size (long vs short, large vs small) MUST share the same concept and
   become separate parts, e.g. long_screw and short_screw both with concept "screw".
-- Leave min_length, max_length, min_area and max_area null. You can't see pixel sizes; a
+- Leave every limit (min_/max_ length, area, hole) null. You can't see pixel measurements; a
   calibration step sets them from measurements of known-good kits.
 
 Rules for checks:

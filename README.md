@@ -7,10 +7,10 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 28):** the pipeline runs end to end. The packing-list compiler (Muse Spark), the
-> SAM 3.1 layer and the check executor are built and tested. The calibration loop, evaluation and UI
-> are designed but **not built yet**. The [Status](#status) table is the source of truth. No
-> results are claimed until they're measured.
+> **Status (Oct 28):** the full pipeline works end to end on Screw Bag: packing list → Muse Spark
+> compiler → SAM 3.1 → checks → Muse Spark calibration loop → evaluation. [Results](#results) are
+> measured on the held-out test set. The vision-only baseline and the UI are **not built yet**. The
+> [Status](#status) table is the source of truth.
 
 - Demo: _not yet_
 - Video: _not yet_ (3-minute demo due with submission)
@@ -27,22 +27,60 @@ in this repo was written during the event; the commit history is the record.
 - **The agent part.** The compiled checks are tested on kits known to be good. Any check that fails
   on a good kit is wrong by definition, so the agent repairs it from the evidence and re-tests. It's
   a self-correcting loop with a measurable before and after.
-- **Proof plan.** Evaluate on MVTec LOCO AD (Screw Bag) against a vision-only Muse Spark baseline,
-  reporting recall, false-alarm rate and AUROC.
+- **Result so far.** On MVTec LOCO Screw Bag's held-out test set, the calibrated program catches
+  all 137 kits with wrong parts or counts, and rejects 1–2 of 122 good kits. Before
+  calibration it rejected every good kit. A vision-only baseline is still to come.
+
+## Results
+
+Screw Bag, packing list "1 long screw, 1 short screw, 2 nuts, 2 washers". Each run compiles the
+list, calibrates on 60 evenly spaced `train/good` images and evaluates once on held-out images
+(`scripts/e2e.py --calib 60 --test`). Nothing was tuned on the test set. A kit is flagged when any
+check fails.
+
+| | Compiled only | Run 1 | Run 2 | Run 3 |
+|---|---|---|---|---|
+| False alarms, `validation/good` (60) | 60 (100%) | 1 (1.7%) | 1 (1.7%) | 2 (3.3%) |
+| False alarms, `test/good` (122) | 122 (100%) | 1 (0.8%) | 2 (1.6%) | 2 (1.6%) |
+| Caught, `test/logical_anomalies` (137) | 137* | 137 (100%) | 137 (100%) | 137 (100%) |
+| Caught, `test/structural_anomalies` (82) | 82* | 33 (40%) | 34 (41%) | 35 (43%) |
+| Calibration kits passing, after / before | 0 / 60 | 57 / 60 | 58 / 60 | 56 / 60 |
+
+\* The compiled-only program flags everything, so its "recall" means nothing. That's the point of
+calibration.
+
+- **All 16 logical defect types are caught in every run**: missing and extra parts, very short
+  screws, and screws that are too long or too short. Each kit is flagged by the check you'd
+  expect. For example, a missing nut fails `nut_count`, and a very short screw fails
+  `short_screw_length`. One exception: an extra nut or washer is sometimes counted as the other
+  type, so both counts fail. The verdict is still right.
+- **Structural anomalies are mostly out of scope.** No check looks at colour or the bag, so those
+  are 0/16 each. Contamination (19/25 in every run) and broken parts (14–16/25) are partly caught, because
+  they change a part's shape or count.
+- **Runs differ** because Muse Spark proposes a different repair each time (run 2 split screws by
+  area instead of length). Runs 1–2 used an earlier repair prompt. Run 3 added the rule "a lone
+  outlier is a measurement failure, not a reason to widen a range".
+- **The remaining false alarms are segmentation failures**, not rule errors. Examples: two screws
+  lying end to end that SAM returns as one 713 px object, or a tilted screw that measures 313 px
+  against a 276–308 range.
+- **Not done yet:** the vision-only Muse Spark baseline, AUROC (verdicts are binary for now), and
+  other LOCO categories.
 
 ## Why this is hard (and a real example)
 
-We ran the freshly compiled program on 5 **good** Screw Bags, and it rejected all 5:
+The freshly compiled program rejects **every** good Screw Bag (60/60 on validation):
 
 - SAM ignores size words, so "long screw" and "short screw" both match both screws.
-- SAM labels hex nuts **and** washers as both "nut" and "washer", and calls the cylindrical screw
-  heads "nuts" too. One good kit came back with 6 "nuts" and 4 "washers".
+- SAM labels hex nuts **and** washers as both "nut" and "washer", and calls the solid screw heads
+  "nuts" too. One good kit came back with 6 "nuts" and 4 "washers".
+- Nut and washer **areas overlap** (washers up to 6,907 px², nuts from 6,725 px² on 100 good
+  images), so size alone can't tell them apart. The share of the outline that is hole does: nuts
+  0.18–0.30, flat washers 0.38–0.44.
+- About 3% of good kits have a nut or washer touching a screw, and SAM's screw mask swallows it.
+  That adds ~110 px to the screw's length.
 
-Labels alone can't separate these parts, but size can. After merging duplicate detections into
-objects, every one of those 5 images held exactly 6 objects: screws at about 290 px and 418 px long,
-nuts at 6,900–7,400 px² and washers at 4,700–6,500 px². So the program's labels are right but its
-limits are missing, and measurements of known-good kits say what the limits should be. That's the
-calibration loop's job.
+So the compiled checks are right about *what* to count, but the program doesn't yet know how to
+tell the parts apart. The calibration loop learns that from known-good kits.
 
 ## How it works
 
@@ -64,36 +102,45 @@ known-good kits ► 4. Calibrate: run checks on good kits;     │
 
 Muse Spark reads the packing list (plus a few good example images) and emits a typed check program
 using structured output, validated by [`inspec/schema.py`](inspec/schema.py). Example for Screw
-Bag (size limits are illustrative; real ones come from calibration):
+Bag after calibration (run 3; null fields and `reason` strings omitted). The compiler wrote the
+parts and count checks. Calibration added every number except the counts:
 
 ```json
 {
   "kit_name": "screw bag",
   "parts": [
-    {"id": "long_screw",  "concept": "screw", "min_length": 300},
-    {"id": "short_screw", "concept": "screw", "max_length": 300},
-    {"id": "nut",         "concept": "nut",    "min_area": 6700, "max_area": 10000},
-    {"id": "washer",      "concept": "washer", "max_area": 6700}
+    {"id": "long_screw",  "concept": "screw", "min_length": 355},
+    {"id": "short_screw", "concept": "screw"},
+    {"id": "nut",         "concept": "nut",   "min_hole": 0.1, "max_hole": 0.33},
+    {"id": "washer",      "concept": "washer"}
   ],
   "checks": [
-    {"id": "nut_count",    "type": "count",   "part": "nut",    "min": 2, "max": 2},
-    {"id": "washer_count", "type": "count",   "part": "washer", "min": 2, "max": 2},
-    {"id": "long_count",   "type": "count",   "part": "long_screw",  "min": 1, "max": 1},
-    {"id": "short_count",  "type": "count",   "part": "short_screw", "min": 1, "max": 1},
-    {"id": "long_length",  "type": "measure", "part": "long_screw", "metric": "length",
-     "min": 350, "max": 420}
+    {"id": "long_screw_count",   "type": "count",   "part": "long_screw",  "min": 1, "max": 1},
+    {"id": "short_screw_count",  "type": "count",   "part": "short_screw", "min": 1, "max": 1},
+    {"id": "nut_count",          "type": "count",   "part": "nut",    "min": 2, "max": 2},
+    {"id": "washer_count",       "type": "count",   "part": "washer", "min": 2, "max": 2},
+    {"id": "long_screw_length",  "type": "measure", "part": "long_screw",  "metric": "length",
+     "min": 396, "max": 441},
+    {"id": "short_screw_length", "type": "measure", "part": "short_screw", "metric": "length",
+     "min": 276, "max": 308}
   ]
 }
 ```
 
-- **Parts** map a name to one SAM concept, plus optional size limits. "Long screw" and "short
-  screw" share the concept `screw` and are split by length, because SAM ignores size words (see
-  the build log).
+- **Parts** map a name to one SAM concept, plus optional limits on `length`, `area` and `hole`
+  (the fraction of the filled outline that is hole). "Long screw" and "short screw" share the
+  concept `screw` and are split by length, because SAM ignores size words.
+- **Parts are tried in order.** Each object goes to the first part whose concept is among its labels
+  and whose limits it meets. A part with no limits at the end catches the rest. Above, anything
+  labelled washer that isn't nut-shaped is a washer.
 - **Merging** happens before any check. A detection mostly inside a larger one (default 80%) is the
   same object with an extra label, so an object can carry {nut, washer}, or {screw, nut} for a screw
-  plus its head. A part matches objects that carry its concept and fit its size limits.
-- **Checks** are `count` (how many instances of a part) or `measure` (bounds on `area` or `length`
-  for every instance). The schema is kept flat so Muse Spark's structured output fills it reliably.
+  plus its head. One exception: a detection with a hole of its own, under half the container's
+  size, is a separate part touching it (a washer against a screw). It's carved out of the
+  container. Screw heads are solid; on 100 good images every head had hole 0.0 and every touching
+  nut or washer had at least 0.24.
+- **Checks** are `count` (how many instances of a part) or `measure` (bounds on a metric for every
+  instance). The schema is kept flat so Muse Spark's structured output fills it reliably.
 
 Design rules, taken from what SAM 3.1 actually does well:
 - **One short noun phrase per SAM call** ("nut", not "nuts and washers"). Verified behaviour.
@@ -117,17 +164,26 @@ the image, so a human can see *why*.
 
 ### 4. Calibrate (the agent loop)
 
-1. Run the program on a handful of known-good training images.
-2. Any check that fails on a good image is a wrong rule. Send Muse Spark the check, the measured
-   values and the objects involved (e.g. "long_screw_count found 2; screw objects measure 289 px
-   and 422 px long").
-3. Muse Spark returns a repaired program (new or tightened size limits, a widened range, a
-   different concept phrase), constrained to the same schema.
-4. Re-run. Stop when all good images pass or after a fixed number of rounds. Every repair is logged
-   and shown in the UI.
+[`inspec/calibrate.py`](inspec/calibrate.py)
 
-Repairs are only judged on good images, never on anomalies, so calibration can't learn the test
-set.
+1. Run the program on known-good training kits (60 by default).
+2. If any fail, send Muse Spark two things. First, every object's measurements grouped by the part
+   it went to and sorted, so gaps and ranges are exact rather than eyeballed. Second, for each
+   failing kit, its failed checks and objects.
+3. Muse Spark returns a repaired program: part order, limits, and `measure` checks for parts whose
+   size defines them. **Code rejects any repair that changes a part or a count check.** The
+   quantities come from the packing list, so the only way to pass a good kit is to describe the
+   parts better. A rejected repair goes back to the model with the reason.
+4. Re-run. Keep the best program so far. A repair that scores lower is discarded, and the model is
+   told so on the next try. Stop when every kit passes, when a repair changes nothing, or after 4
+   rounds.
+
+In practice one repair takes the program from 0/60 to 56–58/60. The model names the kits it
+leaves failing as segmentation failures (e.g. "204.png merged screws 510 px, area 47,935") instead
+of bending limits to fit them. Every round, rejected attempt and note is saved in
+`runs/<name>/calibration.json`.
+
+Repairs only ever see good training images, never anomalies or validation/test images.
 
 ## Evaluation plan
 
@@ -143,12 +199,12 @@ defect list: missing, additional, too long or too short screws, nuts and washers
 | `test/logical_anomalies` | 137 | **Main target**: wrong counts and wrong screw lengths |
 | `test/structural_anomalies` | 82 | Reported separately: broken bag, colour, contamination. Mostly out of scope. |
 
-Metrics, image-level, per split:
-- **Recall** on logical anomalies (bad kits caught)
+Metrics, image-level, per split ([`inspec/evaluate.py`](inspec/evaluate.py)):
+- **Recall** on anomalies (bad kits caught), overall and per defect type. Defect types are read
+  from LOCO's ground-truth masks.
 - **False-alarm rate** on good kits (good kits rejected)
-- **AUROC**, using the number of failed checks (or the margin) as the anomaly score
-- **Calibration before vs after:** false-alarm rate on `validation/good` with the raw compiled
-  program vs the repaired one
+- **Calibration before vs after:** the raw compiled program vs the repaired one, on the same images
+- Planned: **AUROC**, using the number of failed checks (or the margin) as the anomaly score
 
 Baseline: **Muse Spark vision-only**. Same packing list and image, asked to return pass/fail directly,
 with no SAM and no checks. It runs on the same images with the same metrics.
@@ -163,15 +219,15 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | SAM client with disk cache (`inspec/sam_client.py`) | Done (tested) |
 | SAM output parser (`inspec/segments.py`) | Done (tested) |
 | Check-program schema (`inspec/schema.py`) | Done (tested) |
-| LLM client: Meta default, optional Baseten (`inspec/llm.py`) | Done (tested); Baseten untested live (no key yet) |
+| LLM client: Meta default, optional Baseten (`inspec/llm.py`) | Done (tested); Baseten: see [below](#environment-variables) |
 | Packing-list compiler (`inspec/compiler.py`) | Done (tested) |
-| Check executor (`inspec/executor.py`) | Done (tested) |
-| Calibration loop (`inspec/calibrate.py`) | Next |
-| Vision-only baseline (`inspec/baseline.py`) | Planned |
-| Evaluation on MVTec LOCO AD (`eval/run_eval.py`) | Planned |
+| Check executor: merging, carve-out, metrics (`inspec/executor.py`) | Done (tested) |
+| Calibration loop (`inspec/calibrate.py`) | Done (tested), 3 live runs |
+| Evaluation on Screw Bag (`inspec/evaluate.py`, `scripts/e2e.py`) | Done; [results](#results) |
+| Vision-only baseline (`inspec/baseline.py`) | Next |
 | Streamlit app (`app.py`) | Planned |
 
-Unit tests: 80 passing (SAM client, parser, schema, LLM client, compiler, executor). No evaluation results yet.
+Unit tests: 88 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration).
 
 ## Roadmap
 
@@ -179,10 +235,10 @@ Unit tests: 80 passing (SAM client, parser, schema, LLM client, compiler, execut
 |---|---|
 | Oct 26 | ✅ Setup, SAM API research, SAM client and parser |
 | Oct 27–28 | Check schema, compiler, executor |
-| Oct 29 | **First end-to-end run:** packing list → checks → verdict with masks on Screw Bag |
-| Oct 30–31 | Calibration loop with before/after numbers |
-| Nov 1 | Vision-only baseline and full Screw Bag eval |
-| Nov 2 | Streamlit UI that shows the compile → check → repair loop live |
+| Oct 28 | ✅ First end-to-end run, calibration loop, Screw Bag eval |
+| Oct 29–30 | Vision-only baseline; AUROC |
+| Oct 31–Nov 1 | Streamlit UI; second LOCO category if time allows |
+| Nov 2 | UI polish: show the compile → check → repair loop live |
 | Nov 3 | README results (measured numbers only) and the 3-minute video |
 | Nov 4 | Buffer; submit by 9:00 PM ET |
 
@@ -202,8 +258,6 @@ UI polish → stretch goals (Breakfast Box, voice input).
 
 ## Run locally
 
-App and eval commands will be added as they're built.
-
 ```bash
 git clone https://github.com/Mallard64/inspec.git && cd inspec
 uv venv --python 3.11 .venv
@@ -211,7 +265,15 @@ uv pip install --python .venv/bin/python -r requirements.txt
 cp .env.example .env        # then put your Meta Model API key in .env
 scripts/download_loco.sh    # Screw Bag, about 1 GB, into data/
 .venv/bin/python -m pytest -q
+
+# compile -> calibrate -> evaluate (writes runs/<name>/)
+.venv/bin/python scripts/e2e.py --calib 60 --test
+# re-evaluate a saved program without calling Muse Spark
+.venv/bin/python scripts/e2e.py --program runs/<name>/final.json --test
 ```
+
+The first full run makes about 1,400 SAM calls (3 per image), taking a few minutes with 8 threads.
+After that, every SAM result comes from `.cache/sam`.
 
 Try the SAM layer on a real image:
 
@@ -231,7 +293,11 @@ print([(s.box, s.area) for s in segs])
 | `INSPEC_LLM_PROVIDER` | `meta` (default) or `baseten`: which provider runs the compiler |
 | `META_LLM_MODEL` | Override the Muse Spark model (default `muse-spark-1.3`) |
 | `BASETEN_API_KEY` | Baseten key, only for `INSPEC_LLM_PROVIDER=baseten` |
-| `BASETEN_MODEL` | Baseten model slug; `scripts/check_baseten.py` lists them |
+| `BASETEN_MODEL` | Baseten model slug, e.g. `meta-models/muse-spark-open`; `scripts/check_baseten.py` lists them |
+
+Baseten status: the model list includes `meta-models/muse-spark-open`. Compiling through Baseten
+is wired up and unit-tested with a fake client, but **not verified live**. Inference calls returned
+401 "Authentication required" with the key used on Oct 28.
 
 ## Project structure
 
@@ -243,11 +309,11 @@ inspec/
   llm.py          # ✅ Muse Spark / Baseten client with validate-and-retry
   compiler.py     # ✅ packing list (+ good images) -> check program (Muse Spark)
   executor.py     # ✅ merge detections into objects, run checks -> verdicts with evidence
-  calibrate.py    # run on good images, repair failing checks, re-run
-  baseline.py     # Muse Spark vision-only pass/fail baseline
-eval/run_eval.py  # recall, false-alarm rate, AUROC
-app.py            # Streamlit single page
-scripts/          # ✅ dataset download
+  calibrate.py    # ✅ run on good kits, Muse Spark repairs failing checks, re-run
+  evaluate.py     # ✅ false-alarm rate and recall per LOCO split and defect type
+  baseline.py     # Muse Spark vision-only pass/fail baseline (next)
+app.py            # Streamlit single page (planned)
+scripts/          # ✅ dataset download, e2e runner, Baseten check
 docs/             # ✅ verified API notes
 tests/            # ✅ unit tests and captured SAM responses
 .orchestrator/    # ✅ task briefs and log for delegated coding tasks
@@ -296,10 +362,25 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   Feasibility check, **not a result**: with size limits I set by hand from 5 training images, 19 of
   the next 20 good training images pass. The one failure is a washer at 6,715 px² against a
   6,700 px² cut-off, which is the kind of boundary calibration should learn from data.
+  Evening: on 100 good training images, nut and washer areas turned out to overlap, so I added a
+  `hole` metric (it separates them cleanly) and first-match part order. A touching washer or nut
+  hidden inside a screw mask is now carved out, which took good images with 6 objects from 97/100
+  to 100/100. Built the calibration loop and the evaluator. First calibration runs went wrong in
+  instructive ways. The model kept raising `merge_overlap` and made things worse. It added a tight
+  check on hole fraction that rejected good kits. It widened a range to fit one mismeasured screw.
+  Fixes: keep-best with regressions reported back to the model, code-computed sorted measurements
+  per part, and prompt rules for size-only measure checks and outliers. Then ran the full eval
+  three times ([results](#results)). The Baseten key returned 401 on inference, so Baseten is still
+  unverified.
 
 ## Limits
 
-- Only the SAM layer works so far. See Status.
+- Evaluated on one LOCO category (Screw Bag) so far. No vision-only baseline yet, so there's no
+  comparison number.
+- About 1–2% of good kits fail because SAM merges two touching screws into one mask. The program
+  can't fix that, and calibration correctly leaves those kits failing.
+- The repair is an LLM output, so runs differ (see Results). Each run's program is saved and can
+  be re-evaluated without the model.
 - Built for kits photographed from a fixed overhead camera, like MVTec LOCO. It hasn't been tested
   on other setups.
 - Inspec targets logical errors (wrong counts and wrong parts). Surface defects like scratches or

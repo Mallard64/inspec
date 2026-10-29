@@ -8,6 +8,7 @@ from inspec.executor import (
     ProgramResult,
     SegmentRef,
     fetch_segments,
+    hole_fraction,
     mask_overlap,
     mask_length,
     run_program,
@@ -122,24 +123,69 @@ def test_mask_overlap_empty() -> None:
 # --- merging ---
 
 
-def test_double_labelled_object_merges_and_counts_for_both_parts() -> None:
+def _ring(outer: int = 30, inner: int = 15, size: int = 64) -> np.ndarray:
+    return _disk(outer, size) & ~_disk(inner, size)
+
+
+def test_double_labelled_object_merges_and_goes_to_first_matching_part() -> None:
     program = _program(
-        parts=[{"id": "nut", "concept": "nut"}, {"id": "washer", "concept": "washer"}],
+        parts=[{"id": "nut", "concept": "nut", "max_hole": 0.1},
+               {"id": "washer", "concept": "washer"}],
         checks=[
-            {"id": "nut_count", "type": "count", "part": "nut", "min": 2, "max": 2},
+            {"id": "nut_count", "type": "count", "part": "nut", "min": 1, "max": 1},
             {"id": "washer_count", "type": "count", "part": "washer", "min": 1, "max": 1},
         ],
     )
-    washer = _segment(np.ones((20, 20), dtype=bool), x0=10, y0=10)
-    nut_same = _segment(np.ones((20, 20), dtype=bool), x0=10, y0=10)
-    nut_far = _segment(np.ones((20, 20), dtype=bool), x0=500, y0=500)
-    result = run_program(program, {"nut": [nut_same, nut_far], "washer": [washer]})
+    washer = _segment(_ring(), x0=10, y0=10)
+    nut_label_on_washer = _segment(_ring(), x0=10, y0=10)
+    nut = _segment(np.ones((20, 20), dtype=bool), x0=500, y0=500)
+    result = run_program(program, {"nut": [nut_label_on_washer, nut], "washer": [washer]})
     assert len(result.merged) == 1
     absorbed, obj, overlap = result.merged[0]
     assert {absorbed, obj} == {SegmentRef("nut", 0), SegmentRef("washer", 0)}
     assert overlap == pytest.approx(1.0)
     assert result.labels[obj] == {"nut", "washer"}
     assert absorbed not in result.metrics
+    assert result.passed, [c.message for c in result.checks]  # ring fails max_hole, falls to washer
+
+
+def test_unlimited_last_part_catches_the_rest() -> None:
+    program = _program(
+        parts=[{"id": "big", "concept": "nut", "min_area": 300}, {"id": "other", "concept": "nut"}],
+        checks=[{"id": "other_count", "type": "count", "part": "other", "min": 1, "max": 1}],
+    )
+    result = run_program(program, {"nut": [_bar(30), _bar(5, x0=100)]})  # areas 600, 100
+    assert result.passed
+    assert result.checks[0].evidence == [SegmentRef("nut", 1)]
+
+
+def test_hole_fraction() -> None:
+    assert hole_fraction(_segment(_disk(20))) == 0.0
+    ring = hole_fraction(_segment(_ring(30, 15)))
+    assert ring == pytest.approx(15**2 / 30**2, abs=0.03)
+    c_shape = np.ones((30, 30), dtype=bool)
+    c_shape[10:20, 10:] = False  # notch open to the border is not a hole
+    assert hole_fraction(_segment(c_shape)) == 0.0
+    assert hole_fraction(_segment(np.zeros((5, 5), dtype=bool))) == 0.0
+
+
+def test_touching_holed_part_is_carved_out_of_container() -> None:
+    program = _program(
+        parts=[{"id": "screw", "concept": "screw"}, {"id": "washer", "concept": "washer"}],
+        checks=[
+            {"id": "screw_count", "type": "count", "part": "screw", "min": 1, "max": 1},
+            {"id": "washer_count", "type": "count", "part": "washer", "min": 1, "max": 1},
+            {"id": "screw_len", "type": "measure", "part": "screw", "metric": "length",
+             "min": 290, "max": 310},
+        ],
+    )
+    # SAM's screw mask covers a 300 px shaft plus a washer lying against its end.
+    combined = np.zeros((64, 364), dtype=bool)
+    combined[22:42, :300] = True
+    combined[:, 300:] |= _disk(30)
+    washer = _segment(_ring(), x0=300, y0=0)
+    result = run_program(program, {"screw": [_segment(combined)], "washer": [washer]})
+    assert result.split == [(SegmentRef("washer", 0), SegmentRef("screw", 0))]
     assert result.passed, [c.message for c in result.checks]
 
 

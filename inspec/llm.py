@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass, field
-from typing import Any, Generic, TypeVar
+from typing import Any, Callable, Generic, TypeVar
 
 from dotenv import load_dotenv
 from pydantic import BaseModel, ValidationError
@@ -85,8 +85,13 @@ class LLM:
         self.client = client
 
     def generate(self, instructions: str, content: list[dict], out_type: type[T], *,
-                 max_attempts: int = 3) -> Generation[T]:
-        """Ask for an ``out_type`` object; retry with the validation error on bad output."""
+                 max_attempts: int = 3,
+                 validate: Callable[[T], None] | None = None) -> Generation[T]:
+        """Ask for an ``out_type`` object; retry with the validation error on bad output.
+
+        ``validate`` adds task rules beyond the schema: it raises ValueError to reject a value,
+        and the message goes back to the model like a schema error.
+        """
         messages: list[dict] = [{"role": "user", "content": content}]
         errors: list[str] = []
         for attempt in range(1, max_attempts + 1):
@@ -106,6 +111,8 @@ class LLM:
                         instructions=instructions + _json_instructions(out_type))
                     raw = response.output_text or ""
                     value = out_type.model_validate_json(extract_json(raw))
+                if validate is not None:
+                    validate(value)
                 return Generation(value, attempt, errors)
             except ValueError as exc:  # pydantic ValidationError is a ValueError
                 error = _short_error(exc)

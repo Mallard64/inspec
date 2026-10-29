@@ -2,8 +2,10 @@
 
 A program has two lists:
 
-- ``parts``: named things to find. Each part is one SAM concept plus optional size limits, so two
-  parts can share a concept ("long screw" and "short screw" are both ``screw``, split by length).
+- ``parts``: named things to find. Each part is one SAM concept plus optional limits, so two parts
+  can share a concept ("long screw" and "short screw" are both ``screw``, split by length). Parts
+  are tried in order and an object goes to the first part it matches, so a part with no limits
+  placed last catches everything with its label that the parts before it didn't claim.
 - ``checks``: assertions on parts. ``count`` bounds how many instances a part has; ``measure``
   bounds a metric of every instance of a part.
 
@@ -13,10 +15,11 @@ enough for LLM structured output.
 Before checks run, the executor merges SAM segments into objects: a segment mostly inside a larger
 one (``merge_overlap``) is the same object with an extra label. On Screw Bag, SAM labels hex nuts and
 washers as both "nut" and "washer", and calls screw heads "nuts", so labels alone can't separate
-parts; size limits do.
+parts; measured limits do.
 
-Units: pixels of the source image. ``length`` is the extent of the mask along its principal axis;
-``area`` is the mask pixel count.
+Metrics, in pixels of the source image: ``length`` is the extent of the mask along its principal
+axis; ``area`` is the mask pixel count; ``hole`` is the fraction of the object's filled outline that
+is enclosed hole (0 for a solid part, ~0.4 for a flat washer).
 """
 
 from __future__ import annotations
@@ -26,7 +29,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-Metric = Literal["area", "length"]
+Metric = Literal["area", "length", "hole"]
 
 _ID_RE = re.compile(r"^[a-z][a-z0-9_]*$")
 
@@ -67,6 +70,10 @@ class Part(_Strict):
     max_length: float | None = Field(None, description="Instances longer than this are not this part")
     min_area: float | None = Field(None, description="Instances smaller than this are not this part")
     max_area: float | None = Field(None, description="Instances larger than this are not this part")
+    min_hole: float | None = Field(None, description="Instances with a smaller hole fraction are not "
+                                   "this part")
+    max_hole: float | None = Field(None, description="Instances with a larger hole fraction are not "
+                                   "this part")
 
     @model_validator(mode="after")
     def _validate(self) -> Part:
@@ -74,7 +81,19 @@ class Part(_Strict):
         self.concept = validate_concept(self.concept)
         _check_range(self.min_length, self.max_length, f"part {self.id} length")
         _check_range(self.min_area, self.max_area, f"part {self.id} area")
+        _check_range(self.min_hole, self.max_hole, f"part {self.id} hole")
+        for bound in (self.min_hole, self.max_hole):
+            if bound is not None and bound > 1:
+                raise ValueError(f"part {self.id}: hole limits are fractions in [0, 1]")
         return self
+
+    def accepts(self, metrics: dict[str, float]) -> bool:
+        """True if an object with these metrics meets every limit of this part."""
+        for metric in ("length", "area", "hole"):
+            lo, hi = getattr(self, f"min_{metric}"), getattr(self, f"max_{metric}")
+            if (lo is not None and metrics[metric] < lo) or (hi is not None and metrics[metric] > hi):
+                return False
+        return True
 
 
 class Check(_Strict):
@@ -106,7 +125,8 @@ class Check(_Strict):
 class CheckProgram(_Strict):
     version: Literal[1] = 1
     kit_name: str
-    parts: list[Part]
+    parts: list[Part] = Field(description="Tried in order; an object goes to the first part whose "
+                              "concept is among its labels and whose limits it meets")
     checks: list[Check]
     merge_overlap: float = Field(0.8, description="Segments with at least this fraction inside "
                                  "a larger segment are the same object")
