@@ -38,13 +38,17 @@ list, calibrates on 60 evenly spaced `train/good` images and evaluates once on h
 (`scripts/e2e.py --calib 60 --test`). Nothing was tuned on the test set. A kit is flagged when any
 check fails.
 
-| | Compiled only | Run 1 | Run 2 | Run 3 |
-|---|---|---|---|---|
-| False alarms, `validation/good` (60) | 60 (100%) | 1 (1.7%) | 1 (1.7%) | 2 (3.3%) |
-| False alarms, `test/good` (122) | 122 (100%) | 1 (0.8%) | 2 (1.6%) | 2 (1.6%) |
-| Caught, `test/logical_anomalies` (137) | 137* | 137 (100%) | 137 (100%) | 137 (100%) |
-| Caught, `test/structural_anomalies` (82) | 82* | 33 (40%) | 34 (41%) | 35 (43%) |
-| Calibration kits passing, after / before | 0 / 60 | 57 / 60 | 58 / 60 | 56 / 60 |
+| | Compiled only | Run 1 | Run 2 | Run 3 | Baseten |
+|---|---|---|---|---|---|
+| False alarms, `validation/good` (60) | 60 (100%) | 1 (1.7%) | 1 (1.7%) | 2 (3.3%) | 2 (3.3%) |
+| False alarms, `test/good` (122) | 122 (100%) | 1 (0.8%) | 2 (1.6%) | 2 (1.6%) | 3 (2.5%) |
+| Caught, `test/logical_anomalies` (137) | 137* | 137 (100%) | 137 (100%) | 137 (100%) | 137 (100%) |
+| Caught, `test/structural_anomalies` (82) | 82* | 33 (40%) | 34 (41%) | 35 (43%) | 38 (46%) |
+| Calibration kits passing, after / before | 0 / 60 | 57 / 60 | 58 / 60 | 56 / 60 | 56 / 60 |
+
+Runs 1–3 use `muse-spark-1.3` on the Meta Model API. The Baseten run uses Muse Spark Open
+(`meta-models/muse-spark-open-1026`) for both compile and calibration. It needed two repairs: the
+second fixed side-on washers (hole 0) being counted as nuts.
 
 \* The compiled-only program flags everything, so its "recall" means nothing. That's the point of
 calibration.
@@ -219,7 +223,7 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | SAM client with disk cache (`inspec/sam_client.py`) | Done (tested) |
 | SAM output parser (`inspec/segments.py`) | Done (tested) |
 | Check-program schema (`inspec/schema.py`) | Done (tested) |
-| LLM client: Meta default, optional Baseten (`inspec/llm.py`) | Done (tested); Baseten: see [below](#environment-variables) |
+| LLM client: Meta default, optional Baseten (`inspec/llm.py`) | Done (tested); Baseten verified live |
 | Packing-list compiler (`inspec/compiler.py`) | Done (tested) |
 | Check executor: merging, carve-out, metrics (`inspec/executor.py`) | Done (tested) |
 | Calibration loop (`inspec/calibrate.py`) | Done (tested), 3 live runs |
@@ -293,11 +297,12 @@ print([(s.box, s.area) for s in segs])
 | `INSPEC_LLM_PROVIDER` | `meta` (default) or `baseten`: which provider runs the compiler |
 | `META_LLM_MODEL` | Override the Muse Spark model (default `muse-spark-1.3`) |
 | `BASETEN_API_KEY` | Baseten key, only for `INSPEC_LLM_PROVIDER=baseten` |
-| `BASETEN_MODEL` | Baseten model slug, e.g. `meta-models/muse-spark-open`; `scripts/check_baseten.py` lists them |
+| `BASETEN_MODEL` | Baseten model slug. Hackathon keys only work with `meta-models/muse-spark-open-1026` |
 
-Baseten status: the model list includes `meta-models/muse-spark-open`. Compiling through Baseten
-is wired up and unit-tested with a fake client, but **not verified live**. Inference calls returned
-401 "Authentication required" with the key used on Oct 28.
+Baseten status: verified live. `scripts/e2e.py --provider baseten` runs compile and calibration on
+Muse Spark Open (`meta-models/muse-spark-open-1026`). Baseten documents no structured output for
+it, so the client asks for plain JSON, validates it and retries with the error. See the Baseten
+column in [Results](#results).
 
 ## Project structure
 
@@ -370,8 +375,9 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   check on hole fraction that rejected good kits. It widened a range to fit one mismeasured screw.
   Fixes: keep-best with regressions reported back to the model, code-computed sorted measurements
   per part, and prompt rules for size-only measure checks and outliers. Then ran the full eval
-  three times ([results](#results)). The Baseten key returned 401 on inference, so Baseten is still
-  unverified.
+  three times ([results](#results)). Baseten first returned 401, which turned out to be my own bug: an
+  append to `.env` had glued `BASETEN_MODEL=` onto the key line. After the fix, a full run on Muse Spark
+  Open (`muse-spark-open-1026`) works end to end.
 
 ## Limits
 

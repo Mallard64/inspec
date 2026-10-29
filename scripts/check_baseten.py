@@ -4,7 +4,7 @@ Usage:
     .venv/bin/python scripts/check_baseten.py            # list models
     .venv/bin/python scripts/check_baseten.py --compile  # also compile the Screw Bag list
 
-Needs BASETEN_API_KEY in .env. Set BASETEN_MODEL to a slug from the list before --compile.
+Needs BASETEN_API_KEY in .env. Set BASETEN_MODEL (hackathon: meta-models/muse-spark-open-1026) before --compile.
 """
 
 import os
@@ -27,11 +27,15 @@ def main() -> int:
         print(f"{provider.key_env} is not set. Add it to .env.")
         return 1
     client = OpenAI(api_key=key, base_url=provider.base_url)
-    models = sorted(m.id for m in client.models.list())
-    print(f"{len(models)} models on Baseten:")
-    for model_id in models:
-        marker = "  <- Muse" if "muse" in model_id.lower() else ""
-        print(f"  {model_id}{marker}")
+    try:
+        models = sorted(m.id for m in client.models.list())
+    except Exception as exc:  # hackathon keys may be scoped to one model and can't list
+        print(f"could not list models ({type(exc).__name__}); trying BASETEN_MODEL directly")
+    else:
+        print(f"{len(models)} models on Baseten:")
+        for model_id in models:
+            marker = "  <- Muse" if "muse" in model_id.lower() else ""
+            print(f"  {model_id}{marker}")
     print(f"\nBASETEN_MODEL = {os.environ.get(provider.model_env) or '(not set)'}")
 
     if "--compile" in sys.argv:
