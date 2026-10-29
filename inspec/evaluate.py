@@ -47,9 +47,28 @@ def defect_types(category_dir: Path, split: str) -> dict[str, list[str]]:
     return out
 
 
+def _entry(flagged: set[str], n: int, types: dict[str, list[str]],
+           fails: dict[str, int]) -> dict:
+    entry: dict = {"flagged": len(flagged), "rate": len(flagged) / max(n, 1)}
+    if types:
+        per_type: dict[str, list[int]] = defaultdict(lambda: [0, 0])
+        for image, names in types.items():
+            for defect in names or ["unknown"]:
+                per_type[defect][1] += 1
+                per_type[defect][0] += image in flagged
+        entry["by_defect"] = {d: {"flagged": f, "images": k}
+                              for d, (f, k) in sorted(per_type.items())}
+    entry["failed_checks"] = dict(sorted(fails.items()))
+    entry["flagged_images"] = sorted(flagged)
+    return entry
+
+
 def evaluate(programs: dict[str, CheckProgram], category_dir: str | Path, splits: list[str], *,
-             sam, workers: int = 8) -> dict:
-    """Run each named program on each split. Returns a JSON-safe report."""
+             sam, workers: int = 8, damage=None, damage_enabled: list[str] | None = None) -> dict:
+    """Run each named program on each split. Returns a JSON-safe report.
+
+    With ``damage`` (a DamageChecker) and ``damage_enabled`` (its calibrated questions), also
+    scores ``damage_only`` and ``<program>+damage`` (flagged if either flags the kit)."""
     category_dir = Path(category_dir)
     concepts = sorted({c for p in programs.values() for c in p.concepts()})
     fetch_program = CheckProgram(  # one program covering every concept, so SAM is called once
@@ -61,26 +80,32 @@ def evaluate(programs: dict[str, CheckProgram], category_dir: str | Path, splits
         segments = fetch_many(fetch_program, paths, sam, workers=workers)
         types = defect_types(category_dir, split) if SPLITS[split] != "good" else {}
         split_report = {"kind": SPLITS[split], "images": len(paths), "programs": {}}
+        flagged_by_name: dict[str, tuple[set[str], dict[str, int]]] = {}
         for name, program in programs.items():
             results = run_many(program, {p: {c: s[c] for c in program.concepts()}
                                          for p, s in segments.items()})
             flagged = {Path(p).name for p, r in results.items() if not r.passed}
-            entry: dict = {"flagged": len(flagged), "rate": len(flagged) / max(len(paths), 1)}
-            if types:
-                per_type: dict[str, list[int]] = defaultdict(lambda: [0, 0])
-                for image, names in types.items():
-                    for defect in names or ["unknown"]:
-                        per_type[defect][1] += 1
-                        per_type[defect][0] += image in flagged
-                entry["by_defect"] = {d: {"flagged": f, "images": n}
-                                      for d, (f, n) in sorted(per_type.items())}
             fails: dict[str, int] = defaultdict(int)
             for r in results.values():
                 for c in r.failed():
                     fails[c.check_id] += 1
-            entry["failed_checks"] = dict(sorted(fails.items()))
-            entry["flagged_images"] = sorted(flagged)
-            split_report["programs"][name] = entry
+            split_report["programs"][name] = _entry(flagged, len(paths), types, fails)
+            if damage is not None:
+                flagged_by_name[name] = (flagged, fails)
+        if damage is not None:
+            from inspec.damage import damaged
+
+            reports = damage.inspect_many(paths, workers=workers)
+            hits = {Path(p).name: damaged(r, damage_enabled or []) for p, r in reports.items()}
+            dmg = {n for n, h in hits.items() if h}
+            dmg_fails: dict[str, int] = defaultdict(int)
+            for h in hits.values():
+                for q in h:
+                    dmg_fails[f"damage:{q}"] += 1
+            split_report["programs"]["damage_only"] = _entry(dmg, len(paths), types, dmg_fails)
+            for name, (flagged, fails) in flagged_by_name.items():
+                split_report["programs"][f"{name}+damage"] = _entry(
+                    flagged | dmg, len(paths), types, {**fails, **dmg_fails})
         report["splits"][split] = split_report
     return report
 

@@ -58,8 +58,8 @@ calibration.
   expect. For example, a missing nut fails `nut_count`, and a very short screw fails
   `short_screw_length`. One exception: an extra nut or washer is sometimes counted as the other
   type, so both counts fail. The verdict is still right.
-- **Structural anomalies are mostly out of scope.** No check looks at colour or the bag, so those
-  are 0/16 each. Contamination (19/25 in every run) and broken parts (14–16/25) are partly caught, because
+- **Damage (structural anomalies): see [Damage check](#damage-check-muse-spark-vision).** The
+  part checks alone don't look at colour or the bag, so those are 0/16 each. Contamination (19/25 in every run) and broken parts (14–16/25) are partly caught, because
   they change a part's shape or count.
 - **Runs differ** because Muse Spark proposes a different repair each time (run 2 split screws by
   area instead of length). Runs 1–2 used an earlier repair prompt. Run 3 added the rule "a lone
@@ -69,6 +69,35 @@ calibration.
   against a 276–308 range.
 - **Not done yet:** the vision-only Muse Spark baseline, AUROC (verdicts are binary for now), and
   other LOCO categories.
+
+### Damage check (Muse Spark vision)
+
+Part checks count and measure; they can't see a torn bag or paint. So
+[`inspec/damage.py`](inspec/damage.py) asks Muse Spark four yes/no questions about each photo:
+torn bag, broken part, discoloured part, foreign object. Calibration uses the part checks' rule: a
+question that fires on more than 2 of the good calibration kits is switched off. On 30 good kits
+none fired, so all four stayed on. A kit is rejected if a part check fails or the damage check
+finds something. Evaluated with run 3's program (`scripts/e2e.py --program runs/run3/final.json
+--damage --test`):
+
+| | Part checks only | Damage check only | Both |
+|---|---|---|---|
+| False alarms, `validation/good` (60) | 2 (3.3%) | 0 | 2 (3.3%) |
+| False alarms, `test/good` (122) | 2 (1.6%) | 3 (2.5%) | 5 (4.1%) |
+| Caught, `test/logical_anomalies` (137) | 137 | 4 | 137 |
+| Caught, `test/structural_anomalies` (82) | 35 (43%) | 56 (68%) | **71 (87%)** |
+| … bag broken / colour / contamination / part broken | 0/16, 0/16, 19/25, 16/25 | 16/16, 15/16, 14/25, 11/25 | 16/16, 15/16, 23/25, 17/25 |
+
+The two halves of the result come from different methods. Part checks find wrong counts and some
+broken parts. Muse Spark finds bag damage and paint. Each is poor at the other's job.
+"Damage check only" also works as a first vision-only baseline: on logical defects it catches 4 of
+137, against the part checks' 137.
+
+How honest is this? I wrote the `part_broken` wording after looking at the even-numbered
+structural images (my first wording flagged 5 of 8 good kits as having "split washers"). The
+odd-numbered half was never looked at, and it scores as well: 38/41 caught with both checks,
+against 33/41 on the dev half. The cost is false alarms: 3 more good test kits rejected, 2 for a
+"torn bag" and 1 for a "broken part".
 
 ## Why this is hard (and a real example)
 
@@ -228,10 +257,11 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | Check executor: merging, carve-out, metrics (`inspec/executor.py`) | Done (tested) |
 | Calibration loop (`inspec/calibrate.py`) | Done (tested), 3 live runs |
 | Evaluation on Screw Bag (`inspec/evaluate.py`, `scripts/e2e.py`) | Done; [results](#results) |
-| Vision-only baseline (`inspec/baseline.py`) | Next |
+| Damage check, Muse Spark vision (`inspec/damage.py`) | Done (tested); [results](#damage-check-muse-spark-vision) |
+| Vision-only baseline (`inspec/baseline.py`) | Partial: damage-only column; a full pass/fail baseline is next |
 | Streamlit app (`app.py`) | Planned |
 
-Unit tests: 88 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration).
+Unit tests: 90 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration, damage).
 
 ## Roadmap
 
@@ -272,6 +302,8 @@ scripts/download_loco.sh    # Screw Bag, about 1 GB, into data/
 
 # compile -> calibrate -> evaluate (writes runs/<name>/)
 .venv/bin/python scripts/e2e.py --calib 60 --test
+# add the Muse Spark damage check (about 1 vision call per image, cached in .cache/damage)
+.venv/bin/python scripts/e2e.py --program runs/<name>/final.json --damage --test
 # re-evaluate a saved program without calling Muse Spark
 .venv/bin/python scripts/e2e.py --program runs/<name>/final.json --test
 ```
@@ -316,6 +348,7 @@ inspec/
   executor.py     # ✅ merge detections into objects, run checks -> verdicts with evidence
   calibrate.py    # ✅ run on good kits, Muse Spark repairs failing checks, re-run
   evaluate.py     # ✅ false-alarm rate and recall per LOCO split and defect type
+  damage.py       # ✅ Muse Spark vision check for torn bag, broken/painted part, foreign object
   baseline.py     # Muse Spark vision-only pass/fail baseline (next)
 app.py            # Streamlit single page (planned)
 scripts/          # ✅ dataset download, e2e runner, Baseten check

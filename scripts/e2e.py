@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT))
 
 from inspec.calibrate import calibrate  # noqa: E402
 from inspec.compiler import compile_program  # noqa: E402
+from inspec.damage import DamageChecker, calibrate_damage  # noqa: E402
 from inspec.evaluate import evaluate, images, summary  # noqa: E402
 from inspec.llm import LLM  # noqa: E402
 from inspec.sam_client import SamClient  # noqa: E402
@@ -39,6 +40,8 @@ def main() -> int:
     ap.add_argument("--program", help="evaluate this program JSON instead of compiling")
     ap.add_argument("--test", action="store_true", help="also evaluate the test splits")
     ap.add_argument("--provider", help="LLM provider (default: INSPEC_LLM_PROVIDER or meta)")
+    ap.add_argument("--damage", action="store_true",
+                    help="add the Muse Spark visual damage check (calibrated on the same kits)")
     ap.add_argument("--name", default=time.strftime("%Y%m%d-%H%M%S"))
     args = ap.parse_args()
 
@@ -47,6 +50,9 @@ def main() -> int:
     sam = SamClient(ROOT / ".cache" / "sam")
     data = Path(args.data)
     programs: dict[str, CheckProgram] = {}
+    train = images(data, "train/good")
+    step = max(len(train) // args.calib, 1)
+    calib_images = train[::step][: args.calib]
 
     if args.program:
         programs["given"] = CheckProgram.model_validate_json(Path(args.program).read_text())
@@ -57,9 +63,6 @@ def main() -> int:
         print(f"  {compiled.attempts} attempt(s), rejected: {compiled.errors}")
         (out / "compiled.json").write_text(compiled.value.model_dump_json(indent=2))
 
-        train = images(data, "train/good")
-        step = max(len(train) // args.calib, 1)
-        calib_images = train[::step][: args.calib]
         print(f"calibrating on {len(calib_images)} train/good images ...")
         result = calibrate(compiled.value, calib_images, sam=sam, llm=llm,
                            max_rounds=args.rounds)
@@ -69,11 +72,21 @@ def main() -> int:
         print(f"  converged: {result.converged}")
         programs = {"compiled": compiled.value, "calibrated": result.program}
 
+    checker, enabled = None, None
+    if args.damage:
+        checker = DamageChecker(args.packing_list, llm=LLM(args.provider),
+                                cache_dir=ROOT / ".cache" / "damage")
+        print(f"calibrating the damage check on {len(calib_images)} train/good images ...")
+        damage_cal = calibrate_damage(checker.inspect_many(calib_images))
+        enabled = damage_cal["enabled"]
+        print(f"  false alarms per question: {damage_cal['false_alarms']}; enabled: {enabled}")
+        (out / "damage_calibration.json").write_text(json.dumps(damage_cal, indent=2))
+
     splits = ["validation/good"]
     if args.test:
         splits += ["test/good", "test/logical_anomalies", "test/structural_anomalies"]
     print(f"evaluating on {', '.join(splits)} ...")
-    report = evaluate(programs, data, splits, sam=sam)
+    report = evaluate(programs, data, splits, sam=sam, damage=checker, damage_enabled=enabled)
     (out / "report.json").write_text(json.dumps(report, indent=2))
     print(summary(report))
     print(f"\nwrote {out.relative_to(ROOT)}/")
