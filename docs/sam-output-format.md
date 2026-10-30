@@ -62,3 +62,10 @@ raster: bytes = decode_mask_to_raster(mask)  # row-major, H*W bytes of 0/1
 
 On the test shapes, `one_bit` and `lossless` decoded to identical masks. The responses were
 390 vs 2,043 characters for the circles and 13 vs 2,250 for the rectangle. Inspec requests `one_bit`.
+
+## Large masks are downscaled (found Oct 30)
+
+For a large object (Breakfast Box granola, box 835x1062 px) SAM returned an 805x1024 mask: the long
+side is capped at 1024 px and the other side scaled by the same factor. `parse_sam_output` accepts
+exactly that case and resizes the mask back to the box with nearest-neighbour; any other mismatch
+between mask and box dimensions is still an error.

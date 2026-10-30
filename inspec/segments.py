@@ -13,6 +13,7 @@ import re
 from dataclasses import dataclass
 
 import numpy as np
+from PIL import Image
 from meta_sam_parser import SegmentationMask, decode_mask_to_raster
 
 _FRAME_RE = re.compile(r"<\d+f>")
@@ -127,6 +128,15 @@ def _decode_mask(payload: str, width: int, height: int) -> np.ndarray:
     return arr
 
 
+def _is_downscaled(mask_w: int, mask_h: int, box_w: int, box_h: int) -> bool:
+    """SAM caps a mask's long side (seen: 1024 px for an 835x1062 box) and scales the other side
+    to match. Accept only that: smaller on both sides, same scale on both within rounding."""
+    if mask_w > box_w or mask_h > box_h or max(mask_w, mask_h) >= max(box_w, box_h):
+        return False
+    scale = max(mask_w, mask_h) / max(box_w, box_h)
+    return abs(round(box_w * scale) - mask_w) <= 1 and abs(round(box_h * scale) - mask_h) <= 1
+
+
 def parse_sam_output(text: str) -> list[Segment]:
     """Parse raw `sam-3.1` response text into Segments, in order of appearance."""
     body = text.strip()
@@ -149,12 +159,15 @@ def parse_sam_output(text: str) -> list[Segment]:
         box, image_size, confidence = _parse_box(match.group("box"))
         payload, mask_w, mask_h = _parse_mask(match.group("mask"))
         x1, y1, x2, y2 = box
-        if (mask_w, mask_h) != (x2 - x1 + 1, y2 - y1 + 1):
+        box_w, box_h = x2 - x1 + 1, y2 - y1 + 1
+        if (mask_w, mask_h) != (box_w, box_h) and not _is_downscaled(mask_w, mask_h, box_w, box_h):
             raise ValueError(
                 f"Mask dims {(mask_w, mask_h)} don't match box {(x1, y1, x2, y2)} "
-                f"(expected {(x2 - x1 + 1, y2 - y1 + 1)})."
+                f"(expected {(box_w, box_h)})."
             )
         mask = _decode_mask(payload, mask_w, mask_h)
+        if mask.shape != (box_h, box_w):
+            mask = np.asarray(Image.fromarray(mask).resize((box_w, box_h), Image.NEAREST))
         segments.append(
             Segment(
                 object_id=match.group("object_id"),

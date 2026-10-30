@@ -71,7 +71,8 @@ calibration.
 - **The remaining false alarms are segmentation failures**, not rule errors. Examples: two screws
   lying end to end that SAM returns as one 713 px object, or a tilted screw that measures 313 px
   against a 276–308 range.
-- **Not done yet:** AUROC (verdicts are binary for now) and other LOCO categories.
+- **Not done yet:** AUROC (verdicts are binary for now); on Breakfast Box, amount checks, a
+  kit-neutral damage prompt and the baseline. See [Breakfast Box](#second-category-breakfast-box-first-run).
 
 ### How the test set was used
 
@@ -90,6 +91,8 @@ A perfect score deserves suspicion, so here is the full record (from the session
   notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
   its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
   137/137 with 1 of 122 false alarms.**
+- **Breakfast Box test: evaluated once**, after the program was frozen. A first attempt crashed
+  while fetching SAM masks (the parser bug above) before producing any result.
 - **The one place I tuned on test images** is the damage check's `part_broken` wording, on the
   even-numbered structural images. That's disclosed under [Damage check](#damage-check-muse-spark-vision),
   with the untouched odd half reported separately.
@@ -183,6 +186,45 @@ What this shows, without spin:
   the masks it measured, which an operator can verify at a glance.
 - **Scope.** One LOCO category (Screw Bag), one baseline run per variant. Differences of a few
   kits are within run-to-run noise; only the logical-defect gap is statistically supported.
+
+### Second category: Breakfast Box (first run)
+
+Packing list "2 tangerines, 1 nectarine, granola, banana chips, almonds". Same pipeline, no code
+written for this kit; three general fixes it exposed are listed below. Compiled, concept-checked
+and calibrated on 60 `train/good` images, checked on `validation/good`, then frozen and evaluated
+on test **once** (`runs/bb1`, `runs/bb1-test`). Part checks only: the damage check's prompt is
+still written for Screw Bag (a plastic bag of bare-metal parts), so it isn't used here yet.
+
+| | Result |
+|---|---|
+| False alarms, `validation/good` (62) | 0 (compiled program: 49) |
+| False alarms, `test/good` (102) | 0 |
+| Caught: wrong fruit counts (8 types, 19 kits) | **19 / 19** |
+| Caught: missing almonds / bananas / cereal / toppings (41 kits) | **41 / 41** |
+| Caught: wrong ratio of toppings to cereal (12) | 6 / 12 |
+| Caught: overflow, underflow, compartments swapped (11) | 0 / 11 |
+| Caught, all `test/logical_anomalies` (83) | 66 (80%) |
+| Caught, `test/structural_anomalies` (90) | 12 (13%) |
+
+What it took, and what it shows:
+
+- **Concept repair (new agent step).** SAM didn't know the compiler's words: "nectarine" found
+  nothing on 45% of good kits, "banana chip" on 55%. Before calibration, Muse Spark now proposes
+  other phrases for any part SAM misses on good kits, each is tried on 20 good kits, and the one
+  whose count best fits the packing list wins: "apple" for the nectarine (95%), "banana" for the
+  chips (100%). Scoring by count rejects "fruit", which finds every fruit in the box.
+  [`inspec/concepts.py`](inspec/concepts.py). On Screw Bag every concept is always found, so this
+  step changes nothing there.
+- **Unquantified items.** The compiler made "almonds" exactly 1 almond. Its prompt now says an item
+  with no quantity must be present (min 1, no max).
+- **Large SAM masks are downscaled** to 1024 px on the long side; the parser now accepts exactly
+  that case ([notes](docs/sam-output-format.md)).
+- **Where it stops.** Counts and presence are checked perfectly. Amounts (overflow, underflow,
+  ratio) and positions (swapped compartments) aren't expressible as count checks, and the repair
+  prompt tells the model not to add measure checks to items whose size the list doesn't specify.
+  Structural damage (bruised fruit, contamination) needs the damage check.
+- **Known gap.** For a presence-only item, any phrase that finds something scores 100%, so "banana"
+  beat "fruit" for the chips only by list order.
 
 ## Why this is hard (and a real example)
 
@@ -347,7 +389,7 @@ damage, with no SAM and no checks. It runs on the same images with the same metr
 | Vision-only baseline (`inspec/baseline.py`, `scripts/baseline.py`) | Done (tested); [results](#vision-only-baseline) |
 | Streamlit app (`app.py`, overlay in `inspec/overlay.py`) | Done; runs on saved runs and cached results, live recompile optional |
 
-Unit tests: 96 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration,
+Unit tests: 100 passing (SAM client, parser, schema, LLM client, compiler, concept repair, executor, calibration,
 damage, baseline, overlay). The app was smoke-tested headless with Streamlit's `AppTest`.
 
 ## Roadmap
@@ -438,6 +480,7 @@ inspec/
   llm.py          # ✅ Muse Spark / Baseten client with validate-and-retry
   compiler.py     # ✅ packing list (+ good images) -> check program (Muse Spark)
   executor.py     # ✅ merge detections into objects, run checks -> verdicts with evidence
+  concepts.py     # ✅ swap concepts SAM misses on good kits for ones it finds (Muse Spark + SAM)
   calibrate.py    # ✅ run on good kits, Muse Spark repairs failing checks, re-run
   evaluate.py     # ✅ false-alarm rate and recall per LOCO split and defect type
   damage.py       # ✅ Muse Spark vision check for torn bag, broken/painted part, foreign object
@@ -516,10 +559,14 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   the masks: they are swapped screw types and stubs, not 10% length errors, so I corrected that
   wording. Strengthened the baseline with 3 reference photos and a size guide: it went from 35 to
   59 of 65 wrong-size kits, so the gap is real (p = 0.016) but much smaller than first reported.
+  Started Breakfast Box. SAM didn't know "nectarine" or "banana chip", so I added a concept-repair
+  step before calibration (it picked "apple" and "banana"). Fixed bulk items compiled as "exactly 1"
+  and a parser crash on SAM's downscaled large masks. Frozen, one test run: 0 of 102 false alarms,
+  all 60 fruit-count and missing-item kits caught, 66 of 83 logical overall, 12 of 90 structural.
 
 ## Limits
 
-- Evaluated on one LOCO category (Screw Bag) so far.
+- Two LOCO categories. Breakfast Box has one frozen run, part checks only, with no baseline yet.
 - The baseline is one prompt design in four variants, each run once per image. More reference
   photos and the size guide closed most of the size gap (8 → 59 of 65); a better prompt might
   close more. The comparison shows where each approach is weak, not a ceiling for vision-only

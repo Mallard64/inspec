@@ -36,6 +36,8 @@ Rules for parts:
 Rules for checks:
 - One `count` check per part, with min and max both equal to the quantity in the packing list
   (metric null). Id like "nut_count".
+- An item with no quantity (loose or bulk items such as "granola" or "almonds") must be present
+  but its amount isn't a count: use min 1 and max null.
 - Do not add `measure` checks; calibration adds them when evidence calls for it.
 - Give every check a one-line `reason` quoting the packing list.
 

@@ -73,3 +73,11 @@ def test_mismatched_dims_raise() -> None:
     raw = _read("circles_one_bit.txt").replace("data=41,41,", "data=40,41,", 1)
     with pytest.raises(ValueError, match="don't match"):
         parse_sam_output(raw)
+
+
+def test_downscaled_mask_is_accepted_only_at_uniform_scale() -> None:
+    from inspec.segments import _is_downscaled
+
+    assert _is_downscaled(805, 1024, 835, 1062)  # seen on a large Breakfast Box granola mask
+    assert not _is_downscaled(805, 1000, 835, 1062)  # different scale per axis
+    assert not _is_downscaled(840, 1024, 835, 1062)  # larger than the box

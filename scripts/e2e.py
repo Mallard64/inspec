@@ -5,7 +5,7 @@ Usage:
     .venv/bin/python scripts/e2e.py --test                # also the held-out test splits
     .venv/bin/python scripts/e2e.py --program runs/x/final.json --test   # skip compile/calibrate
 
-Writes compiled.json, calibration.json, final.json and report.json to runs/<name>/.
+Writes compiled.json, concepts.json, calibration.json, final.json and report.json to runs/<name>/.
 Calibration uses evenly spaced train/good images only; validation and test are never shown to the
 model.
 """
@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT))
 
 from inspec.calibrate import calibrate  # noqa: E402
 from inspec.compiler import compile_program  # noqa: E402
+from inspec.concepts import repair_concepts  # noqa: E402
 from inspec.damage import DamageChecker, calibrate_damage  # noqa: E402
 from inspec.evaluate import evaluate, images, summary  # noqa: E402
 from inspec.llm import LLM  # noqa: E402
@@ -63,8 +64,14 @@ def main() -> int:
         print(f"  {compiled.attempts} attempt(s), rejected: {compiled.errors}")
         (out / "compiled.json").write_text(compiled.value.model_dump_json(indent=2))
 
+        print(f"checking concepts on {min(len(calib_images), 20)} train/good images ...")
+        program, concept_repairs = repair_concepts(compiled.value, calib_images[:20], sam=sam,
+                                                   llm=llm)
+        (out / "concepts.json").write_text(json.dumps(
+            [r.to_dict() for r in concept_repairs], indent=2))
+
         print(f"calibrating on {len(calib_images)} train/good images ...")
-        result = calibrate(compiled.value, calib_images, sam=sam, llm=llm,
+        result = calibrate(program, calib_images, sam=sam, llm=llm,
                            max_rounds=args.rounds)
         (out / "calibration.json").write_text(json.dumps(
             {"images": [p.name for p in calib_images], **result.to_dict()}, indent=2))
