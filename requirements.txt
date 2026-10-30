@@ -5,3 +5,4 @@ numpy==2.4.6
 pillow==13.0.0
 pytest==9.1.1
 pydantic==2.14.1
+streamlit==1.66.1
