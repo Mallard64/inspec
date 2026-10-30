@@ -81,8 +81,8 @@ def main() -> int:
 
     checker, enabled = None, None
     if args.damage:
-        checker = DamageChecker(args.packing_list, llm=LLM(args.provider),
-                                cache_dir=ROOT / ".cache" / "damage")
+        checker = DamageChecker(args.packing_list, kit_name=args.kit_name,
+                                llm=LLM(args.provider), cache_dir=ROOT / ".cache" / "damage")
         print(f"calibrating the damage check on {len(calib_images)} train/good images ...")
         damage_cal = calibrate_damage(checker.inspect_many(calib_images))
         enabled = damage_cal["enabled"]

@@ -53,6 +53,10 @@ Rules for your repair:
   screw): set min and max about 4% outside the range seen on good kits, so a part that is clearly
   too long or too short is caught. Do not add measure checks on `hole`, or on parts whose size the
   packing list doesn't specify: those vary with how a part lies and would reject good kits.
+- Exception: a loose bulk item that SAM returns as one mass per kit (one object on almost every
+  good kit, e.g. a heap of cereal) has an amount, and its `area` is that amount. Add a `measure`
+  check on `area` for it, about 4% outside the range seen on good kits, so too much or too little
+  is caught. Not for bulk items SAM splits into many pieces: their count and size vary freely.
 - Leave `merge_overlap` as it is. Parts that touch are already handled by the merging step.
 - Segmentation sometimes fails on a single kit (e.g. two crossing screws returned as one object
   with about twice the normal area, or a part measured far longer than the rest of its group).
@@ -143,9 +147,20 @@ def evidence_table(results: dict[str, ProgramResult]) -> str:
 
 
 def keeps_counts(original: CheckProgram) -> Callable[[CheckProgram], None]:
-    """Validator for repairs: same parts (id, concept) and identical count checks."""
+    """Validator for repairs: same parts (id, concept), identical count checks, and measure checks
+    only where the packing list implies a size or an amount.
+
+    The repair prompt states the measure rules too, but the model doesn't always follow them, and
+    a wrong measure check (e.g. a length range on a fruit) passes every calibration kit and then
+    rejects good kits it hasn't seen. So they're enforced here:
+    - `length` only on parts that share their concept with another part (told apart by size);
+    - `area` only on presence-only parts (no max count), whose area is an amount.
+    """
     counts = {c.id: (c.part, c.min, c.max) for c in original.checks if c.type == "count"}
     parts = {p.id: p.concept.lower() for p in original.parts}
+    concepts = list(parts.values())
+    size_split = {pid for pid, c in parts.items() if concepts.count(c) > 1}
+    bulk = {part for part, lo, hi in counts.values() if hi is None}
 
     def validate(repaired: CheckProgram) -> None:
         got_parts = {p.id: p.concept.lower() for p in repaired.parts}
@@ -155,6 +170,17 @@ def keeps_counts(original: CheckProgram) -> Callable[[CheckProgram], None]:
         if got != counts:
             raise ValueError(f"count checks must stay exactly {counts} (id: part, min, max); "
                              f"got {got}")
+        for c in repaired.checks:
+            if c.type != "measure":
+                continue
+            if c.metric == "length" and c.part not in size_split:
+                raise ValueError(f"measure check {c.id}: a length check is only allowed on parts "
+                                 f"told apart by size ({sorted(size_split)}); remove it")
+            if c.metric == "area" and c.part not in bulk:
+                raise ValueError(f"measure check {c.id}: an area check is only allowed on bulk "
+                                 f"parts with no max count ({sorted(bulk)}); remove it")
+            if c.metric == "hole":
+                raise ValueError(f"measure check {c.id}: no measure checks on hole; remove it")
 
     return validate
 
@@ -184,7 +210,9 @@ def calibrate(program: CheckProgram, good_images: list[str | Path], *, sam: SamC
         round_ = Round(number, current, len(results) - len(failures), len(results), failures)
         rounds.append(round_)
         log(f"round {number}: {round_.passed}/{round_.total} good kits pass")
-        if best is None or round_.passed > best[0].passed:
+        # A tie is accepted: the repair costs no good kit, and it may add checks (e.g. a measure
+        # check) that catch bad kits. Only a repair that fails more good kits is discarded.
+        if best is None or round_.passed >= best[0].passed:
             best, worse = (round_, results), []
         else:
             worse.append(f"A repair scored {round_.passed}/{round_.total} (best is "

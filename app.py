@@ -50,10 +50,10 @@ def get_sam_client():
 
 
 @st.cache_resource
-def get_damage_checker(packing_list: str):
+def get_damage_checker(packing_list: str, kit_name: str):
     from inspec.damage import DamageChecker
 
-    return DamageChecker(packing_list, cache_dir=ROOT / ".cache" / "damage")
+    return DamageChecker(packing_list, kit_name=kit_name, cache_dir=ROOT / ".cache" / "damage")
 
 
 @st.cache_resource
@@ -238,7 +238,7 @@ if image_path is not None:
 
             enabled = list(damage_cal.get("enabled", list(QUESTIONS)))
             with st.spinner("Running the damage check..."):
-                report = get_damage_checker(packing_list).inspect(image_path)
+                report = get_damage_checker(packing_list, final_program.kit_name).inspect(image_path)
             flags = damaged(report, enabled)
             st.write(f"Enabled questions: {enabled}")
             st.write(f"Flags: {flags or '(none)'}")

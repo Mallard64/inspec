@@ -1,8 +1,10 @@
 """Visual damage check: Muse Spark looks at the whole kit photo for defects the part checks can't
 measure (a torn bag, a broken or painted part, a foreign object).
 
-The checks in a CheckProgram count and measure parts; they can't see colour or a torn bag. Here
-Muse Spark answers four yes/no questions per image (structured output). Calibration applies the
+The checks in a CheckProgram count and measure parts; they can't see colour, bruises or a torn
+container. Here Muse Spark answers four yes/no questions per image (structured output). The
+prompt names no particular kit: it is built from the kit name and packing list, and the same
+wording is used for Screw Bag and Breakfast Box. Calibration applies the
 same rule as for part checks: a question that fires on known-good kits is wrong, so any question
 that flags more than a small share of good calibration kits is switched off (``calibrate_damage``).
 
@@ -20,14 +22,15 @@ from pydantic import BaseModel, Field
 from inspec.compiler import _image_content
 from inspec.llm import LLM, cached_generate
 
-QUESTIONS = ("bag_torn", "part_broken", "part_discoloured", "foreign_object")
+QUESTIONS = ("container_damaged", "item_broken", "item_discoloured", "foreign_object")
 
 
 class DamageReport(BaseModel):
-    bag_torn: bool = Field(description="The bag has a tear, cut or hole")
-    part_broken: bool = Field(description="A part is clearly broken or bent")
-    part_discoloured: bool = Field(description="A part has paint or a colour other than bare metal")
-    foreign_object: bool = Field(description="Something that is not a listed part is in the bag")
+    container_damaged: bool = Field(description="The bag, box or tray is torn, cut, cracked or dented")
+    item_broken: bool = Field(description="A listed item is broken, crushed, cracked, bent or bruised")
+    item_discoloured: bool = Field(description="A listed item has a colour, stain or mark unusual for it")
+    foreign_object: bool = Field(description="Something that is not a listed item, or an item of the "
+                                             "wrong kind, is inside")
     evidence: str = Field(description="Where each reported defect is")
 
     def flags(self) -> set[str]:
@@ -35,25 +38,29 @@ class DamageReport(BaseModel):
 
 
 INSTRUCTIONS = """\
-You inspect a photo of a kit in a clear plastic bag. The packing list is: {packing_list}.
-All parts should be plain bare metal. Ignore how many parts there are; that is checked
-elsewhere. Report only physical defects you can actually see:
-- bag_torn: the bag has a tear, cut or hole
-- part_broken: a part is clearly broken: a piece is missing or snapped off, or a part is bent.
-  Washers are closed rings; a reflection, shadow or the thin edge of a ring often looks like a gap
-  but is not one. Only report a broken washer if a piece of the ring is visibly missing
-- part_discoloured: a part has paint or a colour other than bare metal
-- foreign_object: something that is not one of the listed parts or the bag is inside
-Reflections, wrinkles and printed symbols on the bag are normal. Answer false unless the defect is
-clearly visible. In evidence, say where you see each defect.
+You inspect a photo of a {kit_name} from a packing station, taken by a fixed overhead camera.
+The packing list is: {packing_list}.
+Ignore how many items there are and how much of each; that is checked elsewhere. Report only
+physical defects you can actually see:
+- container_damaged: the bag, box or tray holding the items is torn, cut, cracked or dented
+- item_broken: a listed item is damaged: broken, a piece missing or snapped off, bent, cracked,
+  crushed into fragments, or (for food) bruised, cut or rotten
+- item_discoloured: a listed item has a colour, paint, stain or mark that is unusual for that kind
+  of item
+- foreign_object: something that is not a listed item is inside, or an item of the wrong kind is
+  mixed in with the others
+Reflections, shadows, wrinkles, printing on the packaging and the natural variation between items
+of one kind (shape, size, ripeness, a shiny edge or a hole that belongs to the part) are normal.
+Answer false unless the defect is clearly visible. In evidence, say where you see each defect.
 """
 
 
 class DamageChecker:
-    def __init__(self, packing_list: str, *, llm: LLM | None = None,
+    def __init__(self, packing_list: str, *, kit_name: str = "kit", llm: LLM | None = None,
                  cache_dir: str | Path = ".cache/damage") -> None:
         self.llm = llm or LLM()
-        self.instructions = INSTRUCTIONS.format(packing_list=packing_list.strip())
+        self.instructions = INSTRUCTIONS.format(packing_list=packing_list.strip(),
+                                                kit_name=kit_name.strip() or "kit")
         self.cache_dir = Path(cache_dir)
 
     def inspect(self, image: str | Path) -> DamageReport:

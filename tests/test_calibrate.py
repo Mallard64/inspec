@@ -87,3 +87,41 @@ def test_keeps_counts_rejects_changed_quantities_and_parts():
     renamed["parts"][1]["concept"] = "bolt"
     with pytest.raises(ValueError, match="parts"):
         validate(CheckProgram.model_validate(renamed))
+
+
+def test_tied_repair_is_kept(good_kits):
+    tied = repaired(401, checks=[*COMPILED.model_dump()["checks"], {
+        "id": "long_len", "type": "measure", "part": "long_screw", "metric": "length",
+        "min": 380, "max": 420}])
+    llm = FakeLLM([repaired(401), tied, tied])
+    result = cal.calibrate(COMPILED, good_kits, sam=None, llm=llm, max_rounds=5,
+                           log=lambda _: None)
+    assert [r.passed for r in result.rounds] == [0, 2, 2]  # third repair is unchanged: stop
+    assert [c.id for c in result.program.checks][-1] == "long_len"
+
+
+def test_measure_checks_only_where_the_list_implies_size_or_amount():
+    validate = cal.keeps_counts(COMPILED)
+    measure = {"type": "measure", "part": "long_screw", "metric": "length", "min": 1, "max": 2}
+    ok = COMPILED.model_dump()
+    ok["checks"].append({"id": "len", **measure})
+    validate(CheckProgram.model_validate(ok))  # long/short screw share a concept: size split
+    bad = COMPILED.model_dump()
+    bad["checks"].append({"id": "area", **measure, "metric": "area"})
+    with pytest.raises(ValueError, match="bulk"):
+        validate(CheckProgram.model_validate(bad))
+    fruit = CheckProgram.model_validate({
+        "kit_name": "box", "parts": [{"id": "nectarine", "concept": "apple"},
+                                     {"id": "granola", "concept": "granola"}],
+        "checks": [{"id": "n", "type": "count", "part": "nectarine", "min": 1, "max": 1},
+                   {"id": "g", "type": "count", "part": "granola", "min": 1}]})
+    v = cal.keeps_counts(fruit)
+    with_area = fruit.model_dump()
+    with_area["checks"].append({"id": "ga", "type": "measure", "part": "granola",
+                                "metric": "area", "min": 1, "max": 2})
+    v(CheckProgram.model_validate(with_area))
+    with_len = fruit.model_dump()
+    with_len["checks"].append({"id": "nl", "type": "measure", "part": "nectarine",
+                               "metric": "length", "min": 1, "max": 2})
+    with pytest.raises(ValueError, match="told apart by size"):
+        v(CheckProgram.model_validate(with_len))
