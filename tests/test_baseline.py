@@ -37,3 +37,8 @@ def test_references_go_first_and_are_part_of_the_cache_key(tmp_path):
     assert len(llm.contents) == 2
     types = [c["type"] for c in llm.contents[1]]
     assert types == ["input_text", "input_image", "input_text", "input_image"]
+
+
+def test_hint_is_added_to_instructions(tmp_path):
+    b = VisionBaseline("2 nuts", llm=FakeLLM(verdict()), hint="Nuts are M5.", cache_dir=tmp_path)
+    assert b.instructions.endswith("Nuts are M5.\n")

@@ -28,10 +28,12 @@ in this repo was written during the event; the commit history is the record.
 - **The agent part.** The compiled checks are tested on kits known to be good. Any check that fails
   on a good kit is wrong by definition, so the agent repairs it from the evidence and re-tests. It's
   a self-correcting loop with a measurable before and after.
-- **Result so far.** On MVTec LOCO Screw Bag's held-out test set, the calibrated program catches
-  all 137 kits with wrong parts or counts, and rejects 1–2 of 122 good kits. Before
-  calibration it rejected every good kit. Asking Muse Spark directly catches 79–106 of the 137:
-  it counts parts about as well, but misses most wrong-length screws, which Inspec measures.
+- **Result so far (one category, MVTec LOCO Screw Bag, held-out test set).** The calibrated
+  program catches all 137 kits with wrong parts, counts or screw sizes, and rejects 1–2 of 122 good
+  kits; before calibration it rejected every good kit. The strongest vision-only baseline I could
+  build (Muse Spark with 3 reference photos and a size guide) catches 130 of 137, counting as well
+  as Inspec but missing 6 of 65 wrong-size-screw kits. False-alarm rates are comparable.
+  [Details and significance tests.](#vision-only-baseline)
 
 ## Results
 
@@ -71,6 +73,32 @@ calibration.
   against a 276–308 range.
 - **Not done yet:** AUROC (verdicts are binary for now) and other LOCO categories.
 
+### How the test set was used
+
+A perfect score deserves suspicion, so here is the full record (from the session log and `runs/`):
+
+- **Where the numbers come from.** Every part limit and length range in a program is set by the
+  calibration loop from 60 `train/good` images; the code that computes them never reads
+  validation or test. Development before the first test run (merging, the hole metric, the
+  carve-out, the repair prompt) used `train/good` and `validation/good` only.
+- **How often test was evaluated: 9 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
+  run and two baseline runs; then two more baseline runs (3 references, with and without a size
+  guide), made with Inspec frozen, so 9 in all. Each run's program and
+  report are saved.
+- **What changed between test runs.** Once, for the part checks: after run 2 I added the "lone
+  outlier is a measurement failure" rule to the repair prompt. The trigger was run 2's calibration
+  notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
+  its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
+  137/137 with 1 of 122 false alarms.**
+- **The one place I tuned on test images** is the damage check's `part_broken` wording, on the
+  even-numbered structural images. That's disclosed under [Damage check](#damage-check-muse-spark-vision),
+  with the untouched odd half reported separately.
+- **Why 137/137 is plausible.** Every logical defect in Screw Bag is a whole missing or extra
+  part, a second screw of the wrong type (43% longer or shorter), or a screw about 28% short.
+  Good-kit screws vary by about 3% and the learned ranges sit about 4% outside that, so these
+  defects are far outside them. Structural defects, which aren't counting or size problems, get
+  43%.
+
 ### Damage check (Muse Spark vision)
 
 Part checks count and measure; they can't see a torn bag or paint. So
@@ -105,33 +133,56 @@ against 33/41 on the dev half. The cost is false alarms: 3 more good test kits r
 What you'd build without Inspec: one Muse Spark call with the packing list and the photo, no SAM,
 no checks, no calibration ([`inspec/baseline.py`](inspec/baseline.py)). The model reports how many
 of each listed part it sees and whether anything is damaged; the kit fails if a count is off or it
-reports damage. The "1 reference" variant also shows it one good training kit first
-(`scripts/baseline.py --references 1`).
+reports damage. I tried to make it as strong as I could before comparing:
 
-| | Baseline, zero-shot | Baseline, 1 reference | Inspec part checks | Inspec + damage check |
-|---|---|---|---|---|
-| False alarms, `validation/good` (60) | 2 (3.3%) | 1 (1.7%) | 2 (3.3%) | 2 (3.3%) |
-| False alarms, `test/good` (122) | 5 (4.1%) | 4 (3.3%) | 2 (1.6%) | 5 (4.1%) |
-| Caught, `test/logical_anomalies` (137) | 79 (58%) | 106 (77%) | **137 (100%)** | **137 (100%)** |
-| … missing / extra parts (72 kits) | 71 | 71 | 72 | 72 |
-| … wrong-length screws (65 kits) | 8 | 35 | **65** | **65** |
-| Caught, `test/structural_anomalies` (82) | 63 (77%) | 66 (80%) | 35 (43%) | **71 (87%)** |
+- **0 / 1 / 3 ref:** shown 0, 1 or 3 good training kits first (`--references N`).
+- **3 ref + size guide:** also told, in words, what Inspec's calibration measured on training
+  kits: "the long screw is about 43% longer than the short screw, and screws of one type vary in
+  length by only about 3%", and that a screw of neither size is wrong (`--hint`).
 
-Inspec columns are run 3's program. Wrong-length screws are LOCO's `screw_too_long` (21),
+| | 0 ref | 1 ref | 3 ref | 3 ref + size guide | Inspec part checks | Inspec + damage check |
+|---|---|---|---|---|---|---|
+| False alarms, `validation/good` (60) | 2 | 1 | 5 | 3 | 2 | 2 |
+| False alarms, `test/good` (122) | 5 | 4 | 9 | 9 | 2 | 5 |
+| Caught, `test/logical_anomalies` (137) | 79 | 106 | 116 | 130 | **137** | **137** |
+| … missing / extra parts (72 kits) | 71 | 71 | 72 | 71 | 72 | 72 |
+| … wrong-size screws (65 kits) | 8 | 35 | 44 | 59 | **65** | **65** |
+| Caught, `test/structural_anomalies` (82) | 63 | 66 | 71 | 69 | 35 | 71 |
+
+Inspec columns are run 3's program. "Wrong-size screws" are LOCO's `screw_too_long` (21),
 `screw_too_short` (20), `1_very_short_screw` (17) and `2_very_short_screws` (7); the other 72
-kits have only missing or extra parts (24 of them more than one such defect).
+kits have only missing or extra parts (24 of them more than one such defect). Measured on the
+masks, these are not subtle: a `screw_too_long` kit holds two long screws (414–422 px each)
+instead of one long and one short, `screw_too_short` holds two short ones (287–298 px), and a very
+short screw is 203–217 px against a normal 288–296 px (about 28% shorter).
+
+Against the strongest baseline (3 ref + size guide), on the same kits, with exact paired tests:
+
+| | Inspec + damage | Baseline | Only Inspec catches | Only baseline catches | p |
+|---|---|---|---|---|---|
+| Logical defects (137) | 137 | 130 | 7 | 0 | 0.016 |
+| Structural defects (82) | 71 | 69 | 8 | 6 | 0.79 |
+| Good test kits rejected (122) | 5 (2 without damage check) | 9 | | | 0.42 (0.07) |
 
 What this shows, without spin:
 
-- **Counting is not where Inspec wins.** Muse Spark alone gets 71 of 72 missing/extra-part kits.
-- **Size is.** A screw 10% too short looks fine to the model; zero-shot it catches 8 of 65 such
-  kits, 35 with a reference photo. Inspec measures every screw in pixels against ranges learned
-  from good kits and catches all 65.
-- **Damage is the reverse.** The baseline beats Inspec's part checks on structural defects. That's
-  why the damage check (itself a Muse Spark vision call) is added on top; together they catch
-  the most.
+- **Counting is a tie.** Muse Spark alone gets 71–72 of 72 missing/extra-part kits.
+- **Size is where Inspec wins, but by less than the first baseline suggested.** Zero-shot, the model
+  catches 8 of 65 wrong-size-screw kits; with references and a size guide, 59. Inspec gets all 65,
+  and the 7 logical kits only one side catches all go Inspec's way (p = 0.016). In those 7, the
+  model reports "1 long screw, 1 short screw … the kit is fine" for a bag holding two short screws.
+- **The size guide is itself a measurement.** The baseline only got to 59 once I told it the
+  ratio Inspec's calibration had measured. Without someone measuring, it sits at 35–44.
+- **False alarms are comparable.** 2–5 vs 9 of 122 leans Inspec's way but isn't significant.
+  Adding reference photos made the baseline catch more and reject more good kits.
+- **Damage is a vision-model job.** SAM masks show what a part is and how big, not whether it's
+  scratched, painted or torn, so the part checks alone get 35 of 82 structural defects. The damage
+  check (a Muse Spark vision call) brings that to 71, level with the baseline. Inspec + damage is
+  a hybrid by design: **measure what can be measured, ask the model about the rest.**
 - **Evidence.** A baseline verdict is a sentence; an Inspec verdict names the failed check and
-  the masks it counted, which an operator can verify at a glance.
+  the masks it measured, which an operator can verify at a glance.
+- **Scope.** One LOCO category (Screw Bag), one baseline run per variant. Differences of a few
+  kits are within run-to-run noise; only the logical-defect gap is statistically supported.
 
 ## Why this is hard (and a real example)
 
@@ -455,17 +506,24 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   Open (`muse-spark-open-1026`) works end to end.
 - **Oct 29.** Added the Muse Spark damage check (structural recall 43% → 87%). Built the vision-only
   baseline and ran it zero-shot and with one reference photo. It was stronger than I expected: it
-  counts parts nearly as well as Inspec. Inspec's clear advantage is size: 65 of 65 wrong-length
-  screw kits caught against the baseline's 8–35. The README claim changed to match. Muse Code
+  counts parts nearly as well as Inspec. Inspec's clear advantage is size: 65 of 65 wrong-size
+  screw kits caught against the baseline's 8–35 (revised on Oct 30, below). Muse Code
   built the Streamlit page and overlay (task 06); in review I fixed part colours that changed
   between images, a PASS banner that showed above a damage FAIL, and unreadably small labels.
+- **Oct 30.** Stress-tested the claim. Counted test-set use from the session log (9 evaluations;
+  one prompt change between part-check test runs, made for a training-data reason; written up in
+  [How the test set was used](#how-the-test-set-was-used)). Measured the "wrong-length" defects on
+  the masks: they are swapped screw types and stubs, not 10% length errors, so I corrected that
+  wording. Strengthened the baseline with 3 reference photos and a size guide: it went from 35 to
+  59 of 65 wrong-size kits, so the gap is real (p = 0.016) but much smaller than first reported.
 
 ## Limits
 
 - Evaluated on one LOCO category (Screw Bag) so far.
-- The baseline is one prompt design, run once per image. A better prompt or more reference photos
-  would likely close some of the size gap; the comparison shows where each approach is weak, not
-  a ceiling for vision-only models.
+- The baseline is one prompt design in four variants, each run once per image. More reference
+  photos and the size guide closed most of the size gap (8 → 59 of 65); a better prompt might
+  close more. The comparison shows where each approach is weak, not a ceiling for vision-only
+  models.
 - About 1–2% of good kits fail because SAM merges two touching screws into one mask. The program
   can't fix that, and calibration correctly leaves those kits failing.
 - The repair is an LLM output, so runs differ (see Results). Each run's program is saved and can

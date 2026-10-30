@@ -3,6 +3,7 @@
 Usage:
     .venv/bin/python scripts/baseline.py --name baseline0               # zero-shot
     .venv/bin/python scripts/baseline.py --name baseline1 --references 1  # + 1 good kit shown
+    .venv/bin/python scripts/baseline.py --name b3h --references 3 --hint "..."  # + size hint
 
 Writes report.json (same format as scripts/e2e.py) and verdicts.json to runs/<name>/.
 Reference images are evenly spaced train/good kits, never validation or test.
@@ -29,6 +30,7 @@ def main() -> int:
     ap.add_argument("--packing-list", default="1 long screw, 1 short screw, 2 nuts, 2 washers")
     ap.add_argument("--data", default=str(ROOT / "data" / "screw_bag"))
     ap.add_argument("--references", type=int, default=0, help="good train kits shown first")
+    ap.add_argument("--hint", default="", help="extra sentence added to the instructions")
     ap.add_argument("--provider")
     ap.add_argument("--name", required=True)
     args = ap.parse_args()
@@ -38,8 +40,8 @@ def main() -> int:
     train = images(data, "train/good")
     refs = train[:: max(len(train) // max(args.references, 1), 1)][: args.references]
     baseline = VisionBaseline(args.packing_list, llm=LLM(args.provider), references=refs,
-                              cache_dir=ROOT / ".cache" / "baseline")
-    report: dict = {"references": [p.name for p in refs], "splits": {}}
+                              hint=args.hint, cache_dir=ROOT / ".cache" / "baseline")
+    report: dict = {"references": [p.name for p in refs], "hint": args.hint, "splits": {}}
     verdicts: dict = {}
     for split, kind in SPLITS.items():
         paths = images(data, split)

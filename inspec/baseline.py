@@ -6,7 +6,8 @@ reports a count per listed part and whether it sees damage; the verdict is compu
 must match the list and no damage), so a failure can be split into "counts" and "damage".
 
 With ``references`` the prompt also shows known-good kits first, which is the fairer comparison
-to Inspec's calibration on good kits.
+to Inspec's calibration on good kits. ``hint`` adds domain knowledge to the instructions (e.g. how
+much longer the long screw is), to give the baseline the size information Inspec measures.
 """
 
 from __future__ import annotations
@@ -54,9 +55,12 @@ part of the wrong size counts toward neither. Reflections and wrinkles in the ba
 
 class VisionBaseline:
     def __init__(self, packing_list: str, *, llm: LLM | None = None,
-                 references: list[str | Path] = (), cache_dir: str | Path = ".cache/baseline"):
+                 references: list[str | Path] = (), hint: str = "",
+                 cache_dir: str | Path = ".cache/baseline"):
         self.llm = llm or LLM()
         self.instructions = INSTRUCTIONS.format(packing_list=packing_list.strip())
+        if hint:
+            self.instructions += hint.strip() + "\n"
         self.references = [Path(p) for p in references]
         self.cache_dir = Path(cache_dir)
 
