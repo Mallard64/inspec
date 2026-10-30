@@ -12,9 +12,12 @@ with the error, and every failed attempt is kept so the repair is visible in log
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
+import threading
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Callable, Generic, TypeVar
 
 from dotenv import load_dotenv
@@ -135,3 +138,23 @@ def _short_error(exc: Exception) -> str:
         return "; ".join(f"{'.'.join(map(str, e['loc'])) or 'root'}: {e['msg']}"
                          for e in exc.errors())[:1500]
     return str(exc)[:1500]
+
+
+def cached_generate(llm: "LLM", instructions: str, content: list[dict], out_type: type[T],
+                    images: list[Path], cache_dir: str | Path) -> T:
+    """``llm.generate`` with the answer cached on disk by (model, instructions, image bytes).
+
+    Used for per-image vision calls (damage check, baseline), so re-running an evaluation doesn't
+    re-call the model. ``images`` are the images in ``content``; change the instructions to bust
+    the cache."""
+    parts = [llm.model, instructions] + [hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                                         for p in images]
+    path = Path(cache_dir) / f"{hashlib.sha256(chr(10).join(parts).encode()).hexdigest()}.json"
+    if path.exists():
+        return out_type.model_validate_json(path.read_text())
+    value = llm.generate(instructions, content, out_type).value
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(f".{os.getpid()}.{threading.get_ident()}.tmp")
+    tmp.write_text(value.model_dump_json())
+    tmp.replace(path)
+    return value

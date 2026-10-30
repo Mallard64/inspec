@@ -11,7 +11,6 @@ Answers are cached on disk by (model, prompt, image) so re-evaluation doesn't re
 
 from __future__ import annotations
 
-import hashlib
 import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -19,7 +18,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field
 
 from inspec.compiler import _image_content
-from inspec.llm import LLM
+from inspec.llm import LLM, cached_generate
 
 QUESTIONS = ("bag_torn", "part_broken", "part_discoloured", "foreign_object")
 
@@ -57,25 +56,11 @@ class DamageChecker:
         self.instructions = INSTRUCTIONS.format(packing_list=packing_list.strip())
         self.cache_dir = Path(cache_dir)
 
-    def _cache_path(self, image: Path) -> Path:
-        key = hashlib.sha256("\n".join([
-            self.llm.model, self.instructions,
-            hashlib.sha256(image.read_bytes()).hexdigest()]).encode()).hexdigest()
-        return self.cache_dir / f"{key}.json"
-
     def inspect(self, image: str | Path) -> DamageReport:
         image = Path(image)
-        cached = self._cache_path(image)
-        if cached.exists():
-            return DamageReport.model_validate_json(cached.read_text())
-        report = self.llm.generate(self.instructions, [
+        return cached_generate(self.llm, self.instructions, [
             {"type": "input_text", "text": "Inspect this kit."}, _image_content(image)],
-            DamageReport).value
-        cached.parent.mkdir(parents=True, exist_ok=True)
-        tmp = cached.with_suffix(f".{image.stem}.tmp")
-        tmp.write_text(report.model_dump_json())
-        tmp.replace(cached)
-        return report
+            DamageReport, [image], self.cache_dir)
 
     def inspect_many(self, images: list[str | Path], *,
                      workers: int = 8) -> dict[str, DamageReport]:
