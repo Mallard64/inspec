@@ -7,10 +7,11 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 28):** the full pipeline works end to end on Screw Bag: packing list → Muse Spark
-> compiler → SAM 3.1 → checks → Muse Spark calibration loop → evaluation. [Results](#results) are
-> measured on the held-out test set. The vision-only baseline and the UI are **not built yet**. The
-> [Status](#status) table is the source of truth.
+> **Status (Oct 29):** the full pipeline works end to end on Screw Bag: packing list → Muse Spark
+> compiler → SAM 3.1 → checks → Muse Spark calibration loop → evaluation, compared against a
+> vision-only Muse Spark baseline. A Streamlit page (`app.py`) shows the loop with part masks.
+> [Results](#results) are measured on the held-out test set. The [Status](#status) table is the
+> source of truth.
 
 - Demo: _not yet_
 - Video: _not yet_ (3-minute demo due with submission)
@@ -29,7 +30,8 @@ in this repo was written during the event; the commit history is the record.
   a self-correcting loop with a measurable before and after.
 - **Result so far.** On MVTec LOCO Screw Bag's held-out test set, the calibrated program catches
   all 137 kits with wrong parts or counts, and rejects 1–2 of 122 good kits. Before
-  calibration it rejected every good kit. A vision-only baseline is still to come.
+  calibration it rejected every good kit. Asking Muse Spark directly catches 79–106 of the 137:
+  it counts parts about as well, but misses most wrong-length screws, which Inspec measures.
 
 ## Results
 
@@ -67,8 +69,7 @@ calibration.
 - **The remaining false alarms are segmentation failures**, not rule errors. Examples: two screws
   lying end to end that SAM returns as one 713 px object, or a tilted screw that measures 313 px
   against a 276–308 range.
-- **Not done yet:** the vision-only Muse Spark baseline, AUROC (verdicts are binary for now), and
-  other LOCO categories.
+- **Not done yet:** AUROC (verdicts are binary for now) and other LOCO categories.
 
 ### Damage check (Muse Spark vision)
 
@@ -90,14 +91,47 @@ finds something. Evaluated with run 3's program (`scripts/e2e.py --program runs/
 
 The two halves of the result come from different methods. Part checks find wrong counts and some
 broken parts. Muse Spark finds bag damage and paint. Each is poor at the other's job.
-"Damage check only" also works as a first vision-only baseline: on logical defects it catches 4 of
-137, against the part checks' 137.
+"Damage check only" catches just 4 of 137 logical defects, but that's because it never asks about
+counts. The fair vision-only comparison is [below](#vision-only-baseline).
 
 How honest is this? I wrote the `part_broken` wording after looking at the even-numbered
 structural images (my first wording flagged 5 of 8 good kits as having "split washers"). The
 odd-numbered half was never looked at, and it scores as well: 38/41 caught with both checks,
 against 33/41 on the dev half. The cost is false alarms: 3 more good test kits rejected, 2 for a
 "torn bag" and 1 for a "broken part".
+
+### Vision-only baseline
+
+What you'd build without Inspec: one Muse Spark call with the packing list and the photo, no SAM,
+no checks, no calibration ([`inspec/baseline.py`](inspec/baseline.py)). The model reports how many
+of each listed part it sees and whether anything is damaged; the kit fails if a count is off or it
+reports damage. The "1 reference" variant also shows it one good training kit first
+(`scripts/baseline.py --references 1`).
+
+| | Baseline, zero-shot | Baseline, 1 reference | Inspec part checks | Inspec + damage check |
+|---|---|---|---|---|
+| False alarms, `validation/good` (60) | 2 (3.3%) | 1 (1.7%) | 2 (3.3%) | 2 (3.3%) |
+| False alarms, `test/good` (122) | 5 (4.1%) | 4 (3.3%) | 2 (1.6%) | 5 (4.1%) |
+| Caught, `test/logical_anomalies` (137) | 79 (58%) | 106 (77%) | **137 (100%)** | **137 (100%)** |
+| … missing / extra parts (72 kits) | 71 | 71 | 72 | 72 |
+| … wrong-length screws (65 kits) | 8 | 35 | **65** | **65** |
+| Caught, `test/structural_anomalies` (82) | 63 (77%) | 66 (80%) | 35 (43%) | **71 (87%)** |
+
+Inspec columns are run 3's program. Wrong-length screws are LOCO's `screw_too_long` (21),
+`screw_too_short` (20), `1_very_short_screw` (17) and `2_very_short_screws` (7); the other 72
+kits have only missing or extra parts (24 of them more than one such defect).
+
+What this shows, without spin:
+
+- **Counting is not where Inspec wins.** Muse Spark alone gets 71 of 72 missing/extra-part kits.
+- **Size is.** A screw 10% too short looks fine to the model; zero-shot it catches 8 of 65 such
+  kits, 35 with a reference photo. Inspec measures every screw in pixels against ranges learned
+  from good kits and catches all 65.
+- **Damage is the reverse.** The baseline beats Inspec's part checks on structural defects. That's
+  why the damage check (itself a Muse Spark vision call) is added on top; together they catch
+  the most.
+- **Evidence.** A baseline verdict is a sentence; an Inspec verdict names the failed check and
+  the masks it counted, which an operator can verify at a glance.
 
 ## Why this is hard (and a real example)
 
@@ -239,8 +273,9 @@ Metrics, image-level, per split ([`inspec/evaluate.py`](inspec/evaluate.py)):
 - **Calibration before vs after:** the raw compiled program vs the repaired one, on the same images
 - Planned: **AUROC**, using the number of failed checks (or the margin) as the anomaly score
 
-Baseline: **Muse Spark vision-only**. Same packing list and image, asked to return pass/fail directly,
-with no SAM and no checks. It runs on the same images with the same metrics.
+Baseline: **Muse Spark vision-only**. Same packing list and image, asked for per-part counts and
+damage, with no SAM and no checks. It runs on the same images with the same metrics
+([results](#vision-only-baseline)).
 
 ## Status
 
@@ -258,10 +293,11 @@ with no SAM and no checks. It runs on the same images with the same metrics.
 | Calibration loop (`inspec/calibrate.py`) | Done (tested), 3 live runs |
 | Evaluation on Screw Bag (`inspec/evaluate.py`, `scripts/e2e.py`) | Done; [results](#results) |
 | Damage check, Muse Spark vision (`inspec/damage.py`) | Done (tested); [results](#damage-check-muse-spark-vision) |
-| Vision-only baseline (`inspec/baseline.py`) | Partial: damage-only column; a full pass/fail baseline is next |
-| Streamlit app (`app.py`) | Planned |
+| Vision-only baseline (`inspec/baseline.py`, `scripts/baseline.py`) | Done (tested); [results](#vision-only-baseline) |
+| Streamlit app (`app.py`, overlay in `inspec/overlay.py`) | Done; runs on saved runs and cached results, live recompile optional |
 
-Unit tests: 90 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration, damage).
+Unit tests: 96 passing (SAM client, parser, schema, LLM client, compiler, executor, calibration,
+damage, baseline, overlay). The app was smoke-tested headless with Streamlit's `AppTest`.
 
 ## Roadmap
 
@@ -270,8 +306,8 @@ Unit tests: 90 passing (SAM client, parser, schema, LLM client, compiler, execut
 | Oct 26 | ✅ Setup, SAM API research, SAM client and parser |
 | Oct 27–28 | Check schema, compiler, executor |
 | Oct 28 | ✅ First end-to-end run, calibration loop, Screw Bag eval |
-| Oct 29–30 | Vision-only baseline; AUROC |
-| Oct 31–Nov 1 | Streamlit UI; second LOCO category if time allows |
+| Oct 29 | ✅ Damage check, vision-only baseline, Streamlit UI |
+| Oct 30–Nov 1 | AUROC; second LOCO category if time allows |
 | Nov 2 | UI polish: show the compile → check → repair loop live |
 | Nov 3 | README results (measured numbers only) and the 3-minute video |
 | Nov 4 | Buffer; submit by 9:00 PM ET |
@@ -288,7 +324,7 @@ UI polish → stretch goals (Breakfast Box, voice input).
 - **Baseten** (optional): set `INSPEC_LLM_PROVIDER=baseten` to run the compiler on a Baseten-hosted
   model such as Muse Spark Open. It has no structured output, so the client asks for JSON, validates
   it against the schema and retries with the error.
-- Streamlit for the UI (planned)
+- Streamlit for the UI
 
 ## Run locally
 
@@ -306,6 +342,11 @@ scripts/download_loco.sh    # Screw Bag, about 1 GB, into data/
 .venv/bin/python scripts/e2e.py --program runs/<name>/final.json --damage --test
 # re-evaluate a saved program without calling Muse Spark
 .venv/bin/python scripts/e2e.py --program runs/<name>/final.json --test
+# vision-only baseline (1 Muse Spark call per image, cached in .cache/baseline)
+.venv/bin/python scripts/baseline.py --name baseline1 --references 1
+
+# the demo page: pick a run, see its calibration rounds, inspect any kit with masks
+.venv/bin/streamlit run app.py
 ```
 
 The first full run makes about 1,400 SAM calls (3 per image), taking a few minutes with 8 threads.
@@ -349,9 +390,10 @@ inspec/
   calibrate.py    # ✅ run on good kits, Muse Spark repairs failing checks, re-run
   evaluate.py     # ✅ false-alarm rate and recall per LOCO split and defect type
   damage.py       # ✅ Muse Spark vision check for torn bag, broken/painted part, foreign object
-  baseline.py     # Muse Spark vision-only pass/fail baseline (next)
-app.py            # Streamlit single page (planned)
-scripts/          # ✅ dataset download, e2e runner, Baseten check
+  baseline.py     # ✅ Muse Spark vision-only baseline: counts + damage from the photo
+  overlay.py      # ✅ draw part masks and labels on a kit photo
+app.py            # ✅ Streamlit page: compile -> calibrate -> inspect with masks -> eval
+scripts/          # ✅ dataset download, e2e runner, baseline runner, Baseten check
 docs/             # ✅ verified API notes
 tests/            # ✅ unit tests and captured SAM responses
 .orchestrator/    # ✅ task briefs and log for delegated coding tasks
@@ -411,19 +453,27 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   three times ([results](#results)). Baseten first returned 401, which turned out to be my own bug: an
   append to `.env` had glued `BASETEN_MODEL=` onto the key line. After the fix, a full run on Muse Spark
   Open (`muse-spark-open-1026`) works end to end.
+- **Oct 29.** Added the Muse Spark damage check (structural recall 43% → 87%). Built the vision-only
+  baseline and ran it zero-shot and with one reference photo. It was stronger than I expected: it
+  counts parts nearly as well as Inspec. Inspec's clear advantage is size: 65 of 65 wrong-length
+  screw kits caught against the baseline's 8–35. The README claim changed to match. Muse Code
+  built the Streamlit page and overlay (task 06); in review I fixed part colours that changed
+  between images, a PASS banner that showed above a damage FAIL, and unreadably small labels.
 
 ## Limits
 
-- Evaluated on one LOCO category (Screw Bag) so far. No vision-only baseline yet, so there's no
-  comparison number.
+- Evaluated on one LOCO category (Screw Bag) so far.
+- The baseline is one prompt design, run once per image. A better prompt or more reference photos
+  would likely close some of the size gap; the comparison shows where each approach is weak, not
+  a ceiling for vision-only models.
 - About 1–2% of good kits fail because SAM merges two touching screws into one mask. The program
   can't fix that, and calibration correctly leaves those kits failing.
 - The repair is an LLM output, so runs differ (see Results). Each run's program is saved and can
   be re-evaluated without the model.
 - Built for kits photographed from a fixed overhead camera, like MVTec LOCO. It hasn't been tested
   on other setups.
-- Inspec targets logical errors (wrong counts and wrong parts). Surface defects like scratches or
-  contamination are mostly out of scope.
+- The part checks target logical errors (counts, sizes). Surface damage relies on the Muse Spark
+  damage check, which adds false alarms (2 → 5 of 122 good test kits).
 - Parts SAM can't name reliably with a short noun phrase will be hard to check.
 
 ## Future improvements
