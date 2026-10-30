@@ -7,7 +7,8 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 29):** the full pipeline works end to end on Screw Bag: packing list → Muse Spark
+> **Status (Oct 30):** the full pipeline works end to end on two MVTec LOCO kits, Screw Bag and
+> Breakfast Box: packing list → Muse Spark
 > compiler → SAM 3.1 → checks → Muse Spark calibration loop → evaluation, compared against a
 > vision-only Muse Spark baseline. A Streamlit page (`app.py`) shows the loop with part masks.
 > [Results](#results) are measured on the held-out test set. The [Status](#status) table is the
@@ -28,9 +29,10 @@ in this repo was written during the event; the commit history is the record.
 - **The agent part.** The compiled checks are tested on kits known to be good. Any check that fails
   on a good kit is wrong by definition, so the agent repairs it from the evidence and re-tests. It's
   a self-correcting loop with a measurable before and after.
-- **Result so far (one category, MVTec LOCO Screw Bag, held-out test set).** The calibrated
-  program catches all 137 kits with wrong parts, counts or screw sizes, and rejects 1–2 of 122 good
-  kits; before calibration it rejected every good kit. The strongest vision-only baseline I could
+- **Result so far (MVTec LOCO, held-out test sets).** On Screw Bag the calibrated program catches
+  all 137 kits with wrong parts, counts or screw sizes, and rejects 1–2 of 122 good kits; before
+  calibration it rejected every good kit. On a second kit, Breakfast Box, the same code (plus three
+  general fixes) catches 78 of 83 logical defects with 0 of 102 false alarms. The strongest vision-only baseline I could
   build (Muse Spark with 3 reference photos and a size guide) catches 130 of 137, counting as well
   as Inspec but missing 6 of 65 wrong-size-screw kits. False-alarm rates are comparable.
   [Details and significance tests.](#vision-only-baseline)
@@ -71,8 +73,8 @@ calibration.
 - **The remaining false alarms are segmentation failures**, not rule errors. Examples: two screws
   lying end to end that SAM returns as one 713 px object, or a tilted screw that measures 313 px
   against a 276–308 range.
-- **Not done yet:** AUROC (verdicts are binary for now); on Breakfast Box, amount checks, a
-  kit-neutral damage prompt and the baseline. See [Breakfast Box](#second-category-breakfast-box-first-run).
+- **Not done yet:** AUROC (verdicts are binary for now) and the vision baseline on Breakfast Box.
+  See [Breakfast Box](#second-category-breakfast-box).
 
 ### How the test set was used
 
@@ -82,17 +84,21 @@ A perfect score deserves suspicion, so here is the full record (from the session
   calibration loop from 60 `train/good` images; the code that computes them never reads
   validation or test. Development before the first test run (merging, the hole metric, the
   carve-out, the repair prompt) used `train/good` and `validation/good` only.
-- **How often test was evaluated: 9 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
+- **How often Screw Bag test was evaluated: 10 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
   run and two baseline runs; then two more baseline runs (3 references, with and without a size
-  guide), made with Inspec frozen, so 9 in all. Each run's program and
+  guide), made with Inspec frozen, and the kit-neutral damage prompt (`sb-final`): 10 in all. Each run's program and
   report are saved.
 - **What changed between test runs.** Once, for the part checks: after run 2 I added the "lone
   outlier is a measurement failure" rule to the repair prompt. The trigger was run 2's calibration
   notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
   its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
   137/137 with 1 of 122 false alarms.**
-- **Breakfast Box test: evaluated once**, after the program was frozen. A first attempt crashed
-  while fetching SAM masks (the parser bug above) before producing any result.
+- **Breakfast Box test: evaluated twice**, each time after freezing. First the unchanged method
+  (`bb1`; a crash in the SAM parser before any result doesn't count). I then saw its per-defect
+  numbers on the whole test set, chose to work on amounts and a general damage prompt, developed
+  both on the even-numbered anomalies only, froze (`188ea10`) and evaluated once more (`bb4-final`).
+  The odd half is reported separately; it scores like the dev half.
+- **Screw Bag with the kit-neutral damage prompt:** one more evaluation (`sb-final`), same protocol.
 - **The one place I tuned on test images** is the damage check's `part_broken` wording, on the
   even-numbered structural images. That's disclosed under [Damage check](#damage-check-muse-spark-vision),
   with the untouched odd half reported separately.
@@ -106,30 +112,31 @@ A perfect score deserves suspicion, so here is the full record (from the session
 
 Part checks count and measure; they can't see a torn bag or paint. So
 [`inspec/damage.py`](inspec/damage.py) asks Muse Spark four yes/no questions about each photo:
-torn bag, broken part, discoloured part, foreign object. Calibration uses the part checks' rule: a
-question that fires on more than 2 of the good calibration kits is switched off. On 30 good kits
-none fired, so all four stayed on. A kit is rejected if a part check fails or the damage check
-finds something. Evaluated with run 3's program (`scripts/e2e.py --program runs/run3/final.json
---damage --test`):
+container damaged, item broken, item discoloured, foreign object. The prompt names no kit: it is
+built from the kit name and packing list, and the same wording runs on Screw Bag and Breakfast
+Box. Calibration uses the part checks' rule: a question that fires on more than 2 of 60 good
+calibration kits is switched off. On Screw Bag none did (one fired once), so all four stay on. A
+kit is rejected if a part check fails or the damage check finds something (`runs/sb-final`:
+`scripts/e2e.py --program runs/run3/final.json --damage --test --calib 60`):
 
 | | Part checks only | Damage check only | Both |
 |---|---|---|---|
-| False alarms, `validation/good` (60) | 2 (3.3%) | 0 | 2 (3.3%) |
-| False alarms, `test/good` (122) | 2 (1.6%) | 3 (2.5%) | 5 (4.1%) |
-| Caught, `test/logical_anomalies` (137) | 137 | 4 | 137 |
-| Caught, `test/structural_anomalies` (82) | 35 (43%) | 56 (68%) | **71 (87%)** |
-| … bag broken / colour / contamination / part broken | 0/16, 0/16, 19/25, 16/25 | 16/16, 15/16, 14/25, 11/25 | 16/16, 15/16, 23/25, 17/25 |
+| False alarms, `validation/good` (60) | 2 (3.3%) | 2 | 4 (6.7%) |
+| False alarms, `test/good` (122) | 2 (1.6%) | 4 | 6 (4.9%) |
+| Caught, `test/logical_anomalies` (137) | 137 | 3 | 137 |
+| Caught, `test/structural_anomalies` (82) | 35 (43%) | 53 (65%) | **69 (84%)** |
+| … bag broken / colour / contamination / part broken | 0/16, 0/16, 19/25, 16/25 | 14/16, 14/16, 14/25, 11/25 | 14/16, 14/16, 23/25, 18/25 |
 
 The two halves of the result come from different methods. Part checks find wrong counts and some
 broken parts. Muse Spark finds bag damage and paint. Each is poor at the other's job.
-"Damage check only" catches just 4 of 137 logical defects, but that's because it never asks about
-counts. The fair vision-only comparison is [below](#vision-only-baseline).
+"Damage check only" catches just 3 of 137 logical defects because it never asks about counts.
+The fair vision-only comparison is [below](#vision-only-baseline).
 
-How honest is this? I wrote the `part_broken` wording after looking at the even-numbered
-structural images (my first wording flagged 5 of 8 good kits as having "split washers"). The
-odd-numbered half was never looked at, and it scores as well: 38/41 caught with both checks,
-against 33/41 on the dev half. The cost is false alarms: 3 more good test kits rejected, 2 for a
-"torn bag" and 1 for a "broken part".
+How honest is this? Both damage prompts were developed on the even-numbered test anomalies and
+evaluated once on the odd half after the code was frozen. With both checks: 33/41 on the dev half,
+**36/41 on the held-out half**. An earlier prompt written only for Screw Bag ("washers are closed
+rings") scored a little higher (71/82, 5/122 false alarms); I replaced it so the same prompt works
+for any kit.
 
 ### Vision-only baseline
 
@@ -145,14 +152,14 @@ reports damage. I tried to make it as strong as I could before comparing:
 
 | | 0 ref | 1 ref | 3 ref | 3 ref + size guide | Inspec part checks | Inspec + damage check |
 |---|---|---|---|---|---|---|
-| False alarms, `validation/good` (60) | 2 | 1 | 5 | 3 | 2 | 2 |
-| False alarms, `test/good` (122) | 5 | 4 | 9 | 9 | 2 | 5 |
+| False alarms, `validation/good` (60) | 2 | 1 | 5 | 3 | 2 | 4 |
+| False alarms, `test/good` (122) | 5 | 4 | 9 | 9 | 2 | 6 |
 | Caught, `test/logical_anomalies` (137) | 79 | 106 | 116 | 130 | **137** | **137** |
 | … missing / extra parts (72 kits) | 71 | 71 | 72 | 71 | 72 | 72 |
 | … wrong-size screws (65 kits) | 8 | 35 | 44 | 59 | **65** | **65** |
-| Caught, `test/structural_anomalies` (82) | 63 | 66 | 71 | 69 | 35 | 71 |
+| Caught, `test/structural_anomalies` (82) | 63 | 66 | 71 | 69 | 35 | 69 |
 
-Inspec columns are run 3's program. "Wrong-size screws" are LOCO's `screw_too_long` (21),
+Inspec columns are run 3's program, with the kit-neutral damage check. "Wrong-size screws" are LOCO's `screw_too_long` (21),
 `screw_too_short` (20), `1_very_short_screw` (17) and `2_very_short_screws` (7); the other 72
 kits have only missing or extra parts (24 of them more than one such defect). Measured on the
 masks, these are not subtle: a `screw_too_long` kit holds two long screws (414–422 px each)
@@ -164,8 +171,8 @@ Against the strongest baseline (3 ref + size guide), on the same kits, with exac
 | | Inspec + damage | Baseline | Only Inspec catches | Only baseline catches | p |
 |---|---|---|---|---|---|
 | Logical defects (137) | 137 | 130 | 7 | 0 | 0.016 |
-| Structural defects (82) | 71 | 69 | 8 | 6 | 0.79 |
-| Good test kits rejected (122) | 5 (2 without damage check) | 9 | | | 0.42 (0.07) |
+| Structural defects (82) | 69 | 69 | 7 | 7 | 1.0 |
+| Good test kits rejected (122) | 6 (2 without damage check) | 9 | 5 | 8 | 0.58 (0.07) |
 
 What this shows, without spin:
 
@@ -176,55 +183,77 @@ What this shows, without spin:
   model reports "1 long screw, 1 short screw … the kit is fine" for a bag holding two short screws.
 - **The size guide is itself a measurement.** The baseline only got to 59 once I told it the
   ratio Inspec's calibration had measured. Without someone measuring, it sits at 35–44.
-- **False alarms are comparable.** 2–5 vs 9 of 122 leans Inspec's way but isn't significant.
+- **False alarms are comparable.** 2–6 vs 9 of 122 leans Inspec's way but isn't significant.
   Adding reference photos made the baseline catch more and reject more good kits.
 - **Damage is a vision-model job.** SAM masks show what a part is and how big, not whether it's
   scratched, painted or torn, so the part checks alone get 35 of 82 structural defects. The damage
-  check (a Muse Spark vision call) brings that to 71, level with the baseline. Inspec + damage is
+  check (a Muse Spark vision call) brings that to 69, level with the baseline. Inspec + damage is
   a hybrid by design: **measure what can be measured, ask the model about the rest.**
 - **Evidence.** A baseline verdict is a sentence; an Inspec verdict names the failed check and
   the masks it measured, which an operator can verify at a glance.
 - **Scope.** One LOCO category (Screw Bag), one baseline run per variant. Differences of a few
   kits are within run-to-run noise; only the logical-defect gap is statistically supported.
 
-### Second category: Breakfast Box (first run)
+### Second category: Breakfast Box
 
-Packing list "2 tangerines, 1 nectarine, granola, banana chips, almonds". Same pipeline, no code
-written for this kit; three general fixes it exposed are listed below. Compiled, concept-checked
-and calibrated on 60 `train/good` images, checked on `validation/good`, then frozen and evaluated
-on test **once** (`runs/bb1`, `runs/bb1-test`). Part checks only: the damage check's prompt is
-still written for Screw Bag (a plastic bag of bare-metal parts), so it isn't used here yet.
+Packing list "2 tangerines, 1 nectarine, granola, banana chips, almonds". No code is specific to
+this kit. Compiled, concept-checked and calibrated on 60 `train/good` images, checked on
+`validation/good`. The general fixes it needed were developed on the even-numbered test
+anomalies; the code was then frozen (commit `188ea10`) and evaluated once (`runs/bb4-final`).
 
-| | Result |
-|---|---|
-| False alarms, `validation/good` (62) | 0 (compiled program: 49) |
-| False alarms, `test/good` (102) | 0 |
-| Caught: wrong fruit counts (8 types, 19 kits) | **19 / 19** |
-| Caught: missing almonds / bananas / cereal / toppings (41 kits) | **41 / 41** |
-| Caught: wrong ratio of toppings to cereal (12) | 6 / 12 |
-| Caught: overflow, underflow, compartments swapped (11) | 0 / 11 |
-| Caught, all `test/logical_anomalies` (83) | 66 (80%) |
-| Caught, `test/structural_anomalies` (90) | 12 (13%) |
+| | First frozen run (`bb1`) | Final (`bb4`) part checks | Final + damage check |
+|---|---|---|---|
+| False alarms, `validation/good` (62) | 0 | 0 | 4 (6.5%) |
+| False alarms, `test/good` (102) | 0 | 0 | 4 (3.9%) |
+| Caught, `test/logical_anomalies` (83) | 66 (80%) | **78 (94%)** | 78 |
+| … held-out (odd) half (41) | | 38 | 38 |
+| Caught, `test/structural_anomalies` (90) | 12 (13%) | 11 | **45 (50%)** |
+| … held-out (odd) half (45) | | 5 | 24 |
 
-What it took, and what it shows:
+By defect type, final with both checks:
+
+- **Caught fully:** all 8 wrong fruit-count types (19/19), missing almonds / bananas / cereal /
+  toppings (41/41), wrong ratio (12/12), compartments swapped (3/3), crushed toppings (7/7).
+- **Partly:** underflow 3/4, contamination 34/40, mixed cereals 2/8, box damaged 1/4.
+- **Missed:** overflow 0/4 (a heap that's too high has the same area from above) and **damaged
+  fruit 1/31**, the largest structural type. See below.
+
+What it took (all general, all also applied to Screw Bag):
 
 - **Concept repair (new agent step).** SAM didn't know the compiler's words: "nectarine" found
-  nothing on 45% of good kits, "banana chip" on 55%. Before calibration, Muse Spark now proposes
+  nothing on 45% of good kits, "banana chip" on 55%. Before calibration, Muse Spark proposes
   other phrases for any part SAM misses on good kits, each is tried on 20 good kits, and the one
   whose count best fits the packing list wins: "apple" for the nectarine (95%), "banana" for the
   chips (100%). Scoring by count rejects "fruit", which finds every fruit in the box.
   [`inspec/concepts.py`](inspec/concepts.py). On Screw Bag every concept is always found, so this
   step changes nothing there.
-- **Unquantified items.** The compiler made "almonds" exactly 1 almond. Its prompt now says an item
-  with no quantity must be present (min 1, no max).
-- **Large SAM masks are downscaled** to 1024 px on the long side; the parser now accepts exactly
-  that case ([notes](docs/sam-output-format.md)).
-- **Where it stops.** Counts and presence are checked perfectly. Amounts (overflow, underflow,
-  ratio) and positions (swapped compartments) aren't expressible as count checks, and the repair
-  prompt tells the model not to add measure checks to items whose size the list doesn't specify.
-  Structural damage (bruised fruit, contamination) needs the damage check.
-- **Known gap.** For a presence-only item, any phrase that finds something scores 100%, so "banana"
-  beat "fruit" for the chips only by list order.
+- **Amounts.** The cereal is one SAM mask per kit, so its area is its amount. The repair prompt
+  now asks for an area range on such single-mass bulk items; calibration set granola to
+  375k–481k px (good kits: 391k–462k). That catches underflow, swapped compartments (the cereal
+  ends up in the small compartment) and wrong ratios.
+- **Rules in code, not just the prompt.** One repair added a length range to the nectarine, which
+  the prompt forbids for items with no listed size; it passed every calibration kit and then
+  rejected 7 of 62 good validation kits. The repair validator now rejects length checks except on
+  size-split parts, area checks except on bulk parts, and hole checks, and sends the reason back
+  to the model. All four reported Screw Bag programs pass the new validator unchanged.
+- **Ties count.** Calibration kept a repair only if more good kits passed, so a repair that added
+  the granola range at no cost was thrown away. Ties are now kept.
+- **Unquantified items** compile to "present" (min 1, no max) instead of "exactly 1".
+- **Large SAM masks** come back downscaled to 1024 px on the long side; the parser now resizes
+  them ([notes](docs/sam-output-format.md)).
+
+Where it stops:
+
+- **Damaged fruit (1/31).** The kit-neutral damage prompt does ask about bruised or cut items, but
+  on good Breakfast Box trays Muse Spark reported "broken" items on 4 of 60 kits (chipped almonds,
+  broken banana chips, which are normal) and a "cracked tray" on 24 of 60 (a black slot moulded
+  into every tray). Calibration switched both questions off, as designed, which also switched off
+  bruised-fruit detection. Showing the model a known-good kit for reference made things worse (it
+  started comparing the two photos: 42 of 60 good Screw Bags flagged for a "foreign object"), so
+  that was dropped.
+- **Overflow (0/4)** isn't visible as area from above.
+- **Known gap.** For a presence-only item any phrase that finds something fits, so "banana" beat
+  "fruit" for the chips only by list order.
 
 ## Why this is hard (and a real example)
 
@@ -385,7 +414,8 @@ damage, with no SAM and no checks. It runs on the same images with the same metr
 | Check executor: merging, carve-out, metrics (`inspec/executor.py`) | Done (tested) |
 | Calibration loop (`inspec/calibrate.py`) | Done (tested), 3 live runs |
 | Evaluation on Screw Bag (`inspec/evaluate.py`, `scripts/e2e.py`) | Done; [results](#results) |
-| Damage check, Muse Spark vision (`inspec/damage.py`) | Done (tested); [results](#damage-check-muse-spark-vision) |
+| Damage check, Muse Spark vision (`inspec/damage.py`) | Done (tested), kit-neutral prompt; [results](#damage-check-muse-spark-vision) |
+| Concept repair before calibration (`inspec/concepts.py`) | Done (tested); used on [Breakfast Box](#second-category-breakfast-box) |
 | Vision-only baseline (`inspec/baseline.py`, `scripts/baseline.py`) | Done (tested); [results](#vision-only-baseline) |
 | Streamlit app (`app.py`, overlay in `inspec/overlay.py`) | Done; runs on saved runs and cached results, live recompile optional |
 
@@ -563,10 +593,17 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   step before calibration (it picked "apple" and "banana"). Fixed bulk items compiled as "exactly 1"
   and a parser crash on SAM's downscaled large masks. Frozen, one test run: 0 of 102 false alarms,
   all 60 fruit-count and missing-item kits caught, 66 of 83 logical overall, 12 of 90 structural.
+  Then, developing on the even half only: an area range for single-mass bulk items, measure rules
+  enforced in the validator (the model had put a length range on the nectarine), tied repairs
+  kept, and a damage prompt that names no kit. Tried a reference photo in the damage check; it
+  backfired, so it's gone. Froze at `188ea10`, evaluated once: Breakfast Box 78/83 logical and
+  45/90 structural, 4/102 false alarms; Screw Bag with the new damage prompt 69/82 structural
+  (36/41 on the held-out half) against 71/82 for the old Screw Bag-specific prompt.
 
 ## Limits
 
-- Two LOCO categories. Breakfast Box has one frozen run, part checks only, with no baseline yet.
+- Two LOCO categories. Breakfast Box has no vision baseline yet, and its damaged fruit (31 kits)
+  is almost entirely missed.
 - The baseline is one prompt design in four variants, each run once per image. More reference
   photos and the size guide closed most of the size gap (8 → 59 of 65); a better prompt might
   close more. The comparison shows where each approach is weak, not a ceiling for vision-only
