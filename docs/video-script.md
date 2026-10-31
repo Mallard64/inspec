@@ -17,7 +17,8 @@ entry, with attribution on the end card. Don't commit screenshots of them to the
     baseline passes it, Inspec fails it (also 039; `1_very_short_screw`: 101).
   - Breakfast Box `test/logical_anomalies/071.png`: `wrong_ratio`, caught by the part checks
     (also 073, 075; `underflow`: 049).
-  - Breakfast Box `test/structural_anomalies/045.png`: `fruit_damaged`, missed (also 047, 049). Confirm the baseline flags the one you use.
+  - Breakfast Box `test/structural_anomalies/045.png`: `fruit_damaged`, caught by
+    `tangerines_damaged` ("torn peel"; also 047, 049).
 
 ## Script
 
@@ -29,7 +30,7 @@ entry, with attribution on the end card. Don't commit screenshots of them to the
 | 1:05–1:35 | Section 3: the `screw_too_short` kit, mask overlay, failed length check; then the baseline panel saying PASS | "This kit has two short screws. Inspec fails it and shows why: no screw is in the long-screw range of 396 to 441 pixels. Muse Spark looking at the photo alone says the kit is fine." |
 | 1:35–1:50 | README results table | "On the MVTec LOCO test set Inspec catches all 137 logical defects. The best vision-only baseline catches 130, and only after we gave it the size ratio Inspec measured. For damage, a vision model is the better judge, so Inspec asks it: measure what can be measured, ask the model about the rest." |
 | 1:50–2:25 | Switch run to `bb4`; packing list changes; calibration; then a `wrong_ratio` kit failing the granola area check | "Same code, a different kit. SAM didn't know 'nectarine', so a concept-repair step had Muse Spark suggest other words and tried each on good kits: 'apple' works. Calibration learned how much granola a good box holds, so a box with too little fails on area. 78 of 83 logical defects caught, with no false alarms from the part checks." |
-| 2:25–2:40 | The missed `fruit_damaged` kit, PASS; then the baseline panel on the same kit | "Where it loses: bruised fruit. A mask doesn't show bruises, and the damage question was too noisy on good trays, so calibration switched it off. Muse Spark on its own catches 25 of 31 of these. Inspec catches 1." |
+| 2:25–2:40 | The `fruit_damaged` kit: FAIL, damage panel showing the per-item question and its evidence | "A mask can't see a bruise, so for surface damage Inspec asks Muse Spark, one question per item on the list. Calibration switches off any question that fires on good kits: chipped almonds are normal, so that one goes, but the fruit questions stay. On damage it ties the vision model; on what you can measure it wins, on both kits." |
 | 2:40–2:50 | README top, repo URL | "Packing list in, checks out, evidence for every verdict. Inspec, on Muse Spark and SAM 3.1." End card: "Images: MVTec LOCO AD, CC BY-NC-SA 4.0." |
 
 ## Before upload
