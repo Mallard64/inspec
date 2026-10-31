@@ -7,7 +7,7 @@ Built solo for the **Meta Global AI Developer Hackathon**, Indie Developer track
 Frontier** (Meta models on a hard manufacturing problem). Build window Oct 26 – Nov 4, 2026. All code
 in this repo was written during the event; the commit history is the record.
 
-> **Status (Oct 30):** the full pipeline works end to end on two MVTec LOCO kits, Screw Bag and
+> **Status (Oct 31):** the full pipeline works end to end on two MVTec LOCO kits, Screw Bag and
 > Breakfast Box: packing list → Muse Spark
 > compiler → SAM 3.1 → checks → Muse Spark calibration loop → evaluation, compared against a
 > vision-only Muse Spark baseline. A Streamlit page (`app.py`) shows the loop with part masks.
@@ -15,7 +15,7 @@ in this repo was written during the event; the commit history is the record.
 > source of truth.
 
 - Demo: _not yet_
-- Video: _not yet_ (3-minute demo due with submission)
+- Video: _not yet recorded_; script and shot list in [docs/video-script.md](docs/video-script.md)
 
 <!-- Screenshot / GIF: packing list → compiled checks → verdict with masks -->
 
@@ -36,6 +36,10 @@ in this repo was written during the event; the commit history is the record.
   build (Muse Spark with 3 reference photos and a size guide) catches 130 of 137, counting as well
   as Inspec but missing 6 of 65 wrong-size-screw kits. False-alarm rates are comparable.
   [Details and significance tests.](#vision-only-baseline)
+- **Where it loses.** On Breakfast Box damage (bruised fruit, crushed toppings) the vision-only
+  baseline is clearly better: 70 of 90 structural defects vs Inspec's 45. Inspec wins where the
+  answer is a count or an amount (78 vs 68 logical defects).
+  [Breakfast Box baseline.](#breakfast-box-vision-only-baseline)
 
 ## Results
 
@@ -254,6 +258,41 @@ Where it stops:
 - **Overflow (0/4)** isn't visible as area from above.
 - **Known gap.** For a presence-only item any phrase that finds something fits, so "banana" beat
   "fruit" for the chips only by list order.
+
+#### Breakfast Box vision-only baseline
+
+The same baseline as on Screw Bag (`scripts/baseline.py`), run once per variant after the freeze:
+`runs/bb-baseline0` (zero-shot) and `runs/bb-baseline3` (3 good `train` kits shown first). There's
+no hint variant: the Screw Bag hint was a measured size ratio, and the analogue here (how much
+granola a good box holds) wasn't tried.
+
+| | 0 ref | 3 ref | Inspec part checks | Inspec + damage check |
+|---|---|---|---|---|
+| False alarms, `validation/good` (62) | 3 | 3 | 0 | 4 |
+| False alarms, `test/good` (102) | 2 | 6 | 0 | 4 |
+| Caught, `test/logical_anomalies` (83) | 67 | 68 | **78** | **78** |
+| … wrong ratio / underflow / swapped (19) | 7 | 8 | 18 | 18 |
+| Caught, `test/structural_anomalies` (90) | 54 | **70** | 11 | 45 |
+| … fruit damaged (31) | 22 | **25** | 0 | 1 |
+| … toppings crushed (7) | 0 | 7 | 7 | 7 |
+
+Paired exact tests, Inspec + damage vs 3 ref:
+
+| | Inspec + damage | Baseline | Only Inspec | Only baseline | p |
+|---|---|---|---|---|---|
+| Logical (83) | 78 | 68 | 10 | 0 | 0.002 |
+| Structural (90) | 45 | 70 | 3 | 28 | < 0.00001 |
+| Good test kits rejected (102) | 4 | 6 | 2 | 4 | 0.69 |
+
+- **Counting is a tie again**, as on Screw Bag: both get every wrong-fruit-count and
+  missing-item kit.
+- **Amounts are Inspec's.** The model alone catches 8 of 19 wrong-ratio, underflow and swapped
+  kits; the calibrated granola area catches 18.
+- **Damage is the baseline's, by a lot.** The model alone catches 25 of 31 bruised-fruit kits.
+  Inspec's damage check asks the same model, but calibration switched off its "broken item"
+  question because it fired on 4 of 60 good trays. The baseline has no such calibration and pays
+  for it with 6 of 102 false alarms, so the comparison isn't free. Still, a per-item damage
+  question that survives calibration is the clearest next improvement.
 
 ## Why this is hard (and a real example)
 

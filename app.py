@@ -12,7 +12,11 @@ from pathlib import Path
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_PACKING_LIST = "1 long screw, 1 short screw, 2 nuts, 2 washers"
+# kit_name in a run's final.json -> (dataset folder under data/, packing list it was compiled from)
+KITS = {
+    "screw bag": ("screw_bag", "1 long screw, 1 short screw, 2 nuts, 2 washers"),
+    "breakfast box": ("breakfast_box", "2 tangerines, 1 nectarine, granola, banana chips, almonds"),
+}
 SPLITS = [
     "validation/good",
     "test/good",
@@ -35,8 +39,8 @@ def read_json(path: str) -> dict | None:
 
 
 @st.cache_data
-def dataset_images(split: str) -> list[str]:
-    directory = ROOT / "data" / "screw_bag" / split
+def dataset_images(dataset: str, split: str) -> list[str]:
+    directory = ROOT / "data" / dataset / split
     if not directory.is_dir():
         return []
     return [str(p) for p in sorted(directory.glob("*.png"))]
@@ -81,7 +85,6 @@ def load_program(path: Path):
 run_names = available_runs()
 default_index = run_names.index("run3") if "run3" in run_names else 0
 run_name = st.sidebar.selectbox("Run", run_names, index=default_index) if run_names else None
-packing_list = st.sidebar.text_input("Packing list", DEFAULT_PACKING_LIST)
 damage_on = st.sidebar.checkbox("Muse Spark damage check", value=True)
 baseline_on = st.sidebar.checkbox("Compare vision-only baseline", value=False)
 
@@ -89,6 +92,9 @@ if run_name is None:
     st.error("No runs found: no subdirectory of runs/ contains final.json.")
     st.stop()
 run_dir = ROOT / "runs" / run_name
+kit_name = (read_json(str(run_dir / "final.json")) or {}).get("kit_name", "screw bag")
+dataset, default_list = KITS.get(kit_name.lower(), KITS["screw bag"])
+packing_list = st.sidebar.text_input("Packing list", default_list, key=f"packing_list:{kit_name}")
 
 # Section 1: Compile.
 st.header("1. Compile")
@@ -103,7 +109,7 @@ if st.button("Recompile live"):
         from inspec.compiler import compile_program
 
         with st.spinner("Compiling..."):
-            generation = compile_program(packing_list, kit_name="screw bag")
+            generation = compile_program(packing_list, kit_name=kit_name)
         st.json(json.loads(generation.value.model_dump_json(indent=2)), expanded=False)
         st.write(f"Attempts: {generation.attempts}")
         if generation.errors:
@@ -172,7 +178,7 @@ st.header("3. Inspect a kit")
 image_path: str | None = None
 options: list[str] = []
 split = st.selectbox("Split", SPLITS)
-paths = dataset_images(split)
+paths = dataset_images(dataset, split)
 if paths:
     options = [Path(p).name for p in paths]
     choice = st.selectbox("Image", options)
@@ -233,6 +239,8 @@ if image_path is not None:
     if damage_on and image_path is not None:
         st.subheader("Damage check")
         damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
+        if not damage_cal:
+            st.warning("This run has no damage_calibration.json, so every question is enabled.")
         try:
             from inspec.damage import QUESTIONS, damaged
 
