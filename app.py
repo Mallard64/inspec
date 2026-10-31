@@ -242,11 +242,12 @@ if image_path is not None:
         if not damage_cal:
             st.warning("This run has no damage_calibration.json, so every question is enabled.")
         try:
-            from inspec.damage import QUESTIONS, damaged
+            from inspec.damage import damaged
 
-            enabled = list(damage_cal.get("enabled", list(QUESTIONS)))
+            checker = get_damage_checker(packing_list, final_program.kit_name)
+            enabled = list(damage_cal.get("enabled", checker.questions))
             with st.spinner("Running the damage check..."):
-                report = get_damage_checker(packing_list, final_program.kit_name).inspect(image_path)
+                report = checker.inspect(image_path)
             flags = damaged(report, enabled)
             st.write(f"Enabled questions: {enabled}")
             st.write(f"Flags: {flags or '(none)'}")
