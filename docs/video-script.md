@@ -14,9 +14,10 @@ entry, with attribution on the end card. Don't commit screenshots of them to the
 - Images, all from the held-out (odd) half. Check each in the app before recording; the
   baseline panel and the failed check must show what the voice-over says:
   - Screw Bag `test/logical_anomalies/029.png`: `screw_too_short`, the 3-ref + size-guide
-    baseline passes it, Inspec fails it (also 039; `1_very_short_screw`: 101).
-  - Breakfast Box `test/logical_anomalies/071.png`: `wrong_ratio`, caught by the part checks
-    (also 073, 075; `underflow`: 049).
+    baseline passes it; Inspec reports "long_screw_count: found 0" and "short_screw_count: found
+    2" (also 039; `1_very_short_screw`: 101).
+  - Breakfast Box `test/logical_anomalies/049.png`: `underflow`; Inspec reports "granola_area:
+    found 326007, expected 375230..481162". Not 071: it fails because SAM finds no granola at all.
   - Breakfast Box `test/structural_anomalies/045.png`: `fruit_damaged`, caught by
     `tangerines_damaged` ("torn peel"; also 047, 049).
 
@@ -27,9 +28,9 @@ entry, with attribution on the end card. Don't commit screenshots of them to the
 | 0:00–0:15 | Screw Bag photo, full screen | "Kits like this ship with one long screw, one short screw, two nuts, two washers. A wrong-length screw looks almost right. Can a model check a kit from the packing list alone?" |
 | 0:15–0:35 | Sidebar packing list, then section 1 (compiled JSON, expanded) | "Inspec takes the packing list as text. Muse Spark compiles it into a check program: the parts, the SAM concept for each, and count checks. No training, no labelled defects." |
 | 0:35–1:05 | Section 2: calibration rounds (round 0, then the last), then "Measure checks added by calibration" | "The first program rejects every good kit: SAM ignores size words and calls washers nuts. So Inspec runs the program on known-good kits and Muse Spark repairs whatever fails. From 60 good kits it learns that nuts have smaller holes than washers and how long a long screw is. Every repair is checked in code before it's kept." |
-| 1:05–1:35 | Section 3: the `screw_too_short` kit, mask overlay, failed length check; then the baseline panel saying PASS | "This kit has two short screws. Inspec fails it and shows why: no screw is in the long-screw range of 396 to 441 pixels. Muse Spark looking at the photo alone says the kit is fine." |
+| 1:05–1:35 | Section 3: the `screw_too_short` kit, mask overlay, failed length check; then the baseline panel saying PASS | "This kit has two short screws. Inspec fails it and shows why: neither screw reaches the long-screw length it learned, so it counts zero long screws and two short ones. Muse Spark looking at the photo alone says the kit is fine." |
 | 1:35–1:50 | README results table | "On the MVTec LOCO test set Inspec catches all 137 logical defects. The best vision-only baseline catches 130, and only after we gave it the size ratio Inspec measured. For damage, a vision model is the better judge, so Inspec asks it: measure what can be measured, ask the model about the rest." |
-| 1:50–2:25 | Switch run to `bb4`; packing list changes; calibration; then a `wrong_ratio` kit failing the granola area check | "Same code, a different kit. SAM didn't know 'nectarine', so a concept-repair step had Muse Spark suggest other words and tried each on good kits: 'apple' works. Calibration learned how much granola a good box holds, so a box with too little fails on area. 78 of 83 logical defects caught, with no false alarms from the part checks." |
+| 1:50–2:25 | Switch run to `bb4`; packing list changes; calibration; then `049.png` failing the granola area check | "Same code, a different kit. SAM didn't know 'nectarine', so a concept-repair step had Muse Spark suggest other words and tried each on good kits: 'apple' works. Calibration learned how much granola a good box holds, so this box, with too little, fails on area. 78 of 83 logical defects caught, with no false alarms from the part checks." |
 | 2:25–2:40 | The `fruit_damaged` kit: FAIL, damage panel showing the per-item question and its evidence | "A mask can't see a bruise, so for surface damage Inspec asks Muse Spark, one question per item on the list. Calibration switches off any question that fires on good kits: chipped almonds are normal, so that one goes, but the fruit questions stay. On damage it ties the vision model; on what you can measure it wins, on both kits." |
 | 2:40–2:50 | README top, repo URL | "Packing list in, checks out, evidence for every verdict. Inspec, on Muse Spark and SAM 3.1." End card: "Images: MVTec LOCO AD, CC BY-NC-SA 4.0." |
 
