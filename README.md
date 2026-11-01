@@ -100,7 +100,8 @@ A perfect score deserves suspicion, so here is the full record (from the session
   notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
   its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
   137/137 with 1 of 122 false alarms.**
-- **Breakfast Box test: evaluated three times** (plus two baseline runs), each time after freezing. First the unchanged method
+- **Breakfast Box test: evaluated four times** (plus two baseline runs), each time after freezing;
+  the fourth is the Muse Spark Open run, with code unchanged since `6aa7546`. First the unchanged method
   (`bb1`; a crash in the SAM parser before any result doesn't count). I then saw its per-defect
   numbers on the whole test set, chose to work on amounts and a general damage prompt, developed
   both on the even-numbered anomalies only, froze (`188ea10`) and evaluated once more (`bb4-final`).
@@ -270,6 +271,31 @@ Where it stops:
 - **Overflow (0/4)** isn't visible as area from above.
 - **Known gap.** For a presence-only item any phrase that finds something fits, so "banana" beat
   "fruit" for the chips only by list order.
+
+#### Breakfast Box on Muse Spark Open (Baseten)
+
+The same code with compile, concept repair and calibration on Muse Spark Open
+(`--provider baseten`, `runs/bb-baseten1`), then one test run of its program (`runs/bb-baseten1-test`).
+Part checks only: the damage check wasn't run on Baseten. It converged in 2 rounds (60/60 good kits)
+and reached the same granola area range and the same "apple" for the nectarine.
+
+| | Muse Spark 1.3 (Meta API, `bb4-final`) | Muse Spark Open (Baseten) |
+|---|---|---|
+| False alarms, `validation/good` (62) | 0 | 1 |
+| False alarms, `test/good` (102) | 0 | 3 |
+| Caught, `test/logical_anomalies` (83) | **78** | 71 (p = 0.09) |
+| … held-out (odd) half (41) | 38 | 34 |
+| … missing bananas (11) | **11** | 1 |
+| … overflow (4) | 0 | 3 |
+| Caught, `test/structural_anomalies` (90) | 11 | 14 |
+
+The gap is one choice. For the banana chips, "dried fruit" and "banana slice" both fit 100% of
+calibration kits, and the open model listed "dried fruit" first. It also matches the other dried
+items, so a box with no banana chips still passes the presence check. That's the
+[known tie-break gap](#second-category-breakfast-box) with a measured cost: concept repair should
+prefer the phrase that finds the fewest objects among those that fit. I haven't made that change,
+since it would be chosen after seeing this test result. The 3 overflow kits it catches aren't
+explained yet; I haven't investigated them.
 
 #### Breakfast Box vision-only baseline
 
@@ -656,7 +682,9 @@ Agent instructions are in [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md).
   checked it on training, validation and the even half, froze at `6aa7546` and evaluated once:
   Breakfast Box structural 68/90 (33/45 held-out), damaged fruit 23/31, 4/102 false alarms;
   Screw Bag structural 71/82 (38/41 held-out), 7/122 false alarms. The UI now loads the right
-  kit for each run, and there's a [video script](docs/video-script.md).
+  kit for each run, and there's a [video script](docs/video-script.md). Ran Breakfast Box on Muse
+  Spark Open via Baseten: 71/83 logical vs 78, the gap almost all from its picking "dried fruit"
+  for the banana chips (missing bananas 1/11).
 
 ## Limits
 
