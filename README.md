@@ -90,7 +90,7 @@ A perfect score deserves suspicion, so here is the full record (from the session
   calibration loop from 60 `train/good` images; the code that computes them never reads
   validation or test. Development before the first test run (merging, the hole metric, the
   carve-out, the repair prompt) used `train/good` and `validation/good` only.
-- **How often Screw Bag test was evaluated: 10 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
+- **How often Screw Bag test was evaluated: 11 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
   run and two baseline runs; then two more baseline runs (3 references, with and without a size
   guide), made with Inspec frozen, the kit-neutral damage prompt (`sb-final`) and the per-item
   damage questions (`sb-final2`): 11 in all. Each run's program and
