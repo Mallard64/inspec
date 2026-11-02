@@ -59,6 +59,17 @@ list and 3 photos of good kits (plus a measured size guide on Screw Bag).
   4 to 0 (Breakfast Box), with nothing that was caught lost. The 3% was chosen on validation kits.
   [Error analysis.](docs/benchmarks.md#error-analysis-and-pass--review--fail)
 
+Inspec's three-way verdicts on the same test kits:
+
+| | Screw Bag: FAIL | REVIEW | PASS | Breakfast Box: FAIL | REVIEW | PASS |
+|---|---|---|---|---|---|---|
+| Good kits | 1 | 6 | 115 | 0 | 4 | 98 |
+| Wrong parts, sizes or amounts | 137 | 0 | 0 | 78 | 0 | 5 |
+| Damaged or contaminated | 34 | 37 | 11 | 11 | 57 | 22 |
+
+Every measurable defect Inspec catches is a hard FAIL; damage mostly arrives as REVIEW, since
+that verdict rests on the model's judgement rather than a measurement.
+
 Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
 and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.
 
