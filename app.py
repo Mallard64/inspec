@@ -7,11 +7,13 @@ from __future__ import annotations
 
 import hashlib
 import json
+import tempfile
 from pathlib import Path
 
 import streamlit as st
 
 from inspec.explain import describe_check, describe_question, describe_result, label, learned
+from inspec.live import CallLog, LoggedLLM, LoggedSam
 
 ROOT = Path(__file__).resolve().parent
 # Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
@@ -90,6 +92,22 @@ def load_program(path: Path):
     return CheckProgram.model_validate_json(path.read_text())
 
 
+def show_calls(log: CallLog, sam: LoggedSam | None = None) -> None:
+    """The model calls behind what's on screen: Muse Spark calls one by one, SAM summarised."""
+    rows = [{"model": c.model, "call": c.what, "seconds": round(c.seconds, 1)}
+            for c in log.calls if not c.model.startswith("sam")]
+    seg = [c for c in log.calls if c.model.startswith("sam")]
+    if seg:
+        cached = len(seg) - sam.api_calls if sam else 0
+        rows.append({"model": seg[0].model,
+                     "call": f"{len(seg)} segmentations" + (
+                         f" ({sam.api_calls} sent to the API, {cached} from the disk cache)"
+                         if cached else " (all sent to the API)" if sam else ""),
+                     "seconds": round(sum(c.seconds for c in seg), 1)})
+    st.markdown("**Meta model calls**")
+    st.dataframe(rows, hide_index=True, width="stretch")
+
+
 def chip(text: str, color: str = "#e8eef7", fg: str = "#1d2b3a") -> str:
     return (f"<span style='background:{color};color:{fg};padding:6px 14px;border-radius:999px;"
             f"margin:0 8px 8px 0;display:inline-block;font-size:1.15rem'>{text}</span>")
@@ -147,6 +165,37 @@ st.markdown("A check that fails on a kit known to be good is wrong. Inspec shows
             "kept. **What it learned from 60 good kits:**")
 for line in learned(compiled, final, read_json(str(run_dir / "concepts.json"))):
     st.markdown(f"- {line}")
+if st.button("▶ Run it live: compile the list, then self-repair on 60 good kits"):
+    from inspec.calibrate import calibrate
+    from inspec.compiler import compile_program
+    from inspec.concepts import repair_concepts
+    from inspec.llm import LLM
+
+    calls = CallLog()
+    good = [ROOT / "data" / cfg["dataset"] / "train" / "good" / name
+            for name in (read_json(str(run_dir / "calibration.json")) or {}).get("images", [])]
+    sam = LoggedSam(get_sam_client(), calls)
+    with st.status("Muse Spark is compiling the packing list...", expanded=True) as status:
+        try:
+            program = compile_program(packing_list, kit_name=final.kit_name, llm=LoggedLLM(
+                LLM(), calls, "compile packing list into checks")).value
+            st.markdown("**Compiled:** " + " · ".join(describe_check(c) for c in program.checks))
+            status.update(label="Checking SAM knows each item...")
+            fixed, _ = repair_concepts(program, good[:20], sam=sam, log=st.caption, llm=LoggedLLM(
+                LLM(), calls, "suggest other words for SAM"))
+            status.update(label=f"Running the checks on {len(good)} good kits; "
+                                "Muse Spark repairs what fails...")
+            cal = calibrate(fixed, good, sam=sam, log=st.caption, llm=LoggedLLM(
+                LLM(), calls, "repair checks that failed on good kits"))
+            rounds = cal.to_dict()["rounds"]
+            for line in learned(program, cal.program):
+                st.markdown(f"- {line}")
+            status.update(state="complete", label=(
+                f"Done: {rounds[0]['passed']}/{rounds[0]['total']} → {rounds[-1]['passed']}/"
+                f"{rounds[-1]['total']} good kits pass, in {len(rounds)} rounds"))
+        except Exception as exc:
+            status.update(state="error", label=f"Live run failed: {exc}")
+    show_calls(calls, sam)
 with st.expander("Muse Spark's repair notes"):
     for r in (read_json(str(run_dir / "calibration.json")) or {}).get("rounds", []):
         st.markdown(f"**Round {r['round']}:** {r['passed']}/{r['total']} good kits pass")
@@ -169,6 +218,7 @@ if paths:
     start = next((i for i, n in enumerate(names) if n[:-4] == params.get("image")), 0)
     image_path = paths[shown.index(right.selectbox("Image (dataset label)", shown, index=start))]
 baseline_on = opts.toggle("Compare with Muse Spark alone", value=params.get("compare") == "1")
+live = opts.toggle("Live model calls (skip cache)", value=params.get("live") == "1")
 with st.expander("Or upload a photo"):
     uploaded = st.file_uploader("Kit photo", type=["png", "jpg", "jpeg"])
     if uploaded is not None:
@@ -186,10 +236,22 @@ if image_path is not None:
     from inspec.executor import fetch_segments, run_program
     from inspec.overlay import legend, render
 
+    calls = CallLog()
+    if live:  # fresh clients on an empty cache, so every answer below comes from the API now
+        from inspec.damage import DamageChecker
+        from inspec.llm import LLM
+        from inspec.sam_client import SamClient
+
+        scratch = tempfile.mkdtemp(prefix="inspec-live-")
+        sam = LoggedSam(SamClient(Path(scratch) / "sam"), calls)
+        checker = DamageChecker(packing_list, kit_name=final.kit_name, cache_dir=Path(scratch) / "d",
+                                llm=LoggedLLM(LLM(), calls, "damage check (one question per item)"))
+    else:
+        sam = get_sam_client()
+        checker = get_damage_checker(packing_list, final.kit_name)
     try:
         with st.spinner("Finding parts with SAM 3.1..."):
-            result = run_program(final, fetch_segments(final, image_path, get_sam_client()))
-        checker = get_damage_checker(packing_list, final.kit_name)
+            result = run_program(final, fetch_segments(final, image_path, sam))
         damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
         enabled = list(damage_cal.get("enabled", checker.questions))
         with st.spinner("Asking Muse Spark about damage..."):
@@ -232,13 +294,27 @@ if image_path is not None:
     if baseline_on:
         st.subheader("Muse Spark alone: photo + packing list, no measuring")
         meta = read_json(str(ROOT / "runs" / cfg["baseline_report"] / "report.json")) or {}
+        baseline = get_baseline(packing_list, cfg["dataset"], tuple(meta.get("references", [])),
+                                meta.get("hint", ""))
+        if live:
+            from inspec.baseline import VisionBaseline
+            from inspec.llm import LLM
+
+            baseline = VisionBaseline(packing_list, references=baseline.references,
+                                      hint=meta.get("hint", ""), cache_dir=Path(scratch) / "b",
+                                      llm=LoggedLLM(LLM(), calls, "vision-only baseline"))
         with st.spinner("Asking Muse Spark..."):
-            alone = get_baseline(packing_list, cfg["dataset"], tuple(meta.get("references", [])),
-                                 meta.get("hint", "")).inspect(image_path)
+            alone = baseline.inspect(image_path)
         (st.error if alone.failures() else st.success)(
             f"**{'Reject' if alone.failures() else 'Pass'}.** {alone.reason}")
+        if not live:
+            st.caption("This is the answer recorded in the evaluation run. Asked again, the model "
+                       "can answer differently; turn on live calls to ask it now.")
         st.caption(" · ".join(f"{c.part}: saw {c.seen}, expected {c.expected}"
                               for c in alone.counts))
+
+    if live:
+        show_calls(calls, sam)
 
 # 4. Results.
 st.header("4 · Results on held-out test kits")
@@ -258,3 +334,7 @@ if ins and base:
                "Significance tests and how the test set was used are in the README.")
 else:
     st.info("Result reports not found in runs/.")
+
+st.divider()
+st.caption("Kit images: MVTec LOCO AD (Bergmann et al.), CC BY-NC-SA 4.0. Models: Muse Spark and "
+           "SAM 3.1 via the Meta Model API. Code: github.com/Mallard64/inspec")

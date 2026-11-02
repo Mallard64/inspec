@@ -546,8 +546,9 @@ scripts/download_loco.sh    # Screw Bag, about 1 GB, into data/
 
 # the demo page: packing list -> checks in plain English -> self-repair -> inspect -> results
 .venv/bin/streamlit run app.py
-# open a view directly, e.g. a damaged Breakfast Box with the vision-only comparison on:
-#   http://localhost:8501/?kit=Breakfast%20Box&show=Damaged%20or%20contaminated&image=045&compare=1
+# open a view directly; live=1 skips every cache and lists each Meta model call with its time:
+#   http://localhost:8501/?kit=Breakfast%20Box&show=Damaged%20or%20contaminated&image=045&live=1
+# "Run it live" in section 2 compiles the list and runs self-repair on 60 good kits (~2.5 min)
 ```
 
 The first full run makes about 1,400 SAM calls (3 per image), taking a few minutes with 8 threads.

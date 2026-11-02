@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import threading
 import json
 import os
 import tempfile
@@ -37,6 +38,8 @@ class SamClient:
             )
         self.cache_dir = Path(cache_dir)
         self.model = model
+        self.api_calls = 0  # requests sent to the API (cache misses), for the demo's call log
+        self._count_lock = threading.Lock()
         self.mask_encoding = mask_encoding
         if client is not None:
             self._client = client
@@ -64,6 +67,8 @@ class SamClient:
             with open(cache_file, encoding="utf-8") as f:
                 return json.load(f)["text"]
 
+        with self._count_lock:
+            self.api_calls += 1
         b64 = base64.b64encode(image_bytes).decode("ascii")
         data_url = f"data:{mime};base64,{b64}"
         response = self._client.responses.create(

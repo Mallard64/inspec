@@ -1,44 +1,43 @@
 # 3-minute demo video: script and shot list
 
-Target 2:50, so there's slack. Screen recording of `streamlit run app.py`. Every number spoken
-is from the README; don't round them up.
+Rules (from the hackathon): 3:00 or less, in English, only things built during the hackathon (no
+slides, no unbuilt ideas). Open with one line on what existed before and what was built this
+week, then show the working flow end to end with live Meta model calls visible.
 
-Dataset images (MVTec LOCO, CC BY-NC-SA 4.0) may appear in the video for this non-commercial
-entry, with attribution on the end card. Don't commit screenshots of them to the repo.
+So the whole video is the running app (`app.py`). No README, no slides. Every number spoken
+must be on screen at that moment or in the app's results table.
 
 ## Before recording
 
 - `.venv/bin/streamlit run app.py`, browser at 125% zoom.
-- Each shot has a URL that opens the right kit and image (below). Open each one once before
-  recording so every answer is cached and nothing waits on an API call.
-  - A: `http://localhost:8501/?kit=Screw%20Bag&show=Wrong%20parts%20or%20amounts&image=029&compare=1`
-  - B: `http://localhost:8501/?kit=Breakfast%20Box&show=Wrong%20parts%20or%20amounts&image=049`
-  - C: `http://localhost:8501/?kit=Breakfast%20Box&show=Damaged%20or%20contaminated&image=045&compare=1`
-- Images, all from the held-out (odd) half. Check each in the app before recording; the
-  baseline panel and the failed check must show what the voice-over says:
-  - Screw Bag `test/logical_anomalies/029.png`: `screw_too_short`, the 3-ref + size-guide
-    baseline passes it; Inspec reports "long_screw_count: found 0" and "short_screw_count: found
-    2" (also 039; `1_very_short_screw`: 101).
-  - Breakfast Box `test/logical_anomalies/049.png`: `underflow`; Inspec reports "granola_area:
-    found 326007, expected 375230..481162". Not 071: it fails because SAM finds no granola at all.
-  - Breakfast Box `test/structural_anomalies/045.png`: `fruit_damaged`, caught by
-    `tangerines_damaged` ("torn peel"; also 047, 049).
+- URLs for the shots. `live=1` turns on "Live model calls (skip cache)", so SAM 3.1 and Muse
+  Spark are called on the spot and listed under the result with their timings.
+  - A: `http://localhost:8501/?kit=Screw%20Bag&show=Wrong%20parts%20or%20amounts&image=029&live=1`
+  - B: `http://localhost:8501/?kit=Breakfast%20Box&show=Wrong%20parts%20or%20amounts&image=049&live=1`
+  - C: `http://localhost:8501/?kit=Breakfast%20Box&show=Damaged%20or%20contaminated&image=045&live=1`
+- Do one full rehearsal. Live answers can differ from run to run; if one does, say what's on
+  screen, not what this script says.
+- Live inspection of one kit takes about 25–35 s; the live self-repair run about 2.5 min. Record
+  in real time and speed up only the waiting in the edit, with an on-screen "sped up" label.
+- Don't turn on "Compare with Muse Spark alone" during live shots: asked live, it sometimes
+  catches kit 029 and sometimes doesn't. The results table (section 4) is the fair comparison.
+- No `.env`, API key or shell history on screen.
 
 ## Script
 
 | Time | Screen | Voice-over |
 |---|---|---|
-| 0:00–0:15 | URL A, scrolled to the photo in section 3 | "Kits like this ship with one long screw, one short screw, two nuts, two washers. A wrong-length screw looks almost right. Can a model check a kit from the packing list alone?" |
-| 0:15–0:35 | URL A, top: section 1, the packing list chips and the checks under them | "Inspec takes the packing list as text. Muse Spark compiles it into a check program: the parts, the SAM concept for each, and count checks. No training, no labelled defects." |
-| 0:35–1:05 | Section 2: "60 / 60 → 2 / 60" and "What it learned" | "The first program rejects every good kit: SAM ignores size words and calls washers nuts. So Inspec runs the program on known-good kits and Muse Spark repairs whatever fails. From 60 good kits it learns that nuts have smaller holes than washers and how long a long screw is. Every repair is checked in code before it's kept." |
-| 1:05–1:35 | Section 3 of URL A: red Reject banner, masks, then the "Muse Spark alone" box saying Pass | "This kit has two short screws. Inspec fails it and shows why: neither screw reaches the long-screw length it learned, so it counts zero long screws and two short ones. Muse Spark looking at the photo alone says the kit is fine." |
-| 1:35–1:50 | Section 4: the results table | "On the MVTec LOCO test set Inspec catches all 137 logical defects. The best vision-only baseline catches 130, and only after we gave it the size ratio Inspec measured. For damage, a vision model is the better judge, so Inspec asks it: measure what can be measured, ask the model about the rest." |
-| 1:50–2:25 | URL B: packing list, "What it learned" (apple, granola amount), then the Reject banner for too little granola | "Same code, a different kit. SAM didn't know 'nectarine', so a concept-repair step had Muse Spark suggest other words and tried each on good kits: 'apple' works. Calibration learned how much granola a good box holds, so this box, with too little, fails on area. 78 of 83 logical defects caught, with no false alarms from the part checks." |
-| 2:25–2:40 | URL C: Reject "Tangerines: damaged", the "Looked at (Muse Spark)" list with almonds switched off | "A mask can't see a bruise, so for surface damage Inspec asks Muse Spark, one question per item on the list. Calibration switches off any question that fires on good kits: chipped almonds are normal, so that one goes, but the fruit questions stay. On damage it ties the vision model; on what you can measure it wins, on both kits." |
-| 2:40–2:50 | README top, repo URL | "Packing list in, checks out, evidence for every verdict. Inspec, on Muse Spark and SAM 3.1." End card: "Images: MVTec LOCO AD, CC BY-NC-SA 4.0." |
+| 0:00–0:12 | App top, Screw Bag selected | "Before this week there were Meta's Muse Spark and SAM 3.1 models and a public dataset of kit photos. This week I built Inspec: it turns a packing list into checks, fixes them itself, and inspects kits with them." |
+| 0:12–0:30 | Section 1: packing list chips. Section 2: click "▶ Run it live". The status shows Muse Spark compiling, then "Compiled: Exactly 1 × long screw · …" | "Here's the packing list. I press run, and Muse Spark compiles it, live, into checks: exactly one long screw, one short screw, two nuts, two washers." |
+| 0:30–1:00 | Same status, waiting sped up (label on screen) until "Done: … good kits pass"; the "What it learned" lines; the call table | "Then Inspec runs those checks on 60 photos of known-good kits. Any check that fails on a good kit is wrong, so Muse Spark rewrites it and code validates the fix. It learns that a nut has a smaller hole than a washer and how long each screw is. Here are the Meta model calls it made." |
+| 1:00–1:30 | URL A: red Reject banner, the masks, the ✅/❌ list, the call table (SAM 3.1 segmentations, Muse Spark damage check) | "Now a kit from the test set, inspected live. SAM 3.1 finds every part; plain code measures them. Two short screws and no long one: rejected, and the reason is right there, with a mask on every part it counted." |
+| 1:30–1:45 | Section 4: the results table for Screw Bag | "On held-out test kits, Inspec catches all 137 kits with wrong parts or sizes. Muse Spark looking at the photo alone catches 130." |
+| 1:45–2:15 | Switch to Breakfast Box. Section 2 "What it learned" (SAM didn't know "nectarine", uses "apple"; granola amount), then URL B: Reject "Granola covers … measured 326,007", call table | "Same code, a different kit. SAM didn't know the word 'nectarine', so Inspec had Muse Spark suggest others and tested them: 'apple' works. It also learned how much granola a good box holds, so this box, with too little, is rejected." |
+| 2:15–2:40 | URL C: Reject "Tangerines: damaged (Muse Spark)", the "Looked at (Muse Spark)" list with almond damage not asked, the model's note | "A mask can't see a bruise, so for damage Inspec asks Muse Spark one question per item. Questions that fired on good kits are switched off: chipped almonds are normal. A torn tangerine peel isn't." |
+| 2:40–2:55 | Section 4 for Breakfast Box, then the footer | "Inspec beats the vision model on what can be measured, and ties it on damage, with evidence for every verdict. Built on Muse Spark and SAM 3.1. Images: MVTec LOCO." |
 
 ## Before upload
 
-- Every number spoken matches the README on the submitted commit.
-- No `.env`, API key or shell history on screen.
-- Under 3:00.
+- Under 3:00, English, no slides.
+- Every number spoken is on screen at that moment or in section 4.
+- Sped-up parts are labelled.
