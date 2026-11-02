@@ -14,6 +14,7 @@ import streamlit as st
 
 from inspec.explain import describe_check, describe_question, describe_result, label, learned
 from inspec.live import CallLog, LoggedLLM, LoggedSam
+from inspec.triage import triage
 
 ROOT = Path(__file__).resolve().parent
 # Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
@@ -261,11 +262,15 @@ if image_path is not None:
         st.stop()
     flags = damaged(dmg, enabled)
     checks = {c.id: c for c in final.checks}
+    verdict, _ = triage(result.checks, flags)
     failed = [describe_result(checks.get(c.check_id), c.value, c.message)
               for c in result.checks if not c.passed]
     failed += [describe_question(q, True) + " (Muse Spark)" for q in flags]
-    if failed:
+    if verdict == "FAIL":
         st.error("## ❌ Reject\n" + "  \n".join(failed))
+    elif verdict == "REVIEW":
+        st.warning("## 👀 Review: a person should look\n" + "  \n".join(failed) + "  \n*Only a "
+                   "borderline measurement or the model's judgement flagged this kit.*")
     else:
         st.success("## ✅ Pass")
 
