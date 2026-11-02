@@ -1,4 +1,4 @@
-"""Inspec demo: packing list -> compiled program -> calibration -> inspect -> evaluation.
+"""Inspec demo, one page in story order: packing list -> checks -> self-repair -> inspect -> results.
 
 Run with:  .venv/bin/streamlit run app.py
 """
@@ -11,27 +11,31 @@ from pathlib import Path
 
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parent
-# kit_name in a run's final.json -> (dataset folder under data/, packing list it was compiled from)
-KITS = {
-    "screw bag": ("screw_bag", "1 long screw, 1 short screw, 2 nuts, 2 washers"),
-    "breakfast box": ("breakfast_box", "2 tangerines, 1 nectarine, granola, banana chips, almonds"),
-}
-SPLITS = [
-    "validation/good",
-    "test/good",
-    "test/logical_anomalies",
-    "test/structural_anomalies",
-]
-LIMIT_FIELDS = ("min_length", "max_length", "min_area", "max_area", "min_hole", "max_hole")
+from inspec.explain import describe_check, describe_question, describe_result, label, learned
 
-st.set_page_config(page_title="Inspec demo", layout="wide")
-st.title("Inspec demo")
+ROOT = Path(__file__).resolve().parent
+# Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
+# held-out reports behind the results table: Inspec with damage check, and the vision-only
+# baseline (whose reference photos and hint the comparison toggle reuses).
+KITS = {
+    "Screw Bag": dict(dataset="screw_bag", run="run3", inspec_report="sb-final2",
+                      baseline_report="baseline3h",
+                      packing_list="1 long screw, 1 short screw, 2 nuts, 2 washers"),
+    "Breakfast Box": dict(dataset="breakfast_box", run="bb4", inspec_report="bb5-final",
+                          baseline_report="bb-baseline3",
+                          packing_list="2 tangerines, 1 nectarine, granola, banana chips, almonds"),
+}
+KINDS = {
+    "Good kit": "validation/good",
+    "Wrong parts or amounts": "test/logical_anomalies",
+    "Damaged or contaminated": "test/structural_anomalies",
+}
+
+st.set_page_config(page_title="Inspec", layout="wide")
 
 
 @st.cache_data
-def read_json(path: str) -> dict | None:
-    """Parsed JSON file, or None when it is missing or invalid."""
+def read_json(path: str) -> dict | list | None:
     try:
         return json.loads(Path(path).read_text())
     except (OSError, ValueError):
@@ -41,9 +45,20 @@ def read_json(path: str) -> dict | None:
 @st.cache_data
 def dataset_images(dataset: str, split: str) -> list[str]:
     directory = ROOT / "data" / dataset / split
-    if not directory.is_dir():
-        return []
-    return [str(p) for p in sorted(directory.glob("*.png"))]
+    return [str(p) for p in sorted(directory.glob("*.png"))] if directory.is_dir() else []
+
+
+@st.cache_data
+def dataset_labels(dataset: str, split: str) -> dict[str, list[str]]:
+    """Image name -> LOCO defect names (the dataset's answer key); {} for good splits."""
+    if split.endswith("good"):
+        return {}
+    from inspec.evaluate import defect_types
+
+    try:
+        return defect_types(ROOT / "data" / dataset, split)
+    except (OSError, ValueError):
+        return {}
 
 
 @st.cache_resource
@@ -61,18 +76,12 @@ def get_damage_checker(packing_list: str, kit_name: str):
 
 
 @st.cache_resource
-def get_baseline(packing_list: str):
+def get_baseline(packing_list: str, dataset: str, references: tuple[str, ...], hint: str):
     from inspec.baseline import VisionBaseline
 
-    return VisionBaseline(packing_list, cache_dir=ROOT / ".cache" / "baseline")
-
-
-def available_runs() -> list[str]:
-    runs_dir = ROOT / "runs"
-    if not runs_dir.is_dir():
-        return []
-    return sorted(p for p in (d.name for d in runs_dir.iterdir() if d.is_dir())
-                  if (runs_dir / p / "final.json").is_file())
+    refs = [ROOT / "data" / dataset / "train" / "good" / r for r in references]
+    return VisionBaseline(packing_list, references=refs, hint=hint,
+                          cache_dir=ROOT / ".cache" / "baseline")
 
 
 def load_program(path: Path):
@@ -81,216 +90,171 @@ def load_program(path: Path):
     return CheckProgram.model_validate_json(path.read_text())
 
 
-# Sidebar.
-run_names = available_runs()
-default_index = run_names.index("run3") if "run3" in run_names else 0
-run_name = st.sidebar.selectbox("Run", run_names, index=default_index) if run_names else None
-damage_on = st.sidebar.checkbox("Muse Spark damage check", value=True)
-baseline_on = st.sidebar.checkbox("Compare vision-only baseline", value=False)
+def chip(text: str, color: str = "#e8eef7", fg: str = "#1d2b3a") -> str:
+    return (f"<span style='background:{color};color:{fg};padding:6px 14px;border-radius:999px;"
+            f"margin:0 8px 8px 0;display:inline-block;font-size:1.15rem'>{text}</span>")
 
-if run_name is None:
-    st.error("No runs found: no subdirectory of runs/ contains final.json.")
+
+st.title("Inspec")
+st.caption("Type a packing list. Inspec turns it into checks, fixes them on known-good kits, "
+           "and inspects each kit with a mask on every part it counted.")
+
+# URL parameters preselect a view, e.g. ?kit=Breakfast Box&show=Damaged or contaminated&image=045
+params = st.query_params
+kit = st.radio("Kit", list(KITS), horizontal=True,
+               index=list(KITS).index(params["kit"]) if params.get("kit") in KITS else 0)
+cfg = KITS[kit]
+run_dir = ROOT / "runs" / cfg["run"]
+if not (run_dir / "final.json").is_file():
+    st.error(f"Run `{cfg['run']}` not found. Run scripts/e2e.py first (see README).")
     st.stop()
-run_dir = ROOT / "runs" / run_name
-kit_name = (read_json(str(run_dir / "final.json")) or {}).get("kit_name", "screw bag")
-dataset, default_list = KITS.get(kit_name.lower(), KITS["screw bag"])
-packing_list = st.sidebar.text_input("Packing list", default_list, key=f"packing_list:{kit_name}")
+final = load_program(run_dir / "final.json")
+compiled = load_program(run_dir / "compiled.json")
+packing_list = cfg["packing_list"]
 
-# Section 1: Compile.
-st.header("1. Compile")
-compiled_path = run_dir / "compiled.json"
-compiled_doc = read_json(str(compiled_path))
-if compiled_doc is None:
-    st.info(f"{compiled_path.name} is missing or invalid.")
-else:
-    st.json(compiled_doc, expanded=False)
-if st.button("Recompile live"):
-    try:
+# 1. Packing list -> checks.
+st.header("1 · The packing list")
+st.markdown("".join(chip(item.strip()) for item in packing_list.split(",")),
+            unsafe_allow_html=True)
+st.markdown("**Muse Spark turned it into these checks:**")
+for check in compiled.checks:
+    st.markdown(f"- {describe_check(check)}")
+with st.expander("Show the check program (JSON) or recompile it live"):
+    st.json(compiled.model_dump(exclude_none=True), expanded=False)
+    if st.button("Recompile with Muse Spark"):
         from inspec.compiler import compile_program
 
-        with st.spinner("Compiling..."):
-            generation = compile_program(packing_list, kit_name=kit_name)
-        st.json(json.loads(generation.value.model_dump_json(indent=2)), expanded=False)
-        st.write(f"Attempts: {generation.attempts}")
-        if generation.errors:
-            st.write("Rejected attempts:")
-            st.write(list(generation.errors))
-    except Exception as exc:
-        st.error(f"Recompile failed: {exc}")
+        try:
+            with st.spinner("Compiling..."):
+                generation = compile_program(packing_list, kit_name=final.kit_name)
+            for check in generation.value.checks:
+                st.markdown(f"- {describe_check(check)}")
+        except Exception as exc:
+            st.error(f"Recompile failed: {exc}")
 
-# Section 2: Calibrate on good kits.
-st.header("2. Calibrate on good kits")
-calibration = read_json(str(run_dir / "calibration.json"))
-if calibration is None:
-    st.info("calibration.json is missing or invalid.")
-else:
-    rounds = calibration.get("rounds", [])
-    st.table([{"round": r.get("round"), "passed": r.get("passed"), "total": r.get("total")}
-              for r in rounds])
-    for r in rounds:
-        with st.expander(f"Round {r.get('round')}: {r.get('passed')}/{r.get('total')} pass"):
-            repair = r.get("repair") or {}
-            st.write("Repair notes:")
-            st.write(repair.get("notes", "(no repair this round)"))
-            st.write("Rejected attempts:")
-            st.write(list(repair.get("rejected", [])))
-            st.write("Failures (first 10 images):")
-            failures = r.get("failures", {})
-            if not failures:
-                st.write("(none)")
-            for name in sorted(failures)[:10]:
-                st.write(f"{name}:")
-                st.write(list(failures[name]))
+# 2. Self-repair on good kits.
+st.header("2 · It fixes its own checks on good kits")
+val = (read_json(str(run_dir / "report.json")) or {}).get("splits", {}).get("validation/good", {})
+before = val.get("programs", {}).get("compiled")
+after = val.get("programs", {}).get("calibrated")
+if before and after:
+    a, b, _ = st.columns([1, 1, 2])
+    a.metric("Good kits rejected, as first written", f"{before['flagged']} / {val['images']}")
+    b.metric("After self-repair", f"{after['flagged']} / {val['images']}",
+             delta=after["flagged"] - before["flagged"], delta_color="inverse")
+st.markdown("A check that fails on a kit known to be good is wrong. Inspec shows those failures "
+            "to Muse Spark, which rewrites the check, and code validates every fix before it's "
+            "kept. **What it learned from 60 good kits:**")
+for line in learned(compiled, final, read_json(str(run_dir / "concepts.json"))):
+    st.markdown(f"- {line}")
+with st.expander("Muse Spark's repair notes"):
+    for r in (read_json(str(run_dir / "calibration.json")) or {}).get("rounds", []):
+        st.markdown(f"**Round {r['round']}:** {r['passed']}/{r['total']} good kits pass")
+        notes = (r.get("repair") or {}).get("notes")
+        if notes:
+            st.caption(notes)
 
-    try:
-        compiled_program = load_program(compiled_path)
-        final_program = load_program(run_dir / "final.json")
-        compiled_parts = {p.id: p for p in compiled_program.parts}
-        final_parts = {p.id: p for p in final_program.parts}
-        rows = [
-            {"part": pid, "field": field,
-             "compiled": getattr(compiled_parts[pid], field),
-             "final": getattr(final_parts[pid], field)}
-            for pid in compiled_parts
-            if pid in final_parts
-            for field in LIMIT_FIELDS
-            if getattr(compiled_parts[pid], field) != getattr(final_parts[pid], field)
-        ]
-        st.subheader("Part limits: compiled vs final (differing fields only)")
-        if rows:
-            st.table(rows)
-        else:
-            st.write("(no limit changed during calibration)")
-        compiled_check_ids = {c.id for c in compiled_program.checks}
-        added = [c for c in final_program.checks
-                 if c.type == "measure" and c.id not in compiled_check_ids]
-        st.subheader("Measure checks added by calibration")
-        if added:
-            st.table([{"id": c.id, "part": c.part, "metric": c.metric,
-                       "min": c.min, "max": c.max} for c in added])
-        else:
-            st.write("(none)")
-    except Exception as exc:
-        st.error(f"Could not compare compiled and final programs: {exc}")
-
-# Section 3: Inspect a kit.
-st.header("3. Inspect a kit")
-image_path: str | None = None
-options: list[str] = []
-split = st.selectbox("Split", SPLITS)
-paths = dataset_images(dataset, split)
+# 3. Inspect a kit.
+st.header("3 · Inspect a kit")
+left, right, opts = st.columns([2, 3, 2])
+split = KINDS[left.selectbox("Show me", list(KINDS), index=list(KINDS).index(params["show"])
+                             if params.get("show") in KINDS else 0)]
+paths = dataset_images(cfg["dataset"], split)
+labels = dataset_labels(cfg["dataset"], split)
+image_path = None
 if paths:
-    options = [Path(p).name for p in paths]
-    choice = st.selectbox("Image", options)
-    image_path = paths[options.index(choice)] if choice else None
-else:
-    st.info("Dataset images are absent; upload a PNG/JPG instead.")
-uploaded = st.file_uploader("Or upload a kit photo (PNG/JPG)", type=["png", "jpg", "jpeg"])
-if uploaded is not None:
-    data = uploaded.getvalue()
-    ext = Path(uploaded.name).suffix.lower()
-    if ext == ".jpeg":
-        ext = ".jpg"
-    digest = hashlib.sha256(data).hexdigest()
-    saved = ROOT / ".cache" / "uploads" / f"{digest}{ext}"
-    saved.parent.mkdir(parents=True, exist_ok=True)
-    saved.write_bytes(data)
-    image_path = str(saved)
+    names = [Path(p).name for p in paths]
+    shown = [f"{n[:-4]} · {', '.join(labels[n]).replace('_', ' ')}" if labels.get(n) else n[:-4]
+             for n in names]
+    start = next((i for i, n in enumerate(names) if n[:-4] == params.get("image")), 0)
+    image_path = paths[shown.index(right.selectbox("Image (dataset label)", shown, index=start))]
+baseline_on = opts.toggle("Compare with Muse Spark alone", value=params.get("compare") == "1")
+with st.expander("Or upload a photo"):
+    uploaded = st.file_uploader("Kit photo", type=["png", "jpg", "jpeg"])
+    if uploaded is not None:
+        data = uploaded.getvalue()
+        ext = ".jpg" if uploaded.name.lower().endswith(".jpeg") else Path(uploaded.name).suffix.lower()
+        saved = ROOT / ".cache" / "uploads" / f"{hashlib.sha256(data).hexdigest()}{ext}"
+        saved.parent.mkdir(parents=True, exist_ok=True)
+        saved.write_bytes(data)
+        image_path = str(saved)
 
 if image_path is not None:
     from PIL import Image as PILImage
 
+    from inspec.damage import damaged
     from inspec.executor import fetch_segments, run_program
     from inspec.overlay import legend, render
 
     try:
-        final_program = load_program(run_dir / "final.json")
-    except Exception as exc:
-        st.error(f"Could not load final program: {exc}")
-        st.stop()
-    try:
-        sam = get_sam_client()
-    except Exception as exc:
-        st.error(f"SAM client failed: {exc}")
-        st.stop()
-    program_result = None
-    try:
-        with st.spinner("Running SAM and the final program..."):
-            segments = fetch_segments(final_program, image_path, sam)
-            program_result = run_program(final_program, segments)
-            result = program_result
-        image = PILImage.open(image_path).convert("RGB")
-        overlay = render(image, result)
-        left, right = st.columns(2)
-        left.image(image, caption="Original", width="stretch")
-        right.image(overlay, caption="Overlay", width="stretch")
-        verdict_slot = st.empty()  # filled once the damage check (if on) has run
-        st.write(f"Part checks: {'pass' if result.passed else 'FAIL'}")
-        st.subheader("Legend")
-        st.table([{"part": part, "colour": f"#{r:02x}{g:02x}{b:02x}", "objects": n}
-                   for part, (r, g, b), n in legend(result)])
-        st.subheader("Checks")
-        st.table([{"id": c.check_id, "passed": c.passed, "message": c.message}
-                  for c in result.checks])
+        with st.spinner("Finding parts with SAM 3.1..."):
+            result = run_program(final, fetch_segments(final, image_path, get_sam_client()))
+        checker = get_damage_checker(packing_list, final.kit_name)
+        damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
+        enabled = list(damage_cal.get("enabled", checker.questions))
+        with st.spinner("Asking Muse Spark about damage..."):
+            dmg = checker.inspect(image_path)
     except Exception as exc:
         st.error(f"Inspection failed: {exc}")
+        st.stop()
+    flags = damaged(dmg, enabled)
+    checks = {c.id: c for c in final.checks}
+    failed = [describe_result(checks.get(c.check_id), c.value, c.message)
+              for c in result.checks if not c.passed]
+    failed += [describe_question(q, True) + " (Muse Spark)" for q in flags]
+    if failed:
+        st.error("## ❌ Reject\n" + "  \n".join(failed))
+    else:
+        st.success("## ✅ Pass")
 
-    flags: list[str] = []
-    if damage_on and image_path is not None:
-        st.subheader("Damage check")
-        damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
-        if not damage_cal:
-            st.warning("This run has no damage_calibration.json, so every question is enabled.")
-        try:
-            from inspec.damage import damaged
+    image = PILImage.open(image_path).convert("RGB")
+    a, b = st.columns(2)
+    a.image(image, caption="Photo", width="stretch")
+    b.image(render(image, result), caption="What SAM found", width="stretch")
+    b.markdown("".join(chip(f"{part.replace('_', ' ')} × {n}", f"rgb{tuple(rgb)}", "#fff")
+                       for part, rgb, n in legend(result)), unsafe_allow_html=True)
 
-            checker = get_damage_checker(packing_list, final_program.kit_name)
-            enabled = list(damage_cal.get("enabled", checker.questions))
-            with st.spinner("Running the damage check..."):
-                report = checker.inspect(image_path)
-            flags = damaged(report, enabled)
-            st.write(f"Enabled questions: {enabled}")
-            st.write(f"Flags: {flags or '(none)'}")
-            st.write("Evidence:")
-            st.write(report.evidence)
-        except Exception as exc:
-            st.error(f"Damage check failed: {exc}")
-            flags = ["damage check failed"]
-
-    if program_result is not None:
-        reasons = ([] if program_result.passed else ["parts"]) + list(flags)
-        if reasons:
-            verdict_slot.error(f"# FAIL ({', '.join(reasons)})")
+    a, b = st.columns(2)
+    a.subheader("Measured (SAM 3.1 + code)")
+    for c in result.checks:
+        a.markdown(f"{'✅' if c.passed else '❌'} "
+                   f"{describe_result(checks.get(c.check_id), c.value, c.message)}")
+    b.subheader("Looked at (Muse Spark)")
+    for q in checker.questions:
+        if q in enabled:
+            b.markdown(f"{'❌' if q in flags else '✅'} {describe_question(q, q in flags)}")
         else:
-            verdict_slot.success("# PASS" + (" (parts + damage)" if damage_on else ""))
+            b.markdown(f"<span style='color:#999'>➖ {label(q.removesuffix('_damaged'))} "
+                       f"damage: not asked, it fired on good kits</span>", unsafe_allow_html=True)
+    if flags:
+        b.caption(f"Model's notes: {dmg.evidence}")
 
-    if baseline_on and image_path is not None:
-        st.subheader("Vision-only baseline")
-        try:
-            with st.spinner("Running the vision-only baseline..."):
-                verdict = get_baseline(packing_list).inspect(image_path)
-            st.table([{"part": c.part, "expected": c.expected, "seen": c.seen}
-                      for c in verdict.counts])
-            st.write(f"Failures: {verdict.failures() or '(none)'}")
-            st.write(f"Reason: {verdict.reason}")
-            if verdict.failures():
-                st.error(f"Baseline verdict: FAIL ({', '.join(verdict.failures())})")
-            else:
-                st.success("Baseline verdict: PASS")
-        except Exception as exc:
-            st.error(f"Baseline failed: {exc}")
+    if baseline_on:
+        st.subheader("Muse Spark alone: photo + packing list, no measuring")
+        meta = read_json(str(ROOT / "runs" / cfg["baseline_report"] / "report.json")) or {}
+        with st.spinner("Asking Muse Spark..."):
+            alone = get_baseline(packing_list, cfg["dataset"], tuple(meta.get("references", [])),
+                                 meta.get("hint", "")).inspect(image_path)
+        (st.error if alone.failures() else st.success)(
+            f"**{'Reject' if alone.failures() else 'Pass'}.** {alone.reason}")
+        st.caption(" · ".join(f"{c.part}: saw {c.seen}, expected {c.expected}"
+                              for c in alone.counts))
 
-# Section 4: Evaluation.
-st.header("4. Evaluation")
-report = read_json(str(run_dir / "report.json"))
-if report is None:
-    st.info("report.json is missing or invalid.")
+# 4. Results.
+st.header("4 · Results on held-out test kits")
+ins = (read_json(str(ROOT / "runs" / cfg["inspec_report"] / "report.json")) or {}).get("splits")
+base = (read_json(str(ROOT / "runs" / cfg["baseline_report"] / "report.json")) or {}).get("splits")
+if ins and base:
+    def cell(splits: dict, split: str, program: str) -> str:
+        return f"{splits[split]['programs'][program]['flagged']} / {splits[split]['images']}"
+
+    rows = [("Good kits wrongly rejected", "test/good"),
+            ("Wrong parts or amounts caught", "test/logical_anomalies"),
+            ("Damaged or contaminated caught", "test/structural_anomalies")]
+    st.table({"": [r for r, _ in rows],
+              "Inspec": [cell(ins, s, "given+damage") for _, s in rows],
+              "Muse Spark alone": [cell(base, s, "vision_baseline") for _, s in rows]})
+    st.caption("MVTec LOCO AD test split, evaluated once after the method was frozen. "
+               "Significance tests and how the test set was used are in the README.")
 else:
-    rows = []
-    for split_name, entry in report.get("splits", {}).items():
-        what = "false alarms" if entry.get("kind") == "good" else "recall"
-        for program_name, pentry in entry.get("programs", {}).items():
-            rows.append({"split": split_name, "program": program_name,
-                         "kind": what, "flagged": pentry.get("flagged"),
-                         "images": entry.get("images"), "rate": pentry.get("rate")})
-    st.table(rows)
+    st.info("Result reports not found in runs/.")

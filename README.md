@@ -493,7 +493,7 @@ damage, with no SAM and no checks. It runs on the same images with the same metr
 | Damage check, Muse Spark vision (`inspec/damage.py`) | Done (tested), kit-neutral prompt; [results](#damage-check-muse-spark-vision) |
 | Concept repair before calibration (`inspec/concepts.py`) | Done (tested); used on [Breakfast Box](#second-category-breakfast-box) |
 | Vision-only baseline (`inspec/baseline.py`, `scripts/baseline.py`) | Done (tested); [results](#vision-only-baseline) |
-| Streamlit app (`app.py`, overlay in `inspec/overlay.py`) | Done; runs on saved runs and cached results, live recompile optional |
+| Streamlit app (`app.py`; plain-English checks in `inspec/explain.py`, overlay in `inspec/overlay.py`) | Done; one page in story order, runs on saved runs and cached results, live recompile optional |
 
 Unit tests: 100 passing (SAM client, parser, schema, LLM client, compiler, concept repair, executor, calibration,
 damage, baseline, overlay). The app was smoke-tested headless with Streamlit's `AppTest`.
@@ -544,8 +544,10 @@ scripts/download_loco.sh    # Screw Bag, about 1 GB, into data/
 # vision-only baseline (1 Muse Spark call per image, cached in .cache/baseline)
 .venv/bin/python scripts/baseline.py --name baseline1 --references 1
 
-# the demo page: pick a run, see its calibration rounds, inspect any kit with masks
+# the demo page: packing list -> checks in plain English -> self-repair -> inspect -> results
 .venv/bin/streamlit run app.py
+# open a view directly, e.g. a damaged Breakfast Box with the vision-only comparison on:
+#   http://localhost:8501/?kit=Breakfast%20Box&show=Damaged%20or%20contaminated&image=045&compare=1
 ```
 
 The first full run makes about 1,400 SAM calls (3 per image), taking a few minutes with 8 threads.
@@ -592,7 +594,7 @@ inspec/
   damage.py       # ✅ Muse Spark vision check for torn bag, broken/painted part, foreign object
   baseline.py     # ✅ Muse Spark vision-only baseline: counts + damage from the photo
   overlay.py      # ✅ draw part masks and labels on a kit photo
-app.py            # ✅ Streamlit page: compile -> calibrate -> inspect with masks -> eval
+app.py            # ✅ Streamlit page: packing list -> checks -> self-repair -> inspect -> results
 scripts/          # ✅ dataset download, e2e runner, baseline runner, Baseten check
 docs/             # ✅ verified API notes
 tests/            # ✅ unit tests and captured SAM responses
