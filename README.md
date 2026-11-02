@@ -68,7 +68,10 @@ Inspec's three-way verdicts on the same test kits:
 | Damaged or contaminated | 34 | 37 | 11 | 11 | 57 | 22 |
 
 Every measurable defect Inspec catches is a hard FAIL; damage mostly arrives as REVIEW, since
-that verdict rests on the model's judgement rather than a measurement.
+that verdict rests on the model's judgement rather than a measurement. In the app, a REVIEW kit
+shows what was flagged next to the masks, and the reviewer makes the call (pass or reject, with an
+optional note), logged to `runs/reviews.jsonl`. These reviewer decisions are not part of the
+numbers above.
 
 Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
 and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.

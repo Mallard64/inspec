@@ -14,9 +14,11 @@ import streamlit as st
 
 from inspec.explain import describe_check, describe_question, describe_result, label, learned
 from inspec.live import CallLog, LoggedLLM, LoggedSam
+from inspec import review
 from inspec.triage import triage
 
 ROOT = Path(__file__).resolve().parent
+REVIEW_LOG = ROOT / "runs" / "reviews.jsonl"  # gitignored: image names and decisions only
 # Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
 # held-out reports behind the results table: Inspec with damage check, and the vision-only
 # baseline (whose reference photos and hint the comparison toggle reuses).
@@ -250,16 +252,24 @@ if image_path is not None:
     else:
         sam = get_sam_client()
         checker = get_damage_checker(packing_list, final.kit_name)
-    try:
-        with st.spinner("Finding parts with SAM 3.1..."):
-            result = run_program(final, fetch_segments(final, image_path, sam))
-        damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
-        enabled = list(damage_cal.get("enabled", checker.questions))
-        with st.spinner("Asking Muse Spark about damage..."):
-            dmg = checker.inspect(image_path)
-    except Exception as exc:
-        st.error(f"Inspection failed: {exc}")
-        st.stop()
+    damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
+    enabled = list(damage_cal.get("enabled", checker.questions))
+    # A live result is kept for the session, so clicking a review button doesn't re-call the API.
+    memo_key = ("live", cfg["dataset"], image_path)
+    if live and memo_key in st.session_state:
+        result, dmg, saved_calls, sam = st.session_state[memo_key]
+        calls.calls.extend(saved_calls)
+    else:
+        try:
+            with st.spinner("Finding parts with SAM 3.1..."):
+                result = run_program(final, fetch_segments(final, image_path, sam))
+            with st.spinner("Asking Muse Spark about damage..."):
+                dmg = checker.inspect(image_path)
+        except Exception as exc:
+            st.error(f"Inspection failed: {exc}")
+            st.stop()
+        if live:
+            st.session_state[memo_key] = (result, dmg, list(calls.calls), sam)
     flags = damaged(dmg, enabled)
     checks = {c.id: c for c in final.checks}
     verdict, _ = triage(result.checks, flags)
@@ -295,6 +305,29 @@ if image_path is not None:
                        f"damage: not asked, it fired on good kits</span>", unsafe_allow_html=True)
     if flags:
         b.caption(f"Model's notes: {dmg.evidence}")
+
+    if verdict == "REVIEW":
+        resolved = Path(image_path).resolve()
+        image_key = (str(resolved.relative_to(ROOT / "data"))
+                     if resolved.is_relative_to(ROOT / "data") else resolved.name)
+        prior = review.load(REVIEW_LOG).get(image_key)
+        st.subheader("Your call")
+        if prior:
+            st.info(f"Decided {prior['time']}: **{prior['decision']}**"
+                    + (f" by {prior['reviewer']}" if prior["reviewer"] else "")
+                    + (f" · {prior['note']}" if prior["note"] else "") + ". You can change it.")
+        with st.form(f"review-{image_key}", clear_on_submit=True):
+            note = st.text_input("Note (optional)", placeholder="e.g. chips are just broken, fine")
+            reviewer = st.text_input("Reviewer (optional)")
+            ok, reject = st.columns(2)
+            pass_clicked = ok.form_submit_button("✅ Pass this kit", width="stretch")
+            fail_clicked = reject.form_submit_button("❌ Reject this kit", width="stretch")
+        if pass_clicked or fail_clicked:
+            entry = review.record(REVIEW_LOG, image_key, "PASS" if pass_clicked else "FAIL",
+                                  flags=[*flags, *(c.check_id for c in result.checks
+                                                   if not c.passed)],
+                                  note=note, reviewer=reviewer)
+            st.success(f"Saved: {entry['decision']}. Logged to `runs/reviews.jsonl`.")
 
     if baseline_on:
         st.subheader("Muse Spark alone: photo + packing list, no measuring")
