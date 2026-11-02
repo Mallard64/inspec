@@ -19,7 +19,6 @@ from inspec.triage import triage
 
 ROOT = Path(__file__).resolve().parent
 REVIEW_LOG = ROOT / "runs" / "reviews.jsonl"  # gitignored: image names and decisions only
-REVIEW_OFF = ROOT / "runs" / "reviewer_switched_off.json"  # damage questions reviewers turned off
 # Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
 # held-out reports behind the results table: Inspec with damage check, and the vision-only
 # baseline (whose reference photos and hint the comparison toggle reuses).
@@ -75,10 +74,29 @@ def get_sam_client():
 
 
 @st.cache_resource
-def get_damage_checker(packing_list: str, kit_name: str):
+def get_damage_checker(packing_list: str, kit_name: str, examples: tuple = ()):
     from inspec.damage import DamageChecker
 
-    return DamageChecker(packing_list, kit_name=kit_name, cache_dir=ROOT / ".cache" / "damage")
+    return DamageChecker(packing_list, kit_name=kit_name, cache_dir=ROOT / ".cache" / "damage",
+                         examples=examples)
+
+
+def image_key(path: str | Path) -> str:
+    """How the review log names a photo: its path under data/, or an upload's file name."""
+    resolved = Path(path).resolve()
+    data = ROOT / "data"
+    return str(resolved.relative_to(data)) if resolved.is_relative_to(data) else resolved.name
+
+
+def reviewer_examples(dataset: str, questions: list[str], inspecting: str | Path) -> tuple:
+    """Reviewed kits to show Muse Spark, never the kit being inspected."""
+    def resolve(key: str) -> Path | None:
+        for path in (ROOT / "data" / key, ROOT / ".cache" / "uploads" / key):
+            if path.exists() and key != image_key(inspecting):
+                return path
+        return None
+
+    return tuple(review.pick_examples(review.load(REVIEW_LOG), dataset, questions, resolve))
 
 
 @st.cache_resource
@@ -241,6 +259,9 @@ if image_path is not None:
     from inspec.overlay import legend, render
 
     calls = CallLog()
+    examples = reviewer_examples(cfg["dataset"], get_damage_checker(packing_list,
+                                                                    final.kit_name).questions,
+                                 image_path)
     if live:  # fresh clients on an empty cache, so every answer below comes from the API now
         from inspec.damage import DamageChecker
         from inspec.llm import LLM
@@ -249,16 +270,15 @@ if image_path is not None:
         scratch = tempfile.mkdtemp(prefix="inspec-live-")
         sam = LoggedSam(SamClient(Path(scratch) / "sam"), calls)
         checker = DamageChecker(packing_list, kit_name=final.kit_name, cache_dir=Path(scratch) / "d",
-                                llm=LoggedLLM(LLM(), calls, "damage check (one question per item)"))
+                                llm=LoggedLLM(LLM(), calls, "damage check (one question per item)"),
+                                examples=examples)
     else:
         sam = get_sam_client()
-        checker = get_damage_checker(packing_list, final.kit_name)
+        checker = get_damage_checker(packing_list, final.kit_name, examples)
     damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
-    calibrated = list(damage_cal.get("enabled", checker.questions))
-    reviewer_off = review.switched_off(REVIEW_OFF, cfg["dataset"])
-    enabled = [q for q in calibrated if q not in reviewer_off]
+    enabled = list(damage_cal.get("enabled", checker.questions))
     # A live result is kept for the session, so clicking a review button doesn't re-call the API.
-    memo_key = ("live", cfg["dataset"], image_path)
+    memo_key = ("live", cfg["dataset"], image_path, examples)
     if live and memo_key in st.session_state:
         result, dmg, saved_calls, sam = st.session_state[memo_key]
         calls.calls.extend(saved_calls)
@@ -303,9 +323,6 @@ if image_path is not None:
     for q in checker.questions:
         if q in enabled:
             b.markdown(f"{'❌' if q in flags else '✅'} {describe_question(q, q in flags)}")
-        elif q in reviewer_off:
-            b.markdown(f"<span style='color:#999'>➖ {label(q.removesuffix('_damaged'))} "
-                       f"damage: switched off by reviewers</span>", unsafe_allow_html=True)
         else:
             b.markdown(f"<span style='color:#999'>➖ {label(q.removesuffix('_damaged'))} "
                        f"damage: not asked, it fired on good kits</span>", unsafe_allow_html=True)
@@ -313,52 +330,49 @@ if image_path is not None:
         b.caption(f"Model's notes: {dmg.evidence}")
 
     if verdict == "REVIEW":
-        resolved = Path(image_path).resolve()
-        image_key = (str(resolved.relative_to(ROOT / "data"))
-                     if resolved.is_relative_to(ROOT / "data") else resolved.name)
-        prior = review.load(REVIEW_LOG).get(image_key)
+        key = image_key(image_path)
+        prior = review.load(REVIEW_LOG).get(key)
         st.subheader("Your call")
         if prior:
             st.info(f"Decided {prior['time']}: **{prior['decision']}**"
                     + (f" by {prior['reviewer']}" if prior["reviewer"] else "")
                     + (f" · {prior['note']}" if prior["note"] else "") + ". You can change it.")
-        with st.form(f"review-{image_key}", clear_on_submit=True):
+        with st.form(f"review-{key}", clear_on_submit=True):
             note = st.text_input("Note (optional)", placeholder="e.g. chips are just broken, fine")
             reviewer = st.text_input("Reviewer (optional)")
             ok, reject = st.columns(2)
             pass_clicked = ok.form_submit_button("✅ Pass this kit", width="stretch")
             fail_clicked = reject.form_submit_button("❌ Reject this kit", width="stretch")
         if pass_clicked or fail_clicked:
-            entry = review.record(REVIEW_LOG, image_key, "PASS" if pass_clicked else "FAIL",
+            entry = review.record(REVIEW_LOG, key, "PASS" if pass_clicked else "FAIL",
                                   kit=cfg["dataset"], flags=[*flags, *(c.check_id for c in result.checks
                                                    if not c.passed)],
                                   note=note, reviewer=reviewer)
             st.success(f"Saved: {entry['decision']}. Logged to `runs/reviews.jsonl`.")
 
-    # Reviewer decisions feed back into the damage check: a question reviewers keep overriding
-    # is suggested for switching off, like calibration does with questions that fire on good kits.
+    # Reviewer decisions feed back in as labelled example photos for the damage check.
     stats = review.tally(review.load(REVIEW_LOG), cfg["dataset"], checker.questions)
-    suggested = review.suggest_off({q: s for q, s in stats.items() if q in enabled})
-    reviewed = {q: s for q, s in stats.items() if s["passed"] + s["rejected"] or q in reviewer_off}
-    with st.expander(f"What reviewers taught it ({len(suggested)} suggestion"
-                     f"{'' if len(suggested) == 1 else 's'})", expanded=bool(suggested)):
-        st.caption(f"For each damage question: kits it flagged that a reviewer passed (it was wrong) "
-                   f"or rejected (it was right). After {review.MIN_DECISIONS}+ decisions with "
-                   f"{review.MIN_OVERRIDE:.0%}+ passed, Inspec suggests switching it off.")
+    reviewed = {q: s for q, s in stats.items() if s["passed"] + s["rejected"]}
+    with st.expander(f"What reviewers taught it ({len(examples)} example photo"
+                     f"{'' if len(examples) == 1 else 's'} in use)"):
+        st.caption("Reviewed kits go to Muse Spark with every damage check, before the photo it "
+                   "inspects, as labelled examples: a kit a reviewer passed shows what counts as "
+                   f"fine here, a rejected kit shows real damage. Newest first, up to "
+                   f"{review.PER_QUESTION} passed and 1 rejected kit per question, "
+                   f"{review.MAX_EXAMPLES} in all; the kit being inspected is never its own example. "
+                   "Nothing is retrained and no question is switched off.")
         if not reviewed:
             st.write("No reviewer decisions on this kit yet.")
         for q, s in reviewed.items():
-            name, counts = st.columns([3, 2])
-            note = " · **reviewers keep overriding this**" if q in suggested else ""
-            name.markdown(f"**{label(q.removesuffix('_damaged'))} damage**: "
-                          f"{s['passed']} passed, {s['rejected']} rejected{note}")
-            if q in reviewer_off:
-                if counts.button("Switch back on", key=f"on-{q}"):
-                    review.set_switched_off(REVIEW_OFF, cfg["dataset"], q, False)
-                    st.rerun()
-            elif q in suggested and counts.button("Switch off", key=f"off-{q}", type="primary"):
-                review.set_switched_off(REVIEW_OFF, cfg["dataset"], q, True)
-                st.rerun()
+            st.markdown(f"**{label(q.removesuffix('_damaged'))} damage**: flagged "
+                        f"{s['passed'] + s['rejected']} reviewed kits; reviewers passed "
+                        f"{s['passed']}, rejected {s['rejected']}")
+        if examples:
+            for col, e in zip(st.columns(len(examples)), examples):
+                col.image(e.image, width="stretch", caption=(
+                    f"{'✅ passed' if e.decision == 'PASS' else '❌ rejected'}: "
+                    + ", ".join(label(f.removesuffix('_damaged')) for f in e.flags)
+                    + (f" · “{e.note}”" if e.note else "")))
 
     if baseline_on:
         st.subheader("Muse Spark alone: photo + packing list, no measuring")

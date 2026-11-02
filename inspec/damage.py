@@ -13,14 +13,22 @@ Damage is asked per item because what's normal differs by item: chipped almonds 
 bruised tangerine isn't. With one shared "item broken" question, the almonds switched it off for
 the fruit too.
 
-Answers are cached on disk by (model, prompt, image) so re-evaluation doesn't re-call the model.
+Reviewed kits can be passed in as ``examples``: photos a person already judged, with the
+question that flagged them, the decision and the reviewer's note. They go in front of the photo
+being inspected, so Muse Spark sees what this station calls fine (or damaged) without any
+training. This is how reviewer decisions on REVIEW kits feed back in (``inspec/review.py``).
+
+Answers are cached on disk by (model, prompt, images) so re-evaluation doesn't re-call the model.
 """
 
 from __future__ import annotations
 
+import base64
+import io
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
 from pathlib import Path
 
 from pydantic import BaseModel, Field, create_model
@@ -92,9 +100,49 @@ you see each defect.
 """
 
 
+@dataclass(frozen=True)
+class Example:
+    """A kit a person reviewed: ``flags`` are the questions that fired, ``decision`` PASS or FAIL."""
+    image: str
+    flags: tuple[str, ...]
+    decision: str
+    note: str = ""
+
+    def describe(self) -> str:
+        flagged = ", ".join(f.replace("_", " ") for f in self.flags)
+        verdict = ("a reviewer judged it FINE: what you see there is normal here, not a defect"
+                   if self.decision == "PASS" else "a reviewer confirmed it is DEFECTIVE")
+        return f"Flagged for {flagged}; {verdict}." + (f' Reviewer\'s note: "{self.note}"'
+                                                         if self.note else "")
+
+
+EXAMPLE_SIDE = 1024  # example photos are shrunk to JPEG; six full-size PNGs overflow a request
+
+
+def _example_content(path: Path) -> dict:
+    from PIL import Image
+
+    image = Image.open(path).convert("RGB")
+    image.thumbnail((EXAMPLE_SIDE, EXAMPLE_SIDE))
+    buf = io.BytesIO()
+    image.save(buf, "JPEG", quality=85)
+    return {"type": "input_image",
+            "image_url": "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()}
+
+
+EXAMPLES_INSTRUCTIONS = """
+Before the photo to inspect you get earlier photos of this kit that a person reviewed, each with
+the question that flagged it and the reviewer's decision. Use them to judge what counts as normal
+at this station: if the new photo only shows the same kind of thing a reviewer judged fine, answer
+false for that question; if it shows what a reviewer confirmed as a defect, answer true. Report
+only on the last photo.
+"""
+
+
 class DamageChecker:
     def __init__(self, packing_list: str, *, kit_name: str = "kit", llm: LLM | None = None,
-                 cache_dir: str | Path = ".cache/damage") -> None:
+                 cache_dir: str | Path = ".cache/damage",
+                 examples: list[Example] | tuple[Example, ...] = ()) -> None:
         self.llm = llm or LLM()
         self.items = packing_items(packing_list)
         self.report_type = report_type(self.items)
@@ -105,13 +153,21 @@ class DamageChecker:
         self.instructions = INSTRUCTIONS.format(packing_list=packing_list.strip(),
                                                 kit_name=kit_name.strip() or "kit",
                                                 item_lines=item_lines)
+        self.examples = tuple(examples)
+        if self.examples:  # the example texts are in the instructions, so they key the cache too
+            self.instructions += EXAMPLES_INSTRUCTIONS + "".join(
+                f"\nExample {i}: {e.describe()}" for i, e in enumerate(self.examples, 1))
         self.cache_dir = Path(cache_dir)
 
     def inspect(self, image: str | Path) -> DamageReport:
         image = Path(image)
-        return cached_generate(self.llm, self.instructions, [
-            {"type": "input_text", "text": "Inspect this kit."}, _image_content(image)],
-            self.report_type, [image], self.cache_dir)
+        content: list[dict] = []
+        for i, e in enumerate(self.examples, 1):
+            content += [{"type": "input_text", "text": f"Example {i}: {e.describe()}"},
+                        _example_content(Path(e.image))]
+        content += [{"type": "input_text", "text": "Inspect this kit."}, _image_content(image)]
+        return cached_generate(self.llm, self.instructions, content, self.report_type,
+                               [*(Path(e.image) for e in self.examples), image], self.cache_dir)
 
     def inspect_many(self, images: list[str | Path], *,
                      workers: int = 8) -> dict[str, DamageReport]:

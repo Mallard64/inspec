@@ -55,3 +55,33 @@ def test_calibration_switches_off_only_the_noisy_item():
     assert "almonds_damaged" not in cal["enabled"] and "tangerines_damaged" in cal["enabled"]
     assert damaged(report(almonds_damaged=True, tangerines_damaged=True),
                    cal["enabled"]) == ["tangerines_damaged"]
+
+
+def test_examples_go_before_the_kit_and_key_the_cache(tmp_path):
+    from inspec.damage import Example
+
+    kit, fine = tmp_path / "kit.png", tmp_path / "fine.png"
+    kit.write_bytes(b"\x89PNG kit")
+    from PIL import Image
+
+    Image.new("RGB", (2000, 1000), "white").save(fine)
+    seen = []
+
+    class Recorder(FakeLLM):
+        def generate(self, instructions, content, out_type):
+            seen.append((instructions, content))
+            return super().generate(instructions, content, out_type)
+
+    llm = Recorder(report())
+    plain = DamageChecker("2 tangerines, almonds", llm=llm, cache_dir=tmp_path / "c")
+    taught = DamageChecker("2 tangerines, almonds", llm=llm, cache_dir=tmp_path / "c", examples=[
+        Example(str(fine), ("almonds_damaged",), "PASS", "broken almonds are normal")])
+    plain.inspect(kit)
+    taught.inspect(kit)
+    assert llm.calls == 2  # examples change the request, so no stale cache hit
+    instructions, content = seen[1]
+    assert "reviewer judged it FINE" in instructions and "broken almonds are normal" in instructions
+    assert [c["type"] for c in content] == ["input_text", "input_image", "input_text", "input_image"]
+    assert content[-2]["text"] == "Inspect this kit."
+    assert "Example" not in seen[0][0]
+    assert content[1]["image_url"].startswith("data:image/jpeg")  # examples are shrunk

@@ -1,10 +1,9 @@
-"""Human decisions on REVIEW kits, and what they teach the damage check.
+"""Human decisions on REVIEW kits, and how they feed back into the damage check.
 
 Decisions are an append-only JSONL log; the latest decision per image wins. Every decision lists
-the flags the reviewer saw, so each damage question gets a tally: kits it flagged that a reviewer
-passed (an override: the question was wrong) or rejected (it was right). A question reviewers
-keep overriding is suggested for switching off, the same way calibration switches off questions
-that fire on good kits. Switching off is a person's click, stored per kit in a small JSON file.
+the flags the reviewer saw. Reviewed kits become labelled examples for Muse Spark
+(``damage.Example``): a kit a reviewer passed shows it what counts as fine here, a kit they
+rejected shows it real damage. The question stays on; the model is shown, not retrained.
 """
 
 from __future__ import annotations
@@ -13,9 +12,11 @@ import json
 import time
 from pathlib import Path
 
+from inspec.damage import Example
+
 DECISIONS = ("PASS", "FAIL")
-MIN_DECISIONS = 3   # don't suggest anything from fewer reviewed kits than this
-MIN_OVERRIDE = 0.8  # share of a question's flags that reviewers passed
+PER_QUESTION = 2  # passed kits shown per damage question
+MAX_EXAMPLES = 6  # photos per request, on top of the kit being inspected
 
 
 def record(log_path: Path, image: str, decision: str, *, kit: str, flags: list[str],
@@ -55,28 +56,23 @@ def tally(decisions: dict[str, dict], kit: str, questions: list[str]) -> dict[st
     return stats
 
 
-def suggest_off(stats: dict[str, dict], *, min_decisions: int = MIN_DECISIONS,
-                min_override: float = MIN_OVERRIDE) -> list[str]:
-    """Questions reviewers keep overriding: enough decisions, mostly passed."""
-    out = []
-    for q, s in stats.items():
-        n = s["passed"] + s["rejected"]
-        if n >= min_decisions and s["passed"] / n >= min_override:
-            out.append(q)
+def pick_examples(decisions: dict[str, dict], kit: str, questions: list[str], resolve, *,
+                  per_question: int = PER_QUESTION, max_total: int = MAX_EXAMPLES) -> list[Example]:
+    """Newest reviewed kits first, at most ``per_question`` passed and one rejected kit per damage
+    question, ``max_total`` in all. ``resolve(image_key)`` gives the photo's path, or None if
+    it's gone (those are skipped)."""
+    taken: dict[tuple[str, str], int] = {}
+    out: list[Example] = []
+    for entry in sorted(decisions.values(), key=lambda e: e["time"], reverse=True):
+        flags = tuple(q for q in entry["flags"] if q in questions)
+        path = resolve(entry["image"]) if entry.get("kit") == kit and flags else None
+        if path is None:
+            continue
+        limit = per_question if entry["decision"] == "PASS" else 1
+        if any(taken.get((q, entry["decision"]), 0) < limit for q in flags):
+            for q in flags:
+                taken[(q, entry["decision"])] = taken.get((q, entry["decision"]), 0) + 1
+            out.append(Example(str(path), flags, entry["decision"], entry.get("note", "")))
+            if len(out) == max_total:
+                break
     return out
-
-
-def switched_off(path: Path, kit: str) -> set[str]:
-    """Questions a reviewer switched off for this kit."""
-    if not path.exists():
-        return set()
-    return set(json.loads(path.read_text()).get(kit, []))
-
-
-def set_switched_off(path: Path, kit: str, question: str, off: bool) -> None:
-    data = json.loads(path.read_text()) if path.exists() else {}
-    current = set(data.get(kit, []))
-    current = current | {question} if off else current - {question}
-    data[kit] = sorted(current)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2) + "\n")

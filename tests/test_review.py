@@ -1,6 +1,6 @@
 import pytest
 
-from inspec.review import load, record, set_switched_off, suggest_off, switched_off, tally
+from inspec.review import load, pick_examples, record, tally
 
 BB = "breakfast_box"
 
@@ -38,20 +38,22 @@ def test_tally_counts_only_this_kit_and_known_questions(tmp_path):
                      "nectarine_damaged": {"passed": 0, "rejected": 1}}
 
 
-def test_suggest_off_needs_enough_mostly_passed_decisions():
-    stats = {"a": {"passed": 3, "rejected": 0},   # suggested
-             "b": {"passed": 2, "rejected": 0},   # too few
-             "c": {"passed": 4, "rejected": 2},   # reviewers often agree with it
-             "d": {"passed": 4, "rejected": 1}}   # exactly 80%
-    assert suggest_off(stats) == ["a", "d"]
-
-
-def test_switch_off_and_back_on(tmp_path):
-    path = tmp_path / "off.json"
-    assert switched_off(path, BB) == set()
-    set_switched_off(path, BB, "banana_chips_damaged", True)
-    set_switched_off(path, "screw_bag", "washers_damaged", True)
-    assert switched_off(path, BB) == {"banana_chips_damaged"}
-    set_switched_off(path, BB, "banana_chips_damaged", False)
-    assert switched_off(path, BB) == set()
-    assert switched_off(path, "screw_bag") == {"washers_damaged"}
+def test_pick_examples_newest_first_capped_per_question(tmp_path):
+    decisions = {
+        "a": dict(image="a", kit=BB, decision="PASS", flags=["almonds_damaged"], time="1", note=""),
+        "b": dict(image="b", kit=BB, decision="PASS", flags=["almonds_damaged"], time="2", note=""),
+        "c": dict(image="c", kit=BB, decision="PASS", flags=["almonds_damaged"], time="3", note="ok"),
+        "d": dict(image="d", kit=BB, decision="FAIL", flags=["almonds_damaged"], time="0", note=""),
+        "e": dict(image="e", kit=BB, decision="PASS", flags=["granola_area"], time="4", note=""),
+        "f": dict(image="f", kit="screw_bag", decision="PASS", flags=["almonds_damaged"], time="5",
+                  note=""),
+        "g": dict(image="gone", kit=BB, decision="PASS", flags=["nectarine_damaged"], time="6",
+                  note=""),
+    }
+    picked = pick_examples(decisions, BB, ["almonds_damaged", "nectarine_damaged"],
+                           lambda key: None if key == "gone" else f"/data/{key}.png")
+    # newest two passes for almonds (c, b), then the one rejection (d); e has no damage flag,
+    # f is another kit, g's photo is gone
+    assert [(e.image, e.decision, e.note) for e in picked] == [
+        ("/data/c.png", "PASS", "ok"), ("/data/b.png", "PASS", ""), ("/data/d.png", "FAIL", "")]
+    assert len(pick_examples(decisions, BB, ["almonds_damaged"], lambda k: k, max_total=1)) == 1
