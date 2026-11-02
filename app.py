@@ -407,14 +407,14 @@ if ins and base:
     def cell(splits: dict, split: str, program: str) -> str:
         return f"{splits[split]['programs'][program]['flagged']} / {splits[split]['images']}"
 
-    rows = [("Good kits wrongly rejected", "test/good"),
+    rows = [("Good kits flagged by mistake", "test/good"),
             ("Wrong parts or amounts caught", "test/logical_anomalies"),
             ("Damaged or contaminated caught", "test/structural_anomalies")]
     st.table({"": [r for r, _ in rows],
               "Inspec": [cell(ins, s, "given+damage") for _, s in rows],
               "Muse Spark alone": [cell(base, s, "vision_baseline") for _, s in rows]})
     st.caption("MVTec LOCO AD test split, evaluated once after the method was frozen. "
-               "Significance tests and how the test set was used are in the README.")
+               "Significance tests and how the test set was used: docs/benchmarks.md.")
 else:
     st.info("Result reports not found in runs/.")
 
