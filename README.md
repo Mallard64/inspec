@@ -10,7 +10,7 @@ commit history is the record.
 - **Demo video:** _coming before submission_ ([shot list](docs/video-script.md))
 - **Run it yourself:** [quick start](#quick-start), about 5 minutes plus the dataset download
 
-<!-- Screenshot: the app's "Inspect a kit" view, Reject banner + masks + checklists -->
+![The Inspec app: a packing list compiled into checks, then fixed on known-good kits (60/60 good kits rejected before, 2/60 after)](docs/screenshot.png)
 
 ## The problem
 
