@@ -52,14 +52,16 @@ A perfect score deserves suspicion, so here is the full record (from the session
 - **How often Screw Bag test was evaluated: 12 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
   run and two baseline runs; then two more baseline runs (3 references, with and without a size
   guide), made with Inspec frozen, the kit-neutral damage prompt (`sb-final`) and the per-item
-  damage questions (`sb-final2`), and PASS / REVIEW / FAIL (`sb-final2-triage`): 12 in all. Each run's program and
+  damage questions (`sb-final2`), PASS / REVIEW / FAIL (`sb-final2-triage`), and reviewer
+  examples (`sb-final2-examples`, frozen at `39e93ce`): 13 in all. Each run's program and
   report are saved.
 - **What changed between test runs.** Once, for the part checks: after run 2 I added the "lone
   outlier is a measurement failure" rule to the repair prompt. The trigger was run 2's calibration
   notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
   its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
   137/137 with 1 of 122 false alarms.**
-- **Breakfast Box test: evaluated five times** (plus two baseline runs), each time after freezing;
+- **Breakfast Box test: evaluated six times** (plus two baseline runs), each time after freezing;
+  the sixth is reviewer examples (`bb5-final-examples`, frozen at `39e93ce`);
   the fourth is the Muse Spark Open run, with code unchanged since `6aa7546`, and the fifth the
   PASS / REVIEW / FAIL scoring (`429343c`), which reuses the frozen program and damage answers. First the unchanged method
   (`bb1`; a crash in the SAM parser before any result doesn't count). I then saw its per-defect
@@ -379,6 +381,54 @@ touching screws read as one long one, so the counts really are wrong in the mask
 review work: most damage defects arrive as REVIEW, alongside 6 (Screw Bag) and 4 (Breakfast Box)
 good kits per hundred-odd.
 
+## Learning from reviewers
+
+**Method.** A person's decision on a REVIEW kit (app section 3) is logged with the flags they saw.
+Reviewed kits become labelled examples (`inspec/review.py`, `damage.Example`): newest first, up to
+2 passed and 1 rejected kit per damage question, 6 in all, shrunk to 1024 px JPEG. They go to
+Muse Spark before the photo it inspects, with the question that flagged them, the decision and
+the reviewer's note. The kit being inspected is never its own example. The damage questions are
+then re-calibrated with the examples in place (same 3.4% rule). Without examples the prompt is
+unchanged, so every earlier result still holds.
+
+**Simulated reviewer.** There were no real reviewers, so `scripts/review_eval.py` uses the dataset
+labels: the 60 calibration `train/good` kits are known good, so each one a damage question flagged
+is "passed". Breakfast Box: 31 of 60 flagged, 6 picked (4 box damage, 1 almonds, 1 banana chips;
+2 also foreign object). Screw Bag: 2 of 60 flagged (washers), both picked. No validation or test
+image is ever an example. Re-calibration runs on the other 54 and 58 calibration kits.
+
+**Protocol.** Developed and checked on `validation/good` and the even-numbered test anomalies,
+with nothing tuned on them (the settings above were set before the first run). Frozen at
+`39e93ce`, then `test/good` and the odd-numbered anomalies were scored once.
+
+| | Screw Bag without | with | Breakfast Box without | with |
+|---|---|---|---|---|
+| Questions passing calibration | 7 of 7 | 7 of 7 | 6 of 8 | 8 of 8 (box, almonds back on) |
+| `validation/good` PASS / REVIEW / FAIL | 57 / 2 / 1 | 58 / 1 / 1 | 57 / 5 / 0 | 62 / 0 / 0 |
+| `test/good` PASS / REVIEW / FAIL | 115 / 6 / 1 | 120 / 1 / 1 | 98 / 4 / 0 | 101 / 1 / 0 |
+| Structural caught, dev (even) half | 33 / 41 | 37 / 41 | 35 / 45 | 38 / 45 |
+| Structural caught, held-out (odd) half | 38 / 41 | 39 / 41 | 33 / 45 | 37 / 45 |
+| Logical caught (both halves) | 137 / 137 | 137 / 137 | 78 / 83 | 78 / 83 |
+
+Structural catches by defect type (whole test set):
+
+| Screw Bag | without | with | | Breakfast Box | without | with |
+|---|---|---|---|---|---|---|
+| bag broken (16) | 15 | 14 | | box damaged (4) | 1 | 3 |
+| color (16) | 13 | 15 | | contamination (40) | 35 | 37 |
+| contamination (25) | 23 | 24 | | fruit damaged (31) | 23 | 26 |
+| part broken (25) | 20 | 23 | | mixed cereals (8) | 2 | 2 |
+| | | | | toppings crushed (7) | 7 | 7 |
+
+Exact McNemar tests, with vs without, whole test split: Breakfast Box structural 7 better, 0 worse
+(p = 0.016); Breakfast Box good kits 3 / 0 (p = 0.25); Screw Bag good kits 5 / 0 (p = 0.06); Screw
+Bag structural 6 / 1 (p = 0.13). Only the first is significant at 0.05.
+
+**Limits.** The simulated reviewer is never wrong; a real one who passes a damaged kit teaches the
+model to miss that damage, and nothing yet checks reviewers against each other. The examples are
+all "passed" kits (no rejected kits exist before the test set), so the "confirmed damage" half
+of the prompt is untested. Each damage check now sends 7 photos instead of 1.
+
 ## Reproduce the results
 
 Setup is in the [README quick start](../README.md#quick-start). Then:
@@ -395,6 +445,8 @@ scripts/download_loco.sh screw_bag breakfast_box
   --packing-list "2 tangerines, 1 nectarine, granola, banana chips, almonds" --calib 60 --test --name bb
 # vision-only baseline (3 reference kits; add --hint "..." for the size guide)
 .venv/bin/python scripts/baseline.py --references 3 --name base3
+# reviewer examples (simulated reviewer); --heldout adds test/good and the odd half
+.venv/bin/python scripts/review_eval.py --kit breakfast_box
 # compile and calibrate on Muse Spark Open via Baseten
 .venv/bin/python scripts/e2e.py --provider baseten --calib 60 --name baseten
 ```

@@ -68,12 +68,35 @@ Inspec's three-way verdicts on the same test kits:
 | Damaged or contaminated | 34 | 37 | 11 | 11 | 57 | 22 |
 
 Every measurable defect Inspec catches is a hard FAIL; damage mostly arrives as REVIEW, since
-that verdict rests on the model's judgement rather than a measurement. In the app, a REVIEW kit
-shows what was flagged next to the masks, and the reviewer makes the call (pass or reject, with an
-optional note), logged to `runs/reviews.jsonl`. Those calls feed back in: a damage question that
-reviewers pass at least 80% of the time, over 3 or more kits, is suggested for switching off, and
-one click turns it off (or back on). Reviewer decisions are not part of the numbers above, and
-this loop hasn't been evaluated: switching a question off also stops it catching real damage.
+that verdict rests on the model's judgement rather than a measurement.
+
+### Learning from reviewers
+
+A REVIEW kit goes to a person, who passes or rejects it in the app (with an optional note). Those
+decisions come back as **labelled example photos**: with every damage check, Muse Spark first sees
+up to 6 reviewed kits ("a reviewer passed this one although almond damage was flagged"), then the
+kit to inspect. No model is retrained and no question is switched off.
+
+To measure it without real reviewers, a simulated reviewer passes the known-good *training* kits
+that a damage question wrongly flagged (6 photos on Breakfast Box, 2 on Screw Bag; no test
+images). Same test kits, code frozen (`39e93ce`) before the held-out half was scored:
+
+| | Screw Bag: without | Screw Bag: with examples | Breakfast Box: without | Breakfast Box: with examples |
+|---|---|---|---|---|
+| Good kits flagged (REVIEW or FAIL) | 7 / 122 | **2 / 122** | 4 / 102 | **1 / 102** |
+| Damaged or contaminated caught | 71 / 82 | **76 / 82** | 68 / 90 | **75 / 90** |
+| … held-out (odd) half | 38 / 41 | 39 / 41 | 33 / 45 | 37 / 45 |
+| Wrong parts, sizes or amounts caught | 137 / 137 | 137 / 137 | 78 / 83 | 78 / 83 |
+| Damage questions that pass calibration | 7 of 7 | 7 of 7 | 6 of 8 | **8 of 8** |
+
+- Fewer false alarms *and* more catches. On Breakfast Box the examples bring back the box-damage
+  and almond questions that calibration had switched off: box damage caught goes from 1 to 3 of 4.
+- Only one gain is statistically significant: Breakfast Box damage, 7 kits gained and none lost
+  (exact paired test, p = 0.016). The others all point the same way but are small (Screw Bag good
+  kits 5 better, 0 worse, p = 0.06; Screw Bag damage 6 better, 1 worse, p = 0.13).
+- The simulated reviewer is never wrong; real ones will be, and a wrongly passed kit teaches the
+  model to miss that damage. The even-numbered anomalies were seen while building this (nothing
+  was tuned on them). Details: [benchmarks](docs/benchmarks.md#learning-from-reviewers).
 
 Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
 and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.
@@ -122,8 +145,9 @@ its time. More commands: [reproduce the results](docs/benchmarks.md#reproduce-th
   matched other items, so 10 of 11 boxes missing their banana chips passed.
 - **Height.** Overflowing cereal (0 of 4 caught) looks the same from above; it needs a side view
   or depth.
-- **Container damage on moulded trays.** The "container damaged" question fires on a slot moulded
-  into every Breakfast Box tray, so calibration switches it off (box damage: 1 of 4 caught).
+- **Reviewer examples with real reviewers.** The examples were tested with a simulated reviewer
+  who is never wrong. Next: a review queue page, and catching reviewers who disagree with each
+  other before their decisions become examples.
 - **More kits and cameras.** Three more LOCO categories are one download away; real phone photos
   of real kits haven't been tried.
 
