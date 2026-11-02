@@ -9,3 +9,6 @@ __pycache__/
 .orchestrator/logs/
 .muse/
 runs/
+
+# demo video renders (contain dataset images; never commit)
+out/
