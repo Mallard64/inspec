@@ -19,6 +19,7 @@ from inspec.triage import triage
 
 ROOT = Path(__file__).resolve().parent
 REVIEW_LOG = ROOT / "runs" / "reviews.jsonl"  # gitignored: image names and decisions only
+REVIEW_OFF = ROOT / "runs" / "reviewer_switched_off.json"  # damage questions reviewers turned off
 # Kit -> dataset folder, packing list, demo run (compiled/calibration/final.json), and the
 # held-out reports behind the results table: Inspec with damage check, and the vision-only
 # baseline (whose reference photos and hint the comparison toggle reuses).
@@ -253,7 +254,9 @@ if image_path is not None:
         sam = get_sam_client()
         checker = get_damage_checker(packing_list, final.kit_name)
     damage_cal = read_json(str(run_dir / "damage_calibration.json")) or {}
-    enabled = list(damage_cal.get("enabled", checker.questions))
+    calibrated = list(damage_cal.get("enabled", checker.questions))
+    reviewer_off = review.switched_off(REVIEW_OFF, cfg["dataset"])
+    enabled = [q for q in calibrated if q not in reviewer_off]
     # A live result is kept for the session, so clicking a review button doesn't re-call the API.
     memo_key = ("live", cfg["dataset"], image_path)
     if live and memo_key in st.session_state:
@@ -300,6 +303,9 @@ if image_path is not None:
     for q in checker.questions:
         if q in enabled:
             b.markdown(f"{'❌' if q in flags else '✅'} {describe_question(q, q in flags)}")
+        elif q in reviewer_off:
+            b.markdown(f"<span style='color:#999'>➖ {label(q.removesuffix('_damaged'))} "
+                       f"damage: switched off by reviewers</span>", unsafe_allow_html=True)
         else:
             b.markdown(f"<span style='color:#999'>➖ {label(q.removesuffix('_damaged'))} "
                        f"damage: not asked, it fired on good kits</span>", unsafe_allow_html=True)
@@ -324,10 +330,35 @@ if image_path is not None:
             fail_clicked = reject.form_submit_button("❌ Reject this kit", width="stretch")
         if pass_clicked or fail_clicked:
             entry = review.record(REVIEW_LOG, image_key, "PASS" if pass_clicked else "FAIL",
-                                  flags=[*flags, *(c.check_id for c in result.checks
+                                  kit=cfg["dataset"], flags=[*flags, *(c.check_id for c in result.checks
                                                    if not c.passed)],
                                   note=note, reviewer=reviewer)
             st.success(f"Saved: {entry['decision']}. Logged to `runs/reviews.jsonl`.")
+
+    # Reviewer decisions feed back into the damage check: a question reviewers keep overriding
+    # is suggested for switching off, like calibration does with questions that fire on good kits.
+    stats = review.tally(review.load(REVIEW_LOG), cfg["dataset"], checker.questions)
+    suggested = review.suggest_off({q: s for q, s in stats.items() if q in enabled})
+    reviewed = {q: s for q, s in stats.items() if s["passed"] + s["rejected"] or q in reviewer_off}
+    with st.expander(f"What reviewers taught it ({len(suggested)} suggestion"
+                     f"{'' if len(suggested) == 1 else 's'})", expanded=bool(suggested)):
+        st.caption(f"For each damage question: kits it flagged that a reviewer passed (it was wrong) "
+                   f"or rejected (it was right). After {review.MIN_DECISIONS}+ decisions with "
+                   f"{review.MIN_OVERRIDE:.0%}+ passed, Inspec suggests switching it off.")
+        if not reviewed:
+            st.write("No reviewer decisions on this kit yet.")
+        for q, s in reviewed.items():
+            name, counts = st.columns([3, 2])
+            note = " · **reviewers keep overriding this**" if q in suggested else ""
+            name.markdown(f"**{label(q.removesuffix('_damaged'))} damage**: "
+                          f"{s['passed']} passed, {s['rejected']} rejected{note}")
+            if q in reviewer_off:
+                if counts.button("Switch back on", key=f"on-{q}"):
+                    review.set_switched_off(REVIEW_OFF, cfg["dataset"], q, False)
+                    st.rerun()
+            elif q in suggested and counts.button("Switch off", key=f"off-{q}", type="primary"):
+                review.set_switched_off(REVIEW_OFF, cfg["dataset"], q, True)
+                st.rerun()
 
     if baseline_on:
         st.subheader("Muse Spark alone: photo + packing list, no measuring")

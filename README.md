@@ -70,8 +70,10 @@ Inspec's three-way verdicts on the same test kits:
 Every measurable defect Inspec catches is a hard FAIL; damage mostly arrives as REVIEW, since
 that verdict rests on the model's judgement rather than a measurement. In the app, a REVIEW kit
 shows what was flagged next to the masks, and the reviewer makes the call (pass or reject, with an
-optional note), logged to `runs/reviews.jsonl`. These reviewer decisions are not part of the
-numbers above.
+optional note), logged to `runs/reviews.jsonl`. Those calls feed back in: a damage question that
+reviewers pass at least 80% of the time, over 3 or more kits, is suggested for switching off, and
+one click turns it off (or back on). Reviewer decisions are not part of the numbers above, and
+this loop hasn't been evaluated: switching a question off also stops it catching real damage.
 
 Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
 and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.
