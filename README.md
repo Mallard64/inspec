@@ -47,12 +47,17 @@ list and 3 photos of good kits (plus a measured size guide on Screw Bag).
 | Wrong parts, sizes or amounts caught | **137 / 137** | 130 / 137 | **78 / 83** | 68 / 83 |
 | Damaged or contaminated caught | 71 / 82 | 69 / 82 | 68 / 90 | 70 / 90 |
 | Good kits wrongly rejected | 7 / 122 | 9 / 122 | 4 / 102 | 6 / 102 |
+| … of those, hard rejects (FAIL, not REVIEW) | **1 / 122** | n/a | **0 / 102** | n/a |
 
 - **Inspec wins on what can be measured**: wrong screw length, wrong amount of cereal, swapped
   compartments. The gap is significant on both kits (exact paired tests, p = 0.016 and p = 0.002).
 - **On damage it ties the vision model** (not significant either way), because that part *is* a
   vision-model call.
-- **False alarms are comparable.**
+- **False alarms are comparable**, and most of Inspec's go to a person rather than being rejected.
+  Kits flagged only by the model's damage judgement, or by a measurement within 3% of its limit,
+  get **REVIEW** instead of **FAIL**: hard rejects of good kits fall from 7 to 1 (Screw Bag) and
+  4 to 0 (Breakfast Box), with nothing that was caught lost. The 3% was chosen on validation kits.
+  [Error analysis.](docs/benchmarks.md#error-analysis-and-pass--review--fail)
 
 Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
 and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.

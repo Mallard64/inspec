@@ -49,18 +49,19 @@ A perfect score deserves suspicion, so here is the full record (from the session
   calibration loop from 60 `train/good` images; the code that computes them never reads
   validation or test. Development before the first test run (merging, the hole metric, the
   carve-out, the repair prompt) used `train/good` and `validation/good` only.
-- **How often Screw Bag test was evaluated: 11 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
+- **How often Screw Bag test was evaluated: 12 times.** Runs 1, 2 and 3, the Baseten run, the damage-check
   run and two baseline runs; then two more baseline runs (3 references, with and without a size
   guide), made with Inspec frozen, the kit-neutral damage prompt (`sb-final`) and the per-item
-  damage questions (`sb-final2`): 11 in all. Each run's program and
+  damage questions (`sb-final2`), and PASS / REVIEW / FAIL (`sb-final2-triage`): 12 in all. Each run's program and
   report are saved.
 - **What changed between test runs.** Once, for the part checks: after run 2 I added the "lone
   outlier is a measurement failure" rule to the repair prompt. The trigger was run 2's calibration
   notes on training data (it widened the short-screw range to 419 px to fit one training kit), not
   its test score, which was already 137/137. **Run 1 had no change after seeing test and also scored
   137/137 with 1 of 122 false alarms.**
-- **Breakfast Box test: evaluated four times** (plus two baseline runs), each time after freezing;
-  the fourth is the Muse Spark Open run, with code unchanged since `6aa7546`. First the unchanged method
+- **Breakfast Box test: evaluated five times** (plus two baseline runs), each time after freezing;
+  the fourth is the Muse Spark Open run, with code unchanged since `6aa7546`, and the fifth the
+  PASS / REVIEW / FAIL scoring (`429343c`), which reuses the frozen program and damage answers. First the unchanged method
   (`bb1`; a crash in the SAM parser before any result doesn't count). I then saw its per-defect
   numbers on the whole test set, chose to work on amounts and a general damage prompt, developed
   both on the even-numbered anomalies only, froze (`188ea10`) and evaluated once more (`bb4-final`).
@@ -332,6 +333,51 @@ damage, with no SAM and no checks. It runs on the same images with the same metr
 - The part checks target logical errors (counts, sizes). Surface damage relies on the Muse Spark
   damage check, which adds false alarms (2 → 7 of 122 good Screw Bag test kits).
 - Parts SAM can't name reliably with a short noun phrase will be hard to check.
+
+## Error analysis and PASS / REVIEW / FAIL
+
+Every error in the final runs (`sb-final2`, `bb5-final`; validation and test good kits, all test
+anomalies), re-run from cached answers and sorted by cause:
+
+| Cause | False rejects (19) | Misses (38) |
+|---|---|---|
+| Muse Spark damage check: wrong "yes" (a "cracked" washer, a "broken" banana chip, a "foreign" nut) or wrong "no" | **15** | **33** |
+| SAM merged two touching parts (one 713 px "screw") | 2 | 0 |
+| Range: test screws 1.5–1.7% longer than any calibration screw | 2 | 0 |
+| Range: one underflow box within the granola range | 0 | 1 |
+| Not visible from above (overflow) | 0 | 4 |
+
+So the model's damage judgement is the biggest source of error in both directions, and measured
+ranges cause 3 errors in total. Percentile-based ranges wouldn't fix the two tight ones (those
+screws are longer than every calibration screw, so percentiles would only tighten the range).
+Switching off the noisy damage questions would trade catches for false rejects: `washers_damaged`
+fires on 3 of 120 good calibration and validation kits but is the only flag on 3 dev-half defects.
+
+Instead the verdict has three levels ([`inspec/triage.py`](../inspec/triage.py)):
+
+- **FAIL**: a count is wrong, or a measurement is more than 3% outside its range.
+- **REVIEW**: the only reasons are a Muse Spark damage answer or a measurement within 3% of a
+  limit. A person looks.
+- **PASS**: nothing flagged.
+
+The 3% margin was chosen on `validation/good` only: the one good validation kit that failed a
+measure check without a SAM merge was 1.75% over its limit, and the measured defects in the dev
+half are 12% or more outside theirs. Frozen at `429343c`, then scored once on test
+(`scripts/triage_eval.py --test`, `runs/*-triage/triage.json`):
+
+| | Screw Bag | Breakfast Box |
+|---|---|---|
+| Good test kits: FAIL (hard reject) | **1** / 122 (was 7) | **0** / 102 (was 4) |
+| Good test kits: REVIEW | 6 / 122 | 4 / 102 |
+| Logical defects: FAIL / REVIEW / PASS | 137 / 0 / 0 | 78 / 0 / 5 |
+| Structural defects: FAIL / REVIEW / PASS | 34 / 37 / 11 | 11 / 57 / 22 |
+| Validation good kits: FAIL / REVIEW | 1 / 2 (of 60) | 0 / 5 (of 62) |
+
+Nothing that was caught before is lost (FAIL + REVIEW equals the old reject count), and no logical
+defect is softened to REVIEW. The one remaining hard reject of a good kit is a SAM merge: two
+touching screws read as one long one, so the counts really are wrong in the masks. The price is
+review work: most damage defects arrive as REVIEW, alongside 6 (Screw Bag) and 4 (Breakfast Box)
+good kits per hundred-odd.
 
 ## Reproduce the results
 
