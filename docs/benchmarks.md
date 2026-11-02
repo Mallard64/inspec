@@ -383,51 +383,58 @@ good kits per hundred-odd.
 
 ## Learning from reviewers
 
-**Method.** A person's decision on a REVIEW kit (app section 3) is logged with the flags they saw.
-Reviewed kits become labelled examples (`inspec/review.py`, `damage.Example`): newest first, up to
-2 passed and 1 rejected kit per damage question, 6 in all, shrunk to 1024 px JPEG. They go to
-Muse Spark before the photo it inspects, with the question that flagged them, the decision and
-the reviewer's note. The kit being inspected is never its own example. The damage questions are
-then re-calibrated with the examples in place (same 3.4% rule). Without examples the prompt is
-unchanged, so every earlier result still holds.
+**What it does.** When a reviewer passes or rejects a kit in the app, the decision is saved with
+the damage questions that flagged it. Later damage checks send Muse Spark up to 6 reviewed kits
+first (newest first, at most 2 passed and 1 rejected per question), each with its label, then the
+kit to inspect. The kit being inspected is never its own example. Code: `inspec/review.py`,
+`damage.Example`.
 
-**Simulated reviewer.** There were no real reviewers, so `scripts/review_eval.py` uses the dataset
-labels: the 60 calibration `train/good` kits are known good, so each one a damage question flagged
-is "passed". Breakfast Box: 31 of 60 flagged, 6 picked (4 box damage, 1 almonds, 1 banana chips;
-2 also foreign object). Screw Bag: 2 of 60 flagged (washers), both picked. No validation or test
-image is ever an example. Re-calibration runs on the other 54 and 58 calibration kits.
+**How it was tested.** No real reviewers, so `scripts/review_eval.py` simulates one with the
+dataset labels: of the 60 good training kits used for calibration, the ones a damage question
+flagged are "passed". That gives 6 example photos on Breakfast Box and 2 on Screw Bag. No
+validation or test image is used as an example. Built and checked on `validation/good` and the
+even-numbered test anomalies; code frozen at `39e93ce`; then `test/good` and the odd-numbered
+anomalies were scored once.
 
-**Protocol.** Developed and checked on `validation/good` and the even-numbered test anomalies,
-with nothing tuned on them (the settings above were set before the first run). Frozen at
-`39e93ce`, then `test/good` and the odd-numbered anomalies were scored once.
+Two ways to use the examples were scored:
 
-| | Screw Bag without | with | Breakfast Box without | with |
-|---|---|---|---|---|
-| Questions passing calibration | 7 of 7 | 7 of 7 | 6 of 8 | 8 of 8 (box, almonds back on) |
-| `validation/good` PASS / REVIEW / FAIL | 57 / 2 / 1 | 58 / 1 / 1 | 57 / 5 / 0 | 62 / 0 / 0 |
-| `test/good` PASS / REVIEW / FAIL | 115 / 6 / 1 | 120 / 1 / 1 | 98 / 4 / 0 | 101 / 1 / 0 |
-| Structural caught, dev (even) half | 33 / 41 | 37 / 41 | 35 / 45 | 38 / 45 |
-| Structural caught, held-out (odd) half | 38 / 41 | 39 / 41 | 33 / 45 | 37 / 45 |
-| Logical caught (both halves) | 137 / 137 | 137 / 137 | 78 / 83 | 78 / 83 |
+- **As in the app**: same damage questions as before, now answered with the examples.
+- **Re-calibrated**: also re-run calibration with the examples. On Breakfast Box this switches
+  the box-damage and almond questions back on (0 false alarms on the other 54 training kits, down
+  from 26 and 5). On Screw Bag nothing changes.
 
-Structural catches by defect type (whole test set):
+The app uses the first, because re-calibrating would cost about 55 Muse Spark calls every time a
+reviewer decides, and could switch questions back on based on one person's calls. That choice was
+made on those grounds; the "as in the app" numbers were scored afterwards, from the same cached
+answers.
 
-| Screw Bag | without | with | | Breakfast Box | without | with |
-|---|---|---|---|---|---|---|
-| bag broken (16) | 15 | 14 | | box damaged (4) | 1 | 3 |
-| color (16) | 13 | 15 | | contamination (40) | 35 | 37 |
-| contamination (25) | 23 | 24 | | fruit damaged (31) | 23 | 26 |
-| part broken (25) | 20 | 23 | | mixed cereals (8) | 2 | 2 |
-| | | | | toppings crushed (7) | 7 | 7 |
+| Test set | Screw Bag: without | as in the app | Breakfast Box: without | as in the app | re-calibrated |
+|---|---|---|---|---|---|
+| Good kits flagged | 7 / 122 | 2 / 122 | 4 / 102 | 1 / 102 | 1 / 102 |
+| Damaged or contaminated caught | 71 / 82 | 76 / 82 | 68 / 90 | 73 / 90 | 75 / 90 |
+| … odd half only (scored after freezing) | 38 / 41 | 39 / 41 | 33 / 45 | 35 / 45 | 37 / 45 |
+| Wrong parts, sizes or amounts caught | 137 / 137 | 137 / 137 | 78 / 83 | 78 / 83 | 78 / 83 |
 
-Exact McNemar tests, with vs without, whole test split: Breakfast Box structural 7 better, 0 worse
-(p = 0.016); Breakfast Box good kits 3 / 0 (p = 0.25); Screw Bag good kits 5 / 0 (p = 0.06); Screw
-Bag structural 6 / 1 (p = 0.13). Only the first is significant at 0.05.
+(Screw Bag re-calibrated is the same as "as in the app".)
 
-**Limits.** The simulated reviewer is never wrong; a real one who passes a damaged kit teaches the
-model to miss that damage, and nothing yet checks reviewers against each other. The examples are
-all "passed" kits (no rejected kits exist before the test set), so the "confirmed damage" half
-of the prompt is untested. Each damage check now sends 7 photos instead of 1.
+Damaged kits caught, by defect type:
+
+| Screw Bag | without | with examples | | Breakfast Box | without | as in the app | re-calibrated |
+|---|---|---|---|---|---|---|---|
+| bag broken (16) | 15 | 14 | | box damaged (4) | 1 | 1 | 3 |
+| color (16) | 13 | 15 | | contamination (40) | 35 | 37 | 37 |
+| contamination (25) | 23 | 24 | | fruit damaged (31) | 23 | 26 | 26 |
+| part broken (25) | 20 | 23 | | mixed cereals (8) | 2 | 2 | 2 |
+| | | | | toppings crushed (7) | 7 | 7 | 7 |
+
+**Significance** (exact paired tests, kits better / worse than without examples). As in the app:
+Screw Bag good kits 5 / 0 (p = 0.06), Screw Bag damage 6 / 1 (p = 0.13), Breakfast Box good kits
+3 / 0 (p = 0.25), Breakfast Box damage 5 / 0 (p = 0.06). None is significant at 0.05 alone.
+Re-calibrated, Breakfast Box damage is 7 / 0 (p = 0.016).
+
+**Limits.** The simulated reviewer is never wrong; a real reviewer who passes a damaged kit
+teaches the model to miss that damage. Only "passed" examples were tested, because no rejected
+kits exist outside the test set. Each damage check now sends 7 photos instead of 1.
 
 ## Reproduce the results
 

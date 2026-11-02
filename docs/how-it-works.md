@@ -134,11 +134,15 @@ inspec/
   concepts.py     # ✅ swap concepts SAM misses on good kits for ones it finds (Muse Spark + SAM)
   calibrate.py    # ✅ run on good kits, Muse Spark repairs failing checks, re-run
   evaluate.py     # ✅ false-alarm rate and recall per LOCO split and defect type
-  damage.py       # ✅ Muse Spark vision check for torn bag, broken/painted part, foreign object
+  damage.py       # ✅ Muse Spark damage questions, one per item, with reviewed kits as examples
+  triage.py       # ✅ pass / review / reject from the check results and damage flags
+  review.py       # ✅ reviewer decisions log; picks reviewed kits to show as examples
+  explain.py      # ✅ checks and results as plain sentences for the app
+  live.py         # ✅ logs each Meta model call so the app can show them
   baseline.py     # ✅ Muse Spark vision-only baseline: counts + damage from the photo
   overlay.py      # ✅ draw part masks and labels on a kit photo
 app.py            # ✅ Streamlit page: packing list -> checks -> self-repair -> inspect -> results
-scripts/          # ✅ dataset download, e2e runner, baseline runner, Baseten check
+scripts/          # ✅ dataset download, e2e runner, baseline, Baseten check, triage and reviewer evals
 docs/             # ✅ verified API notes
 tests/            # ✅ unit tests and captured SAM responses
 .orchestrator/    # ✅ task briefs and log for delegated coding tasks

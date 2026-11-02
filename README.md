@@ -33,73 +33,61 @@ Treat the packing list as the spec.
    It learned, for example, that a nut's hole is a smaller share of its outline than a washer's.
 4. **Look.** A mask can't see a bruise or a torn bag, so Muse Spark answers one damage question
    per packing-list item. Questions that fire on good kits are switched off.
+5. **Learn from reviewers.** Kits Inspec isn't sure about go to a person. Their decisions are
+   shown to Muse Spark as labelled examples on later kits.
 
 Every verdict names the check that failed and shows the masks it measured.
 
 ## Performance
 
-MVTec LOCO AD, held-out test kits, each final configuration evaluated once after the code was
-frozen. "Muse Spark alone" is the strongest vision-only baseline I built: the photo, the packing
-list and 3 photos of good kits (plus a measured size guide on Screw Bag).
+Measured on photos from MVTec LOCO AD that weren't used while building Inspec (the test set).
+"Muse Spark alone" means asking Muse Spark directly, with the photo, the packing list and 3
+photos of good kits.
 
 | | Screw Bag: Inspec | Screw Bag: Muse Spark alone | Breakfast Box: Inspec | Breakfast Box: Muse Spark alone |
 |---|---|---|---|---|
 | Wrong parts, sizes or amounts caught | **137 / 137** | 130 / 137 | **78 / 83** | 68 / 83 |
 | Damaged or contaminated caught | 71 / 82 | 69 / 82 | 68 / 90 | 70 / 90 |
-| Good kits wrongly rejected | 7 / 122 | 9 / 122 | 4 / 102 | 6 / 102 |
-| … of those, hard rejects (FAIL, not REVIEW) | **1 / 122** | n/a | **0 / 102** | n/a |
+| Good kits flagged by mistake | 7 / 122 | 9 / 122 | 4 / 102 | 6 / 102 |
 
-- **Inspec wins on what can be measured**: wrong screw length, wrong amount of cereal, swapped
-  compartments. The gap is significant on both kits (exact paired tests, p = 0.016 and p = 0.002).
-- **On damage it ties the vision model** (not significant either way), because that part *is* a
-  vision-model call.
-- **False alarms are comparable**, and most of Inspec's go to a person rather than being rejected.
-  Kits flagged only by the model's damage judgement, or by a measurement within 3% of its limit,
-  get **REVIEW** instead of **FAIL**: hard rejects of good kits fall from 7 to 1 (Screw Bag) and
-  4 to 0 (Breakfast Box), with nothing that was caught lost. The 3% was chosen on validation kits.
-  [Error analysis.](docs/benchmarks.md#error-analysis-and-pass--review--fail)
+- **Inspec is better at what can be measured**: a screw of the wrong length, too little cereal,
+  items in the wrong compartment. The difference is statistically significant on both kits.
+- **On damage it ties**, because that part of Inspec is also a Muse Spark call.
 
-Inspec's three-way verdicts on the same test kits:
+### Pass, review or reject
 
-| | Screw Bag: FAIL | REVIEW | PASS | Breakfast Box: FAIL | REVIEW | PASS |
+A kit is **rejected** when a count is wrong or a measurement is clearly out of range. It goes to
+**review**, where a person decides, when the only problem is the model's damage judgement or a
+measurement within 3% of its limit.
+
+| | Screw Bag: reject | review | pass | Breakfast Box: reject | review | pass |
 |---|---|---|---|---|---|---|
 | Good kits | 1 | 6 | 115 | 0 | 4 | 98 |
 | Wrong parts, sizes or amounts | 137 | 0 | 0 | 78 | 0 | 5 |
 | Damaged or contaminated | 34 | 37 | 11 | 11 | 57 | 22 |
 
-Every measurable defect Inspec catches is a hard FAIL; damage mostly arrives as REVIEW, since
-that verdict rests on the model's judgement rather than a measurement.
+So only 1 good kit in 224 is rejected outright; the other mistakes go to a person.
 
 ### Learning from reviewers
 
-A REVIEW kit goes to a person, who passes or rejects it in the app (with an optional note). Those
-decisions come back as **labelled example photos**: with every damage check, Muse Spark first sees
-up to 6 reviewed kits ("a reviewer passed this one although almond damage was flagged"), then the
-kit to inspect. No model is retrained and no question is switched off.
+In the app, the reviewer passes or rejects each kit sent to review. Later damage checks show
+Muse Spark those reviewed kits as labelled examples ("a reviewer passed this one although almond
+damage was flagged"). No model is retrained.
 
-To measure it without real reviewers, a simulated reviewer passes the known-good *training* kits
-that a damage question wrongly flagged (6 photos on Breakfast Box, 2 on Screw Bag; no test
-images). Same test kits, code frozen (`39e93ce`) before the held-out half was scored:
+There are no real reviewers yet, so a simulated one passed the good training kits that were
+wrongly flagged: 6 example photos for Breakfast Box, 2 for Screw Bag. On the same test kits:
 
-| | Screw Bag: without | Screw Bag: with examples | Breakfast Box: without | Breakfast Box: with examples |
+| | Screw Bag: without examples | Screw Bag: with examples | Breakfast Box: without examples | Breakfast Box: with examples |
 |---|---|---|---|---|
-| Good kits flagged (REVIEW or FAIL) | 7 / 122 | **2 / 122** | 4 / 102 | **1 / 102** |
-| Damaged or contaminated caught | 71 / 82 | **76 / 82** | 68 / 90 | **75 / 90** |
-| … held-out (odd) half | 38 / 41 | 39 / 41 | 33 / 45 | 37 / 45 |
-| Wrong parts, sizes or amounts caught | 137 / 137 | 137 / 137 | 78 / 83 | 78 / 83 |
-| Damage questions that pass calibration | 7 of 7 | 7 of 7 | 6 of 8 | **8 of 8** |
+| Good kits flagged by mistake | 7 / 122 | **2 / 122** | 4 / 102 | **1 / 102** |
+| Damaged or contaminated caught | 71 / 82 | **76 / 82** | 68 / 90 | **73 / 90** |
 
-- Fewer false alarms *and* more catches. On Breakfast Box the examples bring back the box-damage
-  and almond questions that calibration had switched off: box damage caught goes from 1 to 3 of 4.
-- Only one gain is statistically significant: Breakfast Box damage, 7 kits gained and none lost
-  (exact paired test, p = 0.016). The others all point the same way but are small (Screw Bag good
-  kits 5 better, 0 worse, p = 0.06; Screw Bag damage 6 better, 1 worse, p = 0.13).
-- The simulated reviewer is never wrong; real ones will be, and a wrongly passed kit teaches the
-  model to miss that damage. The even-numbered anomalies were seen while building this (nothing
-  was tuned on them). Details: [benchmarks](docs/benchmarks.md#learning-from-reviewers).
+Every change goes the right way, but each is too small to be statistically significant on its
+own, and the simulated reviewer is never wrong (real ones will be). Wrong-parts results don't
+change.
 
-Full tables, per-defect results, how the test set was used, the Muse Spark Open (Baseten) run
-and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.
+Full results, significance tests, how often the test set was used, the Muse Spark Open (Baseten)
+run and every limit: **[docs/benchmarks.md](docs/benchmarks.md)**.
 
 ## Tech stack
 
@@ -140,16 +128,17 @@ its time. More commands: [reproduce the results](docs/benchmarks.md#reproduce-th
 
 ## Future steps
 
-- **Concept-repair tie-break.** When two words fit equally well, prefer the one that finds fewer
-  objects. On Muse Spark Open, "dried fruit" beat "banana slice" for the banana chips and also
-  matched other items, so 10 of 11 boxes missing their banana chips passed.
+- **Better word choice for SAM.** Inspec tries several words for each item and keeps one SAM
+  finds. When two work equally well, it should prefer the one that matches fewer objects: on
+  Muse Spark Open, "dried fruit" won for the banana chips but also matched other items, so 10 of
+  11 boxes missing their banana chips passed.
 - **Height.** Overflowing cereal (0 of 4 caught) looks the same from above; it needs a side view
   or depth.
 - **Reviewer examples with real reviewers.** The examples were tested with a simulated reviewer
   who is never wrong. Next: a review queue page, and catching reviewers who disagree with each
   other before their decisions become examples.
-- **More kits and cameras.** Three more LOCO categories are one download away; real phone photos
-  of real kits haven't been tried.
+- **More kits and cameras.** MVTec LOCO AD has three more kinds of product, one download away;
+  real phone photos of real kits haven't been tried.
 
 ## More detail
 

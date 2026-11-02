@@ -2,12 +2,15 @@
 
 No real reviewers here, so a simulated one uses the dataset's labels: the calibration train/good
 kits that any damage question flagged are known good, so the "reviewer" passes them, and they
-become the example photos (``review.pick_examples``, the same selection the app uses). Then, with
-and without those examples:
+become the example photos (``review.pick_examples``, the same selection the app uses). Three
+configurations are scored:
 
-1. re-calibrate the damage questions on the other calibration kits (``calibrate_damage``),
-2. score PASS / REVIEW / FAIL on validation/good and the even-numbered (dev) test anomalies,
-3. with ``--heldout`` (only after freezing the code): also test/good and the odd-numbered half.
+- ``without``: no examples (the frozen results),
+- ``with``: examples, keeping the frozen list of enabled questions (what the app does),
+- ``with_recal``: examples, with the questions re-calibrated on the other calibration kits.
+
+Splits: validation/good and the even-numbered (dev) test anomalies; with ``--heldout`` (only after
+freezing the code) also test/good and the odd-numbered half.
 
 Usage:
     .venv/bin/python scripts/review_eval.py --kit breakfast_box
@@ -91,20 +94,22 @@ def main() -> int:
 
     report: dict = {"examples": [dict(image=Path(e.image).name, flags=list(e.flags))
                                  for e in examples],
-                    "enabled": {"without": frozen["enabled"], "with": recal["enabled"]},
+                    "enabled": {"without": frozen["enabled"], "with": frozen["enabled"],
+                                "with_recal": recal["enabled"]},
                     "recalibration": recal, "splits": {}}
     for split, paths in splits.items():
         results = {p: run_program(program, fetch_segments(program, p, sam)) for p in paths}
         row = {}
         for label, checker, enabled in (("without", plain, frozen["enabled"]),
-                                        ("with", taught, recal["enabled"])):
+                                        ("with", taught, frozen["enabled"]),
+                                        ("with_recal", taught, recal["enabled"])):
             answers = checker.inspect_many(paths)
             row[label] = dict(Counter(triage(results[p].checks,
                                              damaged(answers[str(p)], enabled))[0] for p in paths))
         report["splits"][split] = {"images": len(paths), **row}
         print(f"{split:42} " + "  ".join(
             f"{k}: " + " ".join(f"{v} {row[k].get(v, 0):3}" for v in ("PASS", "REVIEW", "FAIL"))
-            for k in ("without", "with")))
+            for k in ("without", "with", "with_recal")))
     out = ROOT / "runs" / f"{damage_run}-examples"
     out.mkdir(exist_ok=True)
     (out / "review_eval.json").write_text(json.dumps(report, indent=2))
