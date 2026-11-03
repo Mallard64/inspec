@@ -399,24 +399,54 @@ if image_path is not None:
     if live:
         show_calls(calls, sam)
 
-# 4. Results.
+# 4. Results: the same three tables as the README, read from the same run files.
 st.header("4 · Results on held-out test kits")
 ins = (read_json(str(ROOT / "runs" / cfg["inspec_report"] / "report.json")) or {}).get("splits")
 base = (read_json(str(ROOT / "runs" / cfg["baseline_report"] / "report.json")) or {}).get("splits")
+three_way = read_json(str(ROOT / "runs" / f"{cfg['inspec_report']}-triage" / "triage.json"))
+taught = read_json(str(ROOT / "runs" / f"{cfg['inspec_report']}-examples" / "review_eval.json"))
+ROWS = [("Wrong parts, sizes or amounts caught", "test/logical_anomalies"),
+        ("Damaged or contaminated caught", "test/structural_anomalies"),
+        ("Good kits flagged by mistake", "test/good")]
 if ins and base:
     def cell(splits: dict, split: str, program: str) -> str:
         return f"{splits[split]['programs'][program]['flagged']} / {splits[split]['images']}"
 
-    rows = [("Good kits flagged by mistake", "test/good"),
-            ("Wrong parts or amounts caught", "test/logical_anomalies"),
-            ("Damaged or contaminated caught", "test/structural_anomalies")]
-    st.table({"": [r for r, _ in rows],
-              "Inspec": [cell(ins, s, "given+damage") for _, s in rows],
-              "Muse Spark alone": [cell(base, s, "vision_baseline") for _, s in rows]})
-    st.caption("MVTec LOCO AD test split, evaluated once after the method was frozen. "
-               "Significance tests and how the test set was used: docs/benchmarks.md.")
+    st.caption("Test photos from MVTec LOCO AD that weren't used while building Inspec. \"Muse "
+               "Spark alone\" asks Muse Spark directly, with the photo, the packing list and 3 "
+               "photos of good kits.")
+    st.table({"": [r for r, _ in ROWS],
+              "Inspec": [cell(ins, s, "given+damage") for _, s in ROWS],
+              "Muse Spark alone": [cell(base, s, "vision_baseline") for _, s in ROWS]})
 else:
     st.info("Result reports not found in runs/.")
+
+if three_way:
+    st.subheader("Pass, review or reject")
+    st.caption("Rejected: a count is wrong or a measurement is clearly out of range. Review: only "
+               "the model's damage judgement, or a measurement within 3% of its limit.")
+    kinds = [("Good kits", "test/good"), ("Wrong parts, sizes or amounts", "test/logical_anomalies"),
+             ("Damaged or contaminated", "test/structural_anomalies")]
+    st.table({"": [k for k, _ in kinds],
+              **{col: [three_way[s].get(v, 0) for _, s in kinds]
+                 for col, v in (("Reject", "FAIL"), ("Review", "REVIEW"), ("Pass", "PASS"))}})
+
+if taught:
+    def caught(cfg_name: str, kind: str) -> str:
+        splits = [v for k, v in taught["splits"].items() if k.startswith(kind)]
+        n = sum(v["images"] for v in splits)
+        hit = (sum(v[cfg_name].get("REVIEW", 0) + v[cfg_name].get("FAIL", 0) for v in splits))
+        return f"{hit} / {n}"
+
+    st.subheader("Learning from reviewers")
+    st.caption("A simulated reviewer passed the good training kits that were wrongly flagged; "
+               "those became example photos. Same test kits.")
+    rows = [("Good kits flagged by mistake", "test/good"),
+            ("Damaged or contaminated caught", "test/structural_anomalies")]
+    st.table({"": [r for r, _ in rows],
+              "Without examples": [caught("without", k) for _, k in rows],
+              "With examples": [caught("with", k) for _, k in rows]})
+st.caption("Significance tests and how the test set was used: docs/benchmarks.md.")
 
 st.divider()
 st.caption("Kit images: MVTec LOCO AD (Bergmann et al.), CC BY-NC-SA 4.0. Models: Muse Spark and "

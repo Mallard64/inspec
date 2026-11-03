@@ -1,0 +1,438 @@
+{
+  "images": [
+    "000.png",
+    "005.png",
+    "010.png",
+    "015.png",
+    "020.png",
+    "025.png",
+    "030.png",
+    "035.png",
+    "040.png",
+    "045.png",
+    "050.png",
+    "055.png",
+    "060.png",
+    "065.png",
+    "070.png",
+    "075.png",
+    "080.png",
+    "085.png",
+    "090.png",
+    "095.png",
+    "100.png",
+    "105.png",
+    "110.png",
+    "115.png",
+    "120.png",
+    "125.png",
+    "130.png",
+    "135.png",
+    "140.png",
+    "145.png",
+    "150.png",
+    "155.png",
+    "160.png",
+    "165.png",
+    "170.png",
+    "175.png",
+    "180.png",
+    "185.png",
+    "190.png",
+    "195.png",
+    "200.png",
+    "205.png",
+    "210.png",
+    "215.png",
+    "220.png",
+    "225.png",
+    "230.png",
+    "235.png",
+    "240.png",
+    "245.png",
+    "250.png",
+    "255.png",
+    "260.png",
+    "265.png",
+    "270.png",
+    "275.png",
+    "280.png",
+    "285.png",
+    "290.png",
+    "295.png"
+  ],
+  "converged": false,
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 58,
+      "total": 60,
+      "failures": {
+        "130.png": [
+          "banana_chip_count: found 0, expected 1.."
+        ],
+        "180.png": [
+          "banana_chip_count: found 0, expected 1.."
+        ]
+      },
+      "program": {
+        "version": 1,
+        "kit_name": "breakfast box",
+        "parts": [
+          {
+            "id": "tangerine",
+            "concept": "tangerine",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "nectarine",
+            "concept": "apple",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "granola",
+            "concept": "granola",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "banana_chip",
+            "concept": "banana",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "almond",
+            "concept": "almond",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "tangerine_count",
+            "type": "count",
+            "part": "tangerine",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires '2 tangerines'."
+          },
+          {
+            "id": "nectarine_count",
+            "type": "count",
+            "part": "nectarine",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires '1 nectarine'."
+          },
+          {
+            "id": "granola_count",
+            "type": "count",
+            "part": "granola",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'granola' as loose bulk."
+          },
+          {
+            "id": "banana_chip_count",
+            "type": "count",
+            "part": "banana_chip",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'banana chips' as loose bulk."
+          },
+          {
+            "id": "almond_count",
+            "type": "count",
+            "part": "almond",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'almonds' as loose bulk."
+          }
+        ],
+        "merge_overlap": 0.8,
+        "notes": "All limits null pending calibration; no shared concepts so no size split needed. Granola, banana chips and almonds are bulk presence checks."
+      },
+      "repair": {
+        "attempts": 2,
+        "rejected": [
+          "measure check tangerine_length: a length check is only allowed on parts told apart by size ([]); remove it"
+        ],
+        "notes": "Added area splits in middle of widest gaps: 59210 middle of 39799-78620 small-vs-fruit gap, 268115 middle of 145364-390865 fruit-vs-granola gap. Set tangerine/nectarine min_area 59210 max_area 268115 and granola min_area 268115 so small pieces with fruit/granola labels fall through and large heaps don't steal small; left banana_chip and almond with no limits as split bulk catch-alls. No length checks: no parts told apart by size. Added area ~4% for bulk-mass granola 390865-462656 to 375230-481162; still passes lone 476492 heap. No hole checks; hole all 0. Leave failing 130.png,180.png: SAM returned zero banana labels, almonds inflated to 19/17, banana_count 0."
+      }
+    },
+    {
+      "round": 2,
+      "passed": 58,
+      "total": 60,
+      "failures": {
+        "130.png": [
+          "banana_chip_count: found 0, expected 1.."
+        ],
+        "180.png": [
+          "banana_chip_count: found 0, expected 1.."
+        ]
+      },
+      "program": {
+        "version": 1,
+        "kit_name": "breakfast box",
+        "parts": [
+          {
+            "id": "tangerine",
+            "concept": "tangerine",
+            "min_length": null,
+            "max_length": null,
+            "min_area": 59210.0,
+            "max_area": 268115.0,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "nectarine",
+            "concept": "apple",
+            "min_length": null,
+            "max_length": null,
+            "min_area": 59210.0,
+            "max_area": 268115.0,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "granola",
+            "concept": "granola",
+            "min_length": null,
+            "max_length": null,
+            "min_area": 268115.0,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "banana_chip",
+            "concept": "banana",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "almond",
+            "concept": "almond",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "tangerine_count",
+            "type": "count",
+            "part": "tangerine",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires '2 tangerines'."
+          },
+          {
+            "id": "nectarine_count",
+            "type": "count",
+            "part": "nectarine",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires '1 nectarine'."
+          },
+          {
+            "id": "granola_count",
+            "type": "count",
+            "part": "granola",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'granola' as loose bulk."
+          },
+          {
+            "id": "banana_chip_count",
+            "type": "count",
+            "part": "banana_chip",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'banana chips' as loose bulk."
+          },
+          {
+            "id": "almond_count",
+            "type": "count",
+            "part": "almond",
+            "metric": null,
+            "min": 1.0,
+            "max": null,
+            "reason": "Packing list requires 'almonds' as loose bulk."
+          },
+          {
+            "id": "granola_area",
+            "type": "measure",
+            "part": "granola",
+            "metric": "area",
+            "min": 375230.0,
+            "max": 481162.0,
+            "reason": "Granola is one mass per kit; area is amount, catch too much/little."
+          }
+        ],
+        "merge_overlap": 0.8,
+        "notes": "Added area splits in middle of widest gaps: 59210 middle of 39799-78620 small-vs-fruit gap, 268115 middle of 145364-390865 fruit-vs-granola gap. Set tangerine/nectarine min_area 59210 max_area 268115 and granola min_area 268115 so small pieces with fruit/granola labels fall through and large heaps don't steal small; left banana_chip and almond with no limits as split bulk catch-alls. No length checks: no parts told apart by size. Added area ~4% for bulk-mass granola 390865-462656 to 375230-481162; still passes lone 476492 heap. No hole checks; hole all 0. Leave failing 130.png,180.png: SAM returned zero banana labels, almonds inflated to 19/17, banana_count 0."
+      },
+      "repair": {
+        "attempts": 1,
+        "rejected": [],
+        "notes": "Added area splits in middle of widest gaps: 59210 middle of 39799-78620 small-vs-fruit gap, 268115 middle of 145364-390865 fruit-vs-granola gap. Set tangerine/nectarine min_area 59210 max_area 268115 and granola min_area 268115 so small pieces with fruit/granola labels fall through and large heaps don't steal small; left banana_chip and almond with no limits as split bulk catch-alls. No length checks: no parts told apart by size. Added area ~4% for bulk-mass granola 390865-462656 to 375230-481162; still passes lone 476492 heap. No hole checks; hole all 0. Leave failing 130.png,180.png: SAM returned zero banana labels, almonds inflated to 19/17, banana_count 0."
+      }
+    }
+  ],
+  "program": {
+    "version": 1,
+    "kit_name": "breakfast box",
+    "parts": [
+      {
+        "id": "tangerine",
+        "concept": "tangerine",
+        "min_length": null,
+        "max_length": null,
+        "min_area": 59210.0,
+        "max_area": 268115.0,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "nectarine",
+        "concept": "apple",
+        "min_length": null,
+        "max_length": null,
+        "min_area": 59210.0,
+        "max_area": 268115.0,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "granola",
+        "concept": "granola",
+        "min_length": null,
+        "max_length": null,
+        "min_area": 268115.0,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "banana_chip",
+        "concept": "banana",
+        "min_length": null,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "almond",
+        "concept": "almond",
+        "min_length": null,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      }
+    ],
+    "checks": [
+      {
+        "id": "tangerine_count",
+        "type": "count",
+        "part": "tangerine",
+        "metric": null,
+        "min": 2.0,
+        "max": 2.0,
+        "reason": "Packing list requires '2 tangerines'."
+      },
+      {
+        "id": "nectarine_count",
+        "type": "count",
+        "part": "nectarine",
+        "metric": null,
+        "min": 1.0,
+        "max": 1.0,
+        "reason": "Packing list requires '1 nectarine'."
+      },
+      {
+        "id": "granola_count",
+        "type": "count",
+        "part": "granola",
+        "metric": null,
+        "min": 1.0,
+        "max": null,
+        "reason": "Packing list requires 'granola' as loose bulk."
+      },
+      {
+        "id": "banana_chip_count",
+        "type": "count",
+        "part": "banana_chip",
+        "metric": null,
+        "min": 1.0,
+        "max": null,
+        "reason": "Packing list requires 'banana chips' as loose bulk."
+      },
+      {
+        "id": "almond_count",
+        "type": "count",
+        "part": "almond",
+        "metric": null,
+        "min": 1.0,
+        "max": null,
+        "reason": "Packing list requires 'almonds' as loose bulk."
+      },
+      {
+        "id": "granola_area",
+        "type": "measure",
+        "part": "granola",
+        "metric": "area",
+        "min": 375230.0,
+        "max": 481162.0,
+        "reason": "Granola is one mass per kit; area is amount, catch too much/little."
+      }
+    ],
+    "merge_overlap": 0.8,
+    "notes": "Added area splits in middle of widest gaps: 59210 middle of 39799-78620 small-vs-fruit gap, 268115 middle of 145364-390865 fruit-vs-granola gap. Set tangerine/nectarine min_area 59210 max_area 268115 and granola min_area 268115 so small pieces with fruit/granola labels fall through and large heaps don't steal small; left banana_chip and almond with no limits as split bulk catch-alls. No length checks: no parts told apart by size. Added area ~4% for bulk-mass granola 390865-462656 to 375230-481162; still passes lone 476492 heap. No hole checks; hole all 0. Leave failing 130.png,180.png: SAM returned zero banana labels, almonds inflated to 19/17, banana_count 0."
+  }
+}

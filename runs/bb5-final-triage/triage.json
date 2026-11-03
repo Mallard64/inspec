@@ -1,0 +1,101 @@
+{
+  "validation/good": {
+    "images": 62,
+    "PASS": 57,
+    "REVIEW": 5,
+    "by_defect": {}
+  },
+  "test/good": {
+    "images": 102,
+    "PASS": 98,
+    "REVIEW": 4,
+    "by_defect": {}
+  },
+  "test/logical_anomalies": {
+    "images": 83,
+    "FAIL": 78,
+    "PASS": 5,
+    "by_defect": {
+      "0_nectarines_0_tangerines": {
+        "FAIL": 2
+      },
+      "0_nectarines_1_tangerine": {
+        "FAIL": 2
+      },
+      "0_nectarines_2_tangerines": {
+        "FAIL": 2
+      },
+      "0_nectarines_3_tangerines": {
+        "FAIL": 3
+      },
+      "0_nectarines_4_tangerines": {
+        "FAIL": 2
+      },
+      "1_nectarine_1_tangerine": {
+        "FAIL": 2
+      },
+      "2_nectarines_1_tangerine": {
+        "FAIL": 3
+      },
+      "3_nectarines_0_tangerines": {
+        "FAIL": 3
+      },
+      "compartments_swapped": {
+        "FAIL": 3
+      },
+      "missing_almonds": {
+        "FAIL": 11
+      },
+      "missing_bananas": {
+        "FAIL": 11
+      },
+      "missing_cereals": {
+        "FAIL": 8
+      },
+      "missing_cereals_and_toppings": {
+        "FAIL": 4
+      },
+      "missing_toppings": {
+        "FAIL": 7
+      },
+      "overflow": {
+        "PASS": 4
+      },
+      "underflow": {
+        "FAIL": 3,
+        "PASS": 1
+      },
+      "wrong_ratio": {
+        "FAIL": 12
+      }
+    }
+  },
+  "test/structural_anomalies": {
+    "images": 90,
+    "PASS": 22,
+    "FAIL": 11,
+    "REVIEW": 57,
+    "by_defect": {
+      "box_damaged": {
+        "PASS": 3,
+        "FAIL": 1
+      },
+      "contamination": {
+        "REVIEW": 34,
+        "PASS": 5,
+        "FAIL": 1
+      },
+      "fruit_damaged": {
+        "REVIEW": 23,
+        "PASS": 8
+      },
+      "mixed_cereals": {
+        "PASS": 6,
+        "FAIL": 2
+      },
+      "toppings_crushed": {
+        "FAIL": 7
+      }
+    }
+  }
+}

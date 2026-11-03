@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "kit_name": "breakfast box",
+  "parts": [
+    {
+      "id": "tangerine",
+      "concept": "tangerine",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "nectarine",
+      "concept": "nectarine",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "granola",
+      "concept": "granola",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "banana_chip",
+      "concept": "banana chip",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "almond",
+      "concept": "almond",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "tangerine_count",
+      "type": "count",
+      "part": "tangerine",
+      "metric": null,
+      "min": 2.0,
+      "max": 2.0,
+      "reason": "Packing list requires '2 tangerines'."
+    },
+    {
+      "id": "nectarine_count",
+      "type": "count",
+      "part": "nectarine",
+      "metric": null,
+      "min": 1.0,
+      "max": 1.0,
+      "reason": "Packing list requires '1 nectarine'."
+    },
+    {
+      "id": "granola_count",
+      "type": "count",
+      "part": "granola",
+      "metric": null,
+      "min": 1.0,
+      "max": null,
+      "reason": "Packing list requires 'granola' as loose bulk."
+    },
+    {
+      "id": "banana_chip_count",
+      "type": "count",
+      "part": "banana_chip",
+      "metric": null,
+      "min": 1.0,
+      "max": null,
+      "reason": "Packing list requires 'banana chips' as loose bulk."
+    },
+    {
+      "id": "almond_count",
+      "type": "count",
+      "part": "almond",
+      "metric": null,
+      "min": 1.0,
+      "max": null,
+      "reason": "Packing list requires 'almonds' as loose bulk."
+    }
+  ],
+  "merge_overlap": 0.8,
+  "notes": "All limits null pending calibration; no shared concepts so no size split needed. Granola, banana chips and almonds are bulk presence checks."
+}

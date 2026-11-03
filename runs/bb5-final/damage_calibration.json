@@ -1,0 +1,21 @@
+{
+  "enabled": [
+    "tangerines_damaged",
+    "nectarine_damaged",
+    "granola_damaged",
+    "banana_chips_damaged",
+    "item_discoloured",
+    "foreign_object"
+  ],
+  "false_alarms": {
+    "container_damaged": 26,
+    "tangerines_damaged": 0,
+    "nectarine_damaged": 0,
+    "granola_damaged": 0,
+    "banana_chips_damaged": 2,
+    "almonds_damaged": 5,
+    "item_discoloured": 1,
+    "foreign_object": 2
+  },
+  "images": 60
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "kit_name": "screw bag",
+  "parts": [
+    {
+      "id": "long_screw",
+      "concept": "screw",
+      "min_length": 355.0,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "short_screw",
+      "concept": "screw",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "nut",
+      "concept": "nut",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": 0.1,
+      "max_hole": 0.33
+    },
+    {
+      "id": "washer",
+      "concept": "washer",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "long_screw_count",
+      "type": "count",
+      "part": "long_screw",
+      "metric": null,
+      "min": 1.0,
+      "max": 1.0,
+      "reason": "Packing list requires 1 long screw"
+    },
+    {
+      "id": "short_screw_count",
+      "type": "count",
+      "part": "short_screw",
+      "metric": null,
+      "min": 1.0,
+      "max": 1.0,
+      "reason": "Packing list requires 1 short screw"
+    },
+    {
+      "id": "nut_count",
+      "type": "count",
+      "part": "nut",
+      "metric": null,
+      "min": 2.0,
+      "max": 2.0,
+      "reason": "Packing list requires 2 nuts"
+    },
+    {
+      "id": "washer_count",
+      "type": "count",
+      "part": "washer",
+      "metric": null,
+      "min": 2.0,
+      "max": 2.0,
+      "reason": "Packing list requires 2 washers"
+    },
+    {
+      "id": "long_screw_length",
+      "type": "measure",
+      "part": "long_screw",
+      "metric": "length",
+      "min": 396.0,
+      "max": 441.0,
+      "reason": "Long screw length defines it; catch clearly too short/long"
+    },
+    {
+      "id": "short_screw_length",
+      "type": "measure",
+      "part": "short_screw",
+      "metric": "length",
+      "min": 276.0,
+      "max": 308.0,
+      "reason": "Short screw length defines it; catch clearly too short/long"
+    }
+  ],
+  "merge_overlap": 0.8,
+  "notes": "Kept order long,short,nut,washer and counts. Screws share 'screw': bulk short 288-296 vs long 413-424, gap middle ~355 so long_screw min_length 355, short catch-all. Nuts/washers share 'nut+washer': hole separates with biggest margin, nuts 0.19-0.29 vs washers 0.37-0.43 vs missed-hole 0.00, so nut min_hole 0.1 (mid 0.00-0.19) max_hole 0.33 (mid 0.29-0.37), washer catch-all catches normal and zero-hole washers. Added length measure ~4% outside bulk: short 276-308, long 396-441. Left failing as segmentation failures on bulk evidence: 150.png short 402.7 as long, 204.png merged screws 510 area 47935, 318.png merged screws 724 area 46745, 354.png short 317.7 far above 296 bulk."
+}

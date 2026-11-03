@@ -1,0 +1,189 @@
+{
+  "examples": [
+    {
+      "image": "280.png",
+      "flags": [
+        "container_damaged"
+      ]
+    },
+    {
+      "image": "260.png",
+      "flags": [
+        "container_damaged"
+      ]
+    },
+    {
+      "image": "255.png",
+      "flags": [
+        "almonds_damaged"
+      ]
+    },
+    {
+      "image": "230.png",
+      "flags": [
+        "banana_chips_damaged"
+      ]
+    },
+    {
+      "image": "185.png",
+      "flags": [
+        "container_damaged",
+        "foreign_object"
+      ]
+    },
+    {
+      "image": "175.png",
+      "flags": [
+        "container_damaged",
+        "foreign_object"
+      ]
+    }
+  ],
+  "enabled": {
+    "without": [
+      "tangerines_damaged",
+      "nectarine_damaged",
+      "granola_damaged",
+      "banana_chips_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "with": [
+      "tangerines_damaged",
+      "nectarine_damaged",
+      "granola_damaged",
+      "banana_chips_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "with_recal": [
+      "container_damaged",
+      "tangerines_damaged",
+      "nectarine_damaged",
+      "granola_damaged",
+      "banana_chips_damaged",
+      "almonds_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ]
+  },
+  "recalibration": {
+    "enabled": [
+      "container_damaged",
+      "tangerines_damaged",
+      "nectarine_damaged",
+      "granola_damaged",
+      "banana_chips_damaged",
+      "almonds_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "false_alarms": {
+      "container_damaged": 0,
+      "tangerines_damaged": 0,
+      "nectarine_damaged": 0,
+      "granola_damaged": 0,
+      "banana_chips_damaged": 0,
+      "almonds_damaged": 0,
+      "item_discoloured": 0,
+      "foreign_object": 0
+    },
+    "images": 54
+  },
+  "splits": {
+    "validation/good": {
+      "images": 62,
+      "without": {
+        "PASS": 57,
+        "REVIEW": 5
+      },
+      "with": {
+        "PASS": 62
+      },
+      "with_recal": {
+        "PASS": 62
+      }
+    },
+    "test/logical_anomalies (dev, even)": {
+      "images": 42,
+      "without": {
+        "FAIL": 40,
+        "PASS": 2
+      },
+      "with": {
+        "FAIL": 40,
+        "PASS": 2
+      },
+      "with_recal": {
+        "FAIL": 40,
+        "PASS": 2
+      }
+    },
+    "test/structural_anomalies (dev, even)": {
+      "images": 45,
+      "without": {
+        "PASS": 10,
+        "FAIL": 6,
+        "REVIEW": 29
+      },
+      "with": {
+        "PASS": 7,
+        "FAIL": 6,
+        "REVIEW": 32
+      },
+      "with_recal": {
+        "PASS": 7,
+        "FAIL": 6,
+        "REVIEW": 32
+      }
+    },
+    "test/good": {
+      "images": 102,
+      "without": {
+        "PASS": 98,
+        "REVIEW": 4
+      },
+      "with": {
+        "PASS": 101,
+        "REVIEW": 1
+      },
+      "with_recal": {
+        "PASS": 101,
+        "REVIEW": 1
+      }
+    },
+    "test/logical_anomalies (held-out, odd)": {
+      "images": 41,
+      "without": {
+        "FAIL": 38,
+        "PASS": 3
+      },
+      "with": {
+        "FAIL": 38,
+        "PASS": 3
+      },
+      "with_recal": {
+        "FAIL": 38,
+        "PASS": 3
+      }
+    },
+    "test/structural_anomalies (held-out, odd)": {
+      "images": 45,
+      "without": {
+        "PASS": 12,
+        "REVIEW": 28,
+        "FAIL": 5
+      },
+      "with": {
+        "PASS": 10,
+        "REVIEW": 30,
+        "FAIL": 5
+      },
+      "with_recal": {
+        "REVIEW": 32,
+        "PASS": 8,
+        "FAIL": 5
+      }
+    }
+  }
+}

@@ -1,0 +1,754 @@
+{
+  "images": [
+    "000.png",
+    "006.png",
+    "012.png",
+    "018.png",
+    "024.png",
+    "030.png",
+    "036.png",
+    "042.png",
+    "048.png",
+    "054.png",
+    "060.png",
+    "066.png",
+    "072.png",
+    "078.png",
+    "084.png",
+    "090.png",
+    "096.png",
+    "102.png",
+    "108.png",
+    "114.png",
+    "120.png",
+    "126.png",
+    "132.png",
+    "138.png",
+    "144.png",
+    "150.png",
+    "156.png",
+    "162.png",
+    "168.png",
+    "174.png",
+    "180.png",
+    "186.png",
+    "192.png",
+    "198.png",
+    "204.png",
+    "210.png",
+    "216.png",
+    "222.png",
+    "228.png",
+    "234.png",
+    "240.png",
+    "246.png",
+    "252.png",
+    "258.png",
+    "264.png",
+    "270.png",
+    "276.png",
+    "282.png",
+    "288.png",
+    "294.png",
+    "300.png",
+    "306.png",
+    "312.png",
+    "318.png",
+    "324.png",
+    "330.png",
+    "336.png",
+    "342.png",
+    "348.png",
+    "354.png"
+  ],
+  "converged": false,
+  "rounds": [
+    {
+      "round": 1,
+      "passed": 0,
+      "total": 60,
+      "failures": {
+        "000.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "006.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "012.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "018.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "024.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "030.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "036.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "042.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "048.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "054.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "060.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "066.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "072.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "078.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "084.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "090.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "096.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "102.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "108.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "114.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "120.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "126.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "132.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "138.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "144.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "150.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "156.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1"
+        ],
+        "162.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "168.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "174.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "180.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "186.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "192.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "198.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "204.png": [
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "210.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "216.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "222.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "228.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "234.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "240.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "246.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "252.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "258.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "264.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "270.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "276.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "282.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "288.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "294.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "300.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1"
+        ],
+        "306.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 3, expected 2..2",
+          "washer_count: found 1, expected 2..2"
+        ],
+        "312.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "318.png": [
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "324.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "330.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "336.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "342.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "348.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ],
+        "354.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1",
+          "nut_count: found 4, expected 2..2",
+          "washer_count: found 0, expected 2..2"
+        ]
+      },
+      "program": {
+        "version": 1,
+        "kit_name": "screw bag",
+        "parts": [
+          {
+            "id": "long_screw",
+            "concept": "screw",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "short_screw",
+            "concept": "screw",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "nut",
+            "concept": "nut",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "washer",
+            "concept": "washer",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "long_screw_count",
+            "type": "count",
+            "part": "long_screw",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires 1 long screw"
+          },
+          {
+            "id": "short_screw_count",
+            "type": "count",
+            "part": "short_screw",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires 1 short screw"
+          },
+          {
+            "id": "nut_count",
+            "type": "count",
+            "part": "nut",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires 2 nuts"
+          },
+          {
+            "id": "washer_count",
+            "type": "count",
+            "part": "washer",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires 2 washers"
+          }
+        ],
+        "merge_overlap": 0.8,
+        "notes": "Calibration must set length/area limits to split long_screw vs short_screw sharing concept 'screw'."
+      },
+      "repair": {
+        "attempts": 1,
+        "rejected": [],
+        "notes": "Kept order long,short,nut,washer and counts. Screws share 'screw': bulk short 288-296 vs long 413-424, gap middle ~355 so long_screw min_length 355, short catch-all. Nuts/washers share 'nut+washer': hole separates with biggest margin, nuts 0.19-0.29 vs washers 0.37-0.43 vs missed-hole 0.00, so nut min_hole 0.1 (mid 0.00-0.19) max_hole 0.33 (mid 0.29-0.37), washer catch-all catches normal and zero-hole washers. Added length measure ~4% outside bulk: short 276-308, long 396-441. Left failing as segmentation failures on bulk evidence: 150.png short 402.7 as long, 204.png merged screws 510 area 47935, 318.png merged screws 724 area 46745, 354.png short 317.7 far above 296 bulk."
+      }
+    },
+    {
+      "round": 2,
+      "passed": 56,
+      "total": 60,
+      "failures": {
+        "150.png": [
+          "long_screw_count: found 2, expected 1..1",
+          "short_screw_count: found 0, expected 1..1"
+        ],
+        "204.png": [
+          "short_screw_count: found 0, expected 1..1",
+          "long_screw_length: found [510.2] length, expected 396..441"
+        ],
+        "318.png": [
+          "short_screw_count: found 0, expected 1..1",
+          "long_screw_length: found [724.4] length, expected 396..441"
+        ],
+        "354.png": [
+          "short_screw_length: found [317.7] length, expected 276..308"
+        ]
+      },
+      "program": {
+        "version": 1,
+        "kit_name": "screw bag",
+        "parts": [
+          {
+            "id": "long_screw",
+            "concept": "screw",
+            "min_length": 355.0,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "short_screw",
+            "concept": "screw",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          },
+          {
+            "id": "nut",
+            "concept": "nut",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": 0.1,
+            "max_hole": 0.33
+          },
+          {
+            "id": "washer",
+            "concept": "washer",
+            "min_length": null,
+            "max_length": null,
+            "min_area": null,
+            "max_area": null,
+            "min_hole": null,
+            "max_hole": null
+          }
+        ],
+        "checks": [
+          {
+            "id": "long_screw_count",
+            "type": "count",
+            "part": "long_screw",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires 1 long screw"
+          },
+          {
+            "id": "short_screw_count",
+            "type": "count",
+            "part": "short_screw",
+            "metric": null,
+            "min": 1.0,
+            "max": 1.0,
+            "reason": "Packing list requires 1 short screw"
+          },
+          {
+            "id": "nut_count",
+            "type": "count",
+            "part": "nut",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires 2 nuts"
+          },
+          {
+            "id": "washer_count",
+            "type": "count",
+            "part": "washer",
+            "metric": null,
+            "min": 2.0,
+            "max": 2.0,
+            "reason": "Packing list requires 2 washers"
+          },
+          {
+            "id": "long_screw_length",
+            "type": "measure",
+            "part": "long_screw",
+            "metric": "length",
+            "min": 396.0,
+            "max": 441.0,
+            "reason": "Long screw length defines it; catch clearly too short/long"
+          },
+          {
+            "id": "short_screw_length",
+            "type": "measure",
+            "part": "short_screw",
+            "metric": "length",
+            "min": 276.0,
+            "max": 308.0,
+            "reason": "Short screw length defines it; catch clearly too short/long"
+          }
+        ],
+        "merge_overlap": 0.8,
+        "notes": "Kept order long,short,nut,washer and counts. Screws share 'screw': bulk short 288-296 vs long 413-424, gap middle ~355 so long_screw min_length 355, short catch-all. Nuts/washers share 'nut+washer': hole separates with biggest margin, nuts 0.19-0.29 vs washers 0.37-0.43 vs missed-hole 0.00, so nut min_hole 0.1 (mid 0.00-0.19) max_hole 0.33 (mid 0.29-0.37), washer catch-all catches normal and zero-hole washers. Added length measure ~4% outside bulk: short 276-308, long 396-441. Left failing as segmentation failures on bulk evidence: 150.png short 402.7 as long, 204.png merged screws 510 area 47935, 318.png merged screws 724 area 46745, 354.png short 317.7 far above 296 bulk."
+      },
+      "repair": {
+        "attempts": 1,
+        "rejected": [],
+        "notes": "Kept order long,short,nut,washer and counts. Screws share 'screw': bulk short 288-296 vs long 413-424, gap middle ~355 so long_screw min_length 355, short catch-all. Nuts/washers share 'nut+washer': hole separates with biggest margin, nuts 0.19-0.29 vs washers 0.37-0.43 vs missed-hole 0.00, so nut min_hole 0.1 (mid 0.00-0.19) max_hole 0.33 (mid 0.29-0.37), washer catch-all catches normal and zero-hole washers. Added length measure ~4% outside bulk: short 276-308, long 396-441. Left failing as segmentation failures on bulk evidence: 150.png short 402.7 as long, 204.png merged screws 510 area 47935, 318.png merged screws 724 area 46745, 354.png short 317.7 far above 296 bulk."
+      }
+    }
+  ],
+  "program": {
+    "version": 1,
+    "kit_name": "screw bag",
+    "parts": [
+      {
+        "id": "long_screw",
+        "concept": "screw",
+        "min_length": 355.0,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "short_screw",
+        "concept": "screw",
+        "min_length": null,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      },
+      {
+        "id": "nut",
+        "concept": "nut",
+        "min_length": null,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": 0.1,
+        "max_hole": 0.33
+      },
+      {
+        "id": "washer",
+        "concept": "washer",
+        "min_length": null,
+        "max_length": null,
+        "min_area": null,
+        "max_area": null,
+        "min_hole": null,
+        "max_hole": null
+      }
+    ],
+    "checks": [
+      {
+        "id": "long_screw_count",
+        "type": "count",
+        "part": "long_screw",
+        "metric": null,
+        "min": 1.0,
+        "max": 1.0,
+        "reason": "Packing list requires 1 long screw"
+      },
+      {
+        "id": "short_screw_count",
+        "type": "count",
+        "part": "short_screw",
+        "metric": null,
+        "min": 1.0,
+        "max": 1.0,
+        "reason": "Packing list requires 1 short screw"
+      },
+      {
+        "id": "nut_count",
+        "type": "count",
+        "part": "nut",
+        "metric": null,
+        "min": 2.0,
+        "max": 2.0,
+        "reason": "Packing list requires 2 nuts"
+      },
+      {
+        "id": "washer_count",
+        "type": "count",
+        "part": "washer",
+        "metric": null,
+        "min": 2.0,
+        "max": 2.0,
+        "reason": "Packing list requires 2 washers"
+      },
+      {
+        "id": "long_screw_length",
+        "type": "measure",
+        "part": "long_screw",
+        "metric": "length",
+        "min": 396.0,
+        "max": 441.0,
+        "reason": "Long screw length defines it; catch clearly too short/long"
+      },
+      {
+        "id": "short_screw_length",
+        "type": "measure",
+        "part": "short_screw",
+        "metric": "length",
+        "min": 276.0,
+        "max": 308.0,
+        "reason": "Short screw length defines it; catch clearly too short/long"
+      }
+    ],
+    "merge_overlap": 0.8,
+    "notes": "Kept order long,short,nut,washer and counts. Screws share 'screw': bulk short 288-296 vs long 413-424, gap middle ~355 so long_screw min_length 355, short catch-all. Nuts/washers share 'nut+washer': hole separates with biggest margin, nuts 0.19-0.29 vs washers 0.37-0.43 vs missed-hole 0.00, so nut min_hole 0.1 (mid 0.00-0.19) max_hole 0.33 (mid 0.29-0.37), washer catch-all catches normal and zero-hole washers. Added length measure ~4% outside bulk: short 276-308, long 396-441. Left failing as segmentation failures on bulk evidence: 150.png short 402.7 as long, 204.png merged screws 510 area 47935, 318.png merged screws 724 area 46745, 354.png short 317.7 far above 296 bulk."
+  }
+}

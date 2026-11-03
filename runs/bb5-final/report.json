@@ -1,0 +1,764 @@
+{
+  "splits": {
+    "validation/good": {
+      "kind": "good",
+      "images": 62,
+      "programs": {
+        "given": {
+          "flagged": 0,
+          "rate": 0.0,
+          "failed_checks": {},
+          "flagged_images": []
+        },
+        "damage_only": {
+          "flagged": 5,
+          "rate": 0.08064516129032258,
+          "failed_checks": {
+            "damage:banana_chips_damaged": 2,
+            "damage:foreign_object": 1,
+            "damage:item_discoloured": 1,
+            "damage:nectarine_damaged": 1
+          },
+          "flagged_images": [
+            "005.png",
+            "008.png",
+            "037.png",
+            "046.png",
+            "057.png"
+          ]
+        },
+        "given+damage": {
+          "flagged": 5,
+          "rate": 0.08064516129032258,
+          "failed_checks": {
+            "damage:banana_chips_damaged": 2,
+            "damage:foreign_object": 1,
+            "damage:item_discoloured": 1,
+            "damage:nectarine_damaged": 1
+          },
+          "flagged_images": [
+            "005.png",
+            "008.png",
+            "037.png",
+            "046.png",
+            "057.png"
+          ]
+        }
+      }
+    },
+    "test/good": {
+      "kind": "good",
+      "images": 102,
+      "programs": {
+        "given": {
+          "flagged": 0,
+          "rate": 0.0,
+          "failed_checks": {},
+          "flagged_images": []
+        },
+        "damage_only": {
+          "flagged": 4,
+          "rate": 0.0392156862745098,
+          "failed_checks": {
+            "damage:banana_chips_damaged": 2,
+            "damage:foreign_object": 1,
+            "damage:nectarine_damaged": 1
+          },
+          "flagged_images": [
+            "010.png",
+            "079.png",
+            "088.png",
+            "101.png"
+          ]
+        },
+        "given+damage": {
+          "flagged": 4,
+          "rate": 0.0392156862745098,
+          "failed_checks": {
+            "damage:banana_chips_damaged": 2,
+            "damage:foreign_object": 1,
+            "damage:nectarine_damaged": 1
+          },
+          "flagged_images": [
+            "010.png",
+            "079.png",
+            "088.png",
+            "101.png"
+          ]
+        }
+      }
+    },
+    "test/logical_anomalies": {
+      "kind": "logical",
+      "images": 83,
+      "programs": {
+        "given": {
+          "flagged": 78,
+          "rate": 0.9397590361445783,
+          "by_defect": {
+            "0_nectarines_0_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_1_tangerine": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_2_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_3_tangerines": {
+              "flagged": 3,
+              "images": 3
+            },
+            "0_nectarines_4_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "1_nectarine_1_tangerine": {
+              "flagged": 2,
+              "images": 2
+            },
+            "2_nectarines_1_tangerine": {
+              "flagged": 3,
+              "images": 3
+            },
+            "3_nectarines_0_tangerines": {
+              "flagged": 3,
+              "images": 3
+            },
+            "compartments_swapped": {
+              "flagged": 3,
+              "images": 3
+            },
+            "missing_almonds": {
+              "flagged": 11,
+              "images": 11
+            },
+            "missing_bananas": {
+              "flagged": 11,
+              "images": 11
+            },
+            "missing_cereals": {
+              "flagged": 8,
+              "images": 8
+            },
+            "missing_cereals_and_toppings": {
+              "flagged": 4,
+              "images": 4
+            },
+            "missing_toppings": {
+              "flagged": 7,
+              "images": 7
+            },
+            "overflow": {
+              "flagged": 0,
+              "images": 4
+            },
+            "underflow": {
+              "flagged": 3,
+              "images": 4
+            },
+            "wrong_ratio": {
+              "flagged": 12,
+              "images": 12
+            }
+          },
+          "failed_checks": {
+            "almond_count": 25,
+            "banana_chip_count": 25,
+            "granola_area": 16,
+            "granola_count": 18,
+            "nectarine_count": 17,
+            "tangerine_count": 17
+          },
+          "flagged_images": [
+            "000.png",
+            "001.png",
+            "002.png",
+            "003.png",
+            "004.png",
+            "005.png",
+            "006.png",
+            "007.png",
+            "008.png",
+            "009.png",
+            "010.png",
+            "011.png",
+            "012.png",
+            "013.png",
+            "014.png",
+            "015.png",
+            "016.png",
+            "017.png",
+            "018.png",
+            "019.png",
+            "020.png",
+            "021.png",
+            "022.png",
+            "023.png",
+            "024.png",
+            "025.png",
+            "026.png",
+            "027.png",
+            "028.png",
+            "029.png",
+            "030.png",
+            "031.png",
+            "032.png",
+            "033.png",
+            "034.png",
+            "035.png",
+            "036.png",
+            "037.png",
+            "038.png",
+            "039.png",
+            "040.png",
+            "041.png",
+            "042.png",
+            "043.png",
+            "048.png",
+            "049.png",
+            "050.png",
+            "052.png",
+            "053.png",
+            "054.png",
+            "055.png",
+            "056.png",
+            "057.png",
+            "058.png",
+            "059.png",
+            "060.png",
+            "061.png",
+            "062.png",
+            "063.png",
+            "064.png",
+            "065.png",
+            "066.png",
+            "067.png",
+            "068.png",
+            "069.png",
+            "070.png",
+            "071.png",
+            "072.png",
+            "073.png",
+            "074.png",
+            "075.png",
+            "076.png",
+            "077.png",
+            "078.png",
+            "079.png",
+            "080.png",
+            "081.png",
+            "082.png"
+          ]
+        },
+        "damage_only": {
+          "flagged": 2,
+          "rate": 0.024096385542168676,
+          "by_defect": {
+            "0_nectarines_0_tangerines": {
+              "flagged": 0,
+              "images": 2
+            },
+            "0_nectarines_1_tangerine": {
+              "flagged": 0,
+              "images": 2
+            },
+            "0_nectarines_2_tangerines": {
+              "flagged": 0,
+              "images": 2
+            },
+            "0_nectarines_3_tangerines": {
+              "flagged": 0,
+              "images": 3
+            },
+            "0_nectarines_4_tangerines": {
+              "flagged": 0,
+              "images": 2
+            },
+            "1_nectarine_1_tangerine": {
+              "flagged": 1,
+              "images": 2
+            },
+            "2_nectarines_1_tangerine": {
+              "flagged": 0,
+              "images": 3
+            },
+            "3_nectarines_0_tangerines": {
+              "flagged": 0,
+              "images": 3
+            },
+            "compartments_swapped": {
+              "flagged": 0,
+              "images": 3
+            },
+            "missing_almonds": {
+              "flagged": 0,
+              "images": 11
+            },
+            "missing_bananas": {
+              "flagged": 0,
+              "images": 11
+            },
+            "missing_cereals": {
+              "flagged": 1,
+              "images": 8
+            },
+            "missing_cereals_and_toppings": {
+              "flagged": 0,
+              "images": 4
+            },
+            "missing_toppings": {
+              "flagged": 0,
+              "images": 7
+            },
+            "overflow": {
+              "flagged": 0,
+              "images": 4
+            },
+            "underflow": {
+              "flagged": 0,
+              "images": 4
+            },
+            "wrong_ratio": {
+              "flagged": 0,
+              "images": 12
+            }
+          },
+          "failed_checks": {
+            "damage:foreign_object": 1,
+            "damage:item_discoloured": 1
+          },
+          "flagged_images": [
+            "030.png",
+            "069.png"
+          ]
+        },
+        "given+damage": {
+          "flagged": 78,
+          "rate": 0.9397590361445783,
+          "by_defect": {
+            "0_nectarines_0_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_1_tangerine": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_2_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "0_nectarines_3_tangerines": {
+              "flagged": 3,
+              "images": 3
+            },
+            "0_nectarines_4_tangerines": {
+              "flagged": 2,
+              "images": 2
+            },
+            "1_nectarine_1_tangerine": {
+              "flagged": 2,
+              "images": 2
+            },
+            "2_nectarines_1_tangerine": {
+              "flagged": 3,
+              "images": 3
+            },
+            "3_nectarines_0_tangerines": {
+              "flagged": 3,
+              "images": 3
+            },
+            "compartments_swapped": {
+              "flagged": 3,
+              "images": 3
+            },
+            "missing_almonds": {
+              "flagged": 11,
+              "images": 11
+            },
+            "missing_bananas": {
+              "flagged": 11,
+              "images": 11
+            },
+            "missing_cereals": {
+              "flagged": 8,
+              "images": 8
+            },
+            "missing_cereals_and_toppings": {
+              "flagged": 4,
+              "images": 4
+            },
+            "missing_toppings": {
+              "flagged": 7,
+              "images": 7
+            },
+            "overflow": {
+              "flagged": 0,
+              "images": 4
+            },
+            "underflow": {
+              "flagged": 3,
+              "images": 4
+            },
+            "wrong_ratio": {
+              "flagged": 12,
+              "images": 12
+            }
+          },
+          "failed_checks": {
+            "almond_count": 25,
+            "banana_chip_count": 25,
+            "damage:foreign_object": 1,
+            "damage:item_discoloured": 1,
+            "granola_area": 16,
+            "granola_count": 18,
+            "nectarine_count": 17,
+            "tangerine_count": 17
+          },
+          "flagged_images": [
+            "000.png",
+            "001.png",
+            "002.png",
+            "003.png",
+            "004.png",
+            "005.png",
+            "006.png",
+            "007.png",
+            "008.png",
+            "009.png",
+            "010.png",
+            "011.png",
+            "012.png",
+            "013.png",
+            "014.png",
+            "015.png",
+            "016.png",
+            "017.png",
+            "018.png",
+            "019.png",
+            "020.png",
+            "021.png",
+            "022.png",
+            "023.png",
+            "024.png",
+            "025.png",
+            "026.png",
+            "027.png",
+            "028.png",
+            "029.png",
+            "030.png",
+            "031.png",
+            "032.png",
+            "033.png",
+            "034.png",
+            "035.png",
+            "036.png",
+            "037.png",
+            "038.png",
+            "039.png",
+            "040.png",
+            "041.png",
+            "042.png",
+            "043.png",
+            "048.png",
+            "049.png",
+            "050.png",
+            "052.png",
+            "053.png",
+            "054.png",
+            "055.png",
+            "056.png",
+            "057.png",
+            "058.png",
+            "059.png",
+            "060.png",
+            "061.png",
+            "062.png",
+            "063.png",
+            "064.png",
+            "065.png",
+            "066.png",
+            "067.png",
+            "068.png",
+            "069.png",
+            "070.png",
+            "071.png",
+            "072.png",
+            "073.png",
+            "074.png",
+            "075.png",
+            "076.png",
+            "077.png",
+            "078.png",
+            "079.png",
+            "080.png",
+            "081.png",
+            "082.png"
+          ]
+        }
+      }
+    },
+    "test/structural_anomalies": {
+      "kind": "structural",
+      "images": 90,
+      "programs": {
+        "given": {
+          "flagged": 11,
+          "rate": 0.12222222222222222,
+          "by_defect": {
+            "box_damaged": {
+              "flagged": 1,
+              "images": 4
+            },
+            "contamination": {
+              "flagged": 1,
+              "images": 40
+            },
+            "fruit_damaged": {
+              "flagged": 0,
+              "images": 31
+            },
+            "mixed_cereals": {
+              "flagged": 2,
+              "images": 8
+            },
+            "toppings_crushed": {
+              "flagged": 7,
+              "images": 7
+            }
+          },
+          "failed_checks": {
+            "almond_count": 6,
+            "banana_chip_count": 7,
+            "granola_area": 9,
+            "nectarine_count": 2,
+            "tangerine_count": 1
+          },
+          "flagged_images": [
+            "002.png",
+            "024.png",
+            "078.png",
+            "081.png",
+            "083.png",
+            "084.png",
+            "085.png",
+            "086.png",
+            "087.png",
+            "088.png",
+            "089.png"
+          ]
+        },
+        "damage_only": {
+          "flagged": 63,
+          "rate": 0.7,
+          "by_defect": {
+            "box_damaged": {
+              "flagged": 0,
+              "images": 4
+            },
+            "contamination": {
+              "flagged": 35,
+              "images": 40
+            },
+            "fruit_damaged": {
+              "flagged": 23,
+              "images": 31
+            },
+            "mixed_cereals": {
+              "flagged": 0,
+              "images": 8
+            },
+            "toppings_crushed": {
+              "flagged": 5,
+              "images": 7
+            }
+          },
+          "failed_checks": {
+            "damage:banana_chips_damaged": 5,
+            "damage:foreign_object": 30,
+            "damage:item_discoloured": 3,
+            "damage:nectarine_damaged": 6,
+            "damage:tangerines_damaged": 20
+          },
+          "flagged_images": [
+            "004.png",
+            "005.png",
+            "007.png",
+            "008.png",
+            "009.png",
+            "010.png",
+            "011.png",
+            "012.png",
+            "013.png",
+            "014.png",
+            "016.png",
+            "017.png",
+            "018.png",
+            "020.png",
+            "021.png",
+            "023.png",
+            "024.png",
+            "025.png",
+            "026.png",
+            "027.png",
+            "028.png",
+            "029.png",
+            "031.png",
+            "032.png",
+            "033.png",
+            "034.png",
+            "035.png",
+            "036.png",
+            "037.png",
+            "038.png",
+            "039.png",
+            "040.png",
+            "041.png",
+            "042.png",
+            "043.png",
+            "044.png",
+            "045.png",
+            "046.png",
+            "047.png",
+            "048.png",
+            "049.png",
+            "050.png",
+            "052.png",
+            "053.png",
+            "055.png",
+            "056.png",
+            "057.png",
+            "058.png",
+            "059.png",
+            "062.png",
+            "064.png",
+            "065.png",
+            "067.png",
+            "068.png",
+            "070.png",
+            "072.png",
+            "073.png",
+            "074.png",
+            "083.png",
+            "084.png",
+            "086.png",
+            "087.png",
+            "089.png"
+          ]
+        },
+        "given+damage": {
+          "flagged": 68,
+          "rate": 0.7555555555555555,
+          "by_defect": {
+            "box_damaged": {
+              "flagged": 1,
+              "images": 4
+            },
+            "contamination": {
+              "flagged": 35,
+              "images": 40
+            },
+            "fruit_damaged": {
+              "flagged": 23,
+              "images": 31
+            },
+            "mixed_cereals": {
+              "flagged": 2,
+              "images": 8
+            },
+            "toppings_crushed": {
+              "flagged": 7,
+              "images": 7
+            }
+          },
+          "failed_checks": {
+            "almond_count": 6,
+            "banana_chip_count": 7,
+            "damage:banana_chips_damaged": 5,
+            "damage:foreign_object": 30,
+            "damage:item_discoloured": 3,
+            "damage:nectarine_damaged": 6,
+            "damage:tangerines_damaged": 20,
+            "granola_area": 9,
+            "nectarine_count": 2,
+            "tangerine_count": 1
+          },
+          "flagged_images": [
+            "002.png",
+            "004.png",
+            "005.png",
+            "007.png",
+            "008.png",
+            "009.png",
+            "010.png",
+            "011.png",
+            "012.png",
+            "013.png",
+            "014.png",
+            "016.png",
+            "017.png",
+            "018.png",
+            "020.png",
+            "021.png",
+            "023.png",
+            "024.png",
+            "025.png",
+            "026.png",
+            "027.png",
+            "028.png",
+            "029.png",
+            "031.png",
+            "032.png",
+            "033.png",
+            "034.png",
+            "035.png",
+            "036.png",
+            "037.png",
+            "038.png",
+            "039.png",
+            "040.png",
+            "041.png",
+            "042.png",
+            "043.png",
+            "044.png",
+            "045.png",
+            "046.png",
+            "047.png",
+            "048.png",
+            "049.png",
+            "050.png",
+            "052.png",
+            "053.png",
+            "055.png",
+            "056.png",
+            "057.png",
+            "058.png",
+            "059.png",
+            "062.png",
+            "064.png",
+            "065.png",
+            "067.png",
+            "068.png",
+            "070.png",
+            "072.png",
+            "073.png",
+            "074.png",
+            "078.png",
+            "081.png",
+            "083.png",
+            "084.png",
+            "085.png",
+            "086.png",
+            "087.png",
+            "088.png",
+            "089.png"
+          ]
+        }
+      }
+    }
+  }
+}

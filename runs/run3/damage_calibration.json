@@ -1,0 +1,21 @@
+{
+  "enabled": [
+    "container_damaged",
+    "long_screw_damaged",
+    "short_screw_damaged",
+    "nuts_damaged",
+    "washers_damaged",
+    "item_discoloured",
+    "foreign_object"
+  ],
+  "false_alarms": {
+    "container_damaged": 0,
+    "long_screw_damaged": 0,
+    "short_screw_damaged": 0,
+    "nuts_damaged": 0,
+    "washers_damaged": 2,
+    "item_discoloured": 0,
+    "foreign_object": 0
+  },
+  "images": 60
+}

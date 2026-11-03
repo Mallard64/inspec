@@ -1,0 +1,96 @@
+{
+  "validation/good": {
+    "images": 60,
+    "PASS": 57,
+    "REVIEW": 2,
+    "FAIL": 1,
+    "by_defect": {}
+  },
+  "test/good": {
+    "images": 122,
+    "PASS": 115,
+    "REVIEW": 6,
+    "FAIL": 1,
+    "by_defect": {}
+  },
+  "test/logical_anomalies": {
+    "images": 137,
+    "FAIL": 137,
+    "by_defect": {
+      "1_additional_long_screw": {
+        "FAIL": 6
+      },
+      "1_additional_nut": {
+        "FAIL": 12
+      },
+      "1_additional_short_screw": {
+        "FAIL": 6
+      },
+      "1_additional_washer": {
+        "FAIL": 12
+      },
+      "1_missing_long_screw": {
+        "FAIL": 6
+      },
+      "1_missing_nut": {
+        "FAIL": 12
+      },
+      "1_missing_short_screw": {
+        "FAIL": 6
+      },
+      "1_missing_washer": {
+        "FAIL": 12
+      },
+      "1_very_short_screw": {
+        "FAIL": 17
+      },
+      "2_additional_nuts": {
+        "FAIL": 6
+      },
+      "2_additional_washers": {
+        "FAIL": 6
+      },
+      "2_missing_nuts": {
+        "FAIL": 6
+      },
+      "2_missing_washers": {
+        "FAIL": 6
+      },
+      "2_very_short_screws": {
+        "FAIL": 7
+      },
+      "screw_too_long": {
+        "FAIL": 21
+      },
+      "screw_too_short": {
+        "FAIL": 20
+      }
+    }
+  },
+  "test/structural_anomalies": {
+    "images": 82,
+    "REVIEW": 37,
+    "PASS": 11,
+    "FAIL": 34,
+    "by_defect": {
+      "bag_broken": {
+        "REVIEW": 15,
+        "PASS": 1
+      },
+      "color": {
+        "REVIEW": 13,
+        "PASS": 3
+      },
+      "contamination": {
+        "FAIL": 19,
+        "REVIEW": 4,
+        "PASS": 2
+      },
+      "part_broken": {
+        "PASS": 5,
+        "FAIL": 15,
+        "REVIEW": 5
+      }
+    }
+  }
+}

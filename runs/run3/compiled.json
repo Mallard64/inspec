@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "kit_name": "screw bag",
+  "parts": [
+    {
+      "id": "long_screw",
+      "concept": "screw",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "short_screw",
+      "concept": "screw",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "nut",
+      "concept": "nut",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    },
+    {
+      "id": "washer",
+      "concept": "washer",
+      "min_length": null,
+      "max_length": null,
+      "min_area": null,
+      "max_area": null,
+      "min_hole": null,
+      "max_hole": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "long_screw_count",
+      "type": "count",
+      "part": "long_screw",
+      "metric": null,
+      "min": 1.0,
+      "max": 1.0,
+      "reason": "Packing list requires 1 long screw"
+    },
+    {
+      "id": "short_screw_count",
+      "type": "count",
+      "part": "short_screw",
+      "metric": null,
+      "min": 1.0,
+      "max": 1.0,
+      "reason": "Packing list requires 1 short screw"
+    },
+    {
+      "id": "nut_count",
+      "type": "count",
+      "part": "nut",
+      "metric": null,
+      "min": 2.0,
+      "max": 2.0,
+      "reason": "Packing list requires 2 nuts"
+    },
+    {
+      "id": "washer_count",
+      "type": "count",
+      "part": "washer",
+      "metric": null,
+      "min": 2.0,
+      "max": 2.0,
+      "reason": "Packing list requires 2 washers"
+    }
+  ],
+  "merge_overlap": 0.8,
+  "notes": "Calibration must set length/area limits to split long_screw vs short_screw sharing concept 'screw'."
+}

@@ -1,0 +1,10436 @@
+{
+ "validation/good": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct long screw, short screw, nuts and washers with no damage."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts present and no damage."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage or foreign parts."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size and does not count."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all required parts with no damage."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts and no damage."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct counts and no damage."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two short screws and no long screw."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage or foreign objects."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts present and no damage."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "All parts are present in the correct sizes with no damage."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all correct parts and no damage."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is replaced by an intermediate-size screw that is not a listed part."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  }
+ },
+ "test/good": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts and no damage."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with correct sizes and no damage."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts present and no damage."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "One nut is clearly smaller than the normal nut, so only one correct nut is present."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with correct sizes and no damage."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts and no damage."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all correct parts and no damage."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The upright screw is clearly longer than a normal long screw, so the kit contains no long screw."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct screws, nuts and washers with no damage."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all correct parts and no damage."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts and no damage."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all correct parts with no damage."
+  },
+  "082.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "083.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "084.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "085.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "086.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct 1 long screw, 1 short screw, 2 nuts and 2 washers with no damage."
+  },
+  "087.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size and the bag contains an unlisted part."
+  },
+  "088.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One washer is much larger than normal so it is the wrong size and does not count."
+  },
+  "089.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "090.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "091.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "092.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "093.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "094.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "095.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The second screw is clearly shorter than a normal short screw so it is the wrong size."
+  },
+  "096.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "097.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is too short and is the wrong size so it does not count."
+  },
+  "098.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "099.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "100.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "101.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "102.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "103.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "104.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "105.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "106.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "107.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "108.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "109.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "110.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "111.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "112.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One washer is much smaller than normal and is the wrong size, so the kit has only one correct washer."
+  },
+  "113.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "114.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "115.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "116.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "117.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "118.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all correct parts present and undamaged."
+  },
+  "119.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is clearly longer than a normal long screw so it counts toward neither."
+  },
+  "120.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "121.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct sizes and no damage."
+  }
+ },
+ "test/logical_anomalies": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are the long size, so there is an extra long screw and the short screw is missing."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "One screw is clearly longer than a normal long screw so it is the wrong size and the kit has no short screw."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two long screws and no short screw."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two long screws and no short screw."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two long screws and no short screw."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw instead of one of each."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two long screws and is missing the short screw."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One screw is an in-between size rather than a proper short screw, so the kit is incorrect."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The second screw is in-between size, so there is no correct short screw and an unlisted screw is present."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One screw is clearly longer than a normal long screw so it is the wrong size, leaving the short screw missing."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two long screws and no short screw."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two long screws and no short screw."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The two screws are too similar in length to be a long-short pair, so the short screw is missing and the second screw is a wrong intermediate size."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two long screws and no short screw."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two short screws and no long screw."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has two short screws and no long screw, while nuts and washers are correct."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Both screws are a wrong intermediate size between normal long and short screws."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has two short screws and is missing the long screw."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two short screws and no long screw."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has two short screws and no long screw."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two short screws and no long screw."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are clearly shorter than a normal short screw so they are the wrong size and count toward neither."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has two short screws and is missing the long screw."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two short screws and no long screw."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are short so the long screw is missing."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two short screws and no long screw."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two short screws and no long screw."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has 3 nuts instead of 2, otherwise correct."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra long screw with otherwise correct parts."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has three washers instead of two."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three washers instead of two."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains three nuts instead of two."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra wrong-size screw in between long and short lengths."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra nut with three nuts instead of two."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra washer with three washers instead of two."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains an extra short screw."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra short screw."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has three nuts instead of two, with all other parts correct."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra long screw but otherwise matches the list with no damage."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has three washers instead of two."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains three washers instead of two."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has three washers instead of two."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra screw of intermediate wrong size besides the correct long and short screws."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra nut."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains an extra long screw for a total of three screws instead of two."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has an extra long screw."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra screw of wrong intermediate size."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three nuts instead of two, otherwise correct."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains an extra long screw."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains an extra short screw."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has an extra short screw, with two short screws instead of one."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing from the kit."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "One washer is missing from the kit."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is missing."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing one nut."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one nut."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the long screw."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one washer."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing one washer."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the short screw."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the long screw."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the short screw."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the long screw."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "One washer is missing."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Only one nut is visible instead of two."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is missing."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "One nut is missing from the kit."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing, only the short screw is present."
+  },
+  "082.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the short screw."
+  },
+  "083.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one washer, with only one visible instead of two."
+  },
+  "084.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one washer."
+  },
+  "085.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the long screw."
+  },
+  "086.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing one nut."
+  },
+  "087.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one nut."
+  },
+  "088.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the short screw."
+  },
+  "089.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing because the second screw is clearly shorter than a normal short screw."
+  },
+  "090.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are clearly shorter than a normal short screw so they are the wrong size."
+  },
+  "091.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing because the smaller screw is clearly shorter than a normal short screw and counts toward neither size."
+  },
+  "092.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size and does not count."
+  },
+  "093.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One screw is much shorter than a normal short screw so it is the wrong size, leaving the long screw missing."
+  },
+  "094.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size."
+  },
+  "095.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is clearly too short to be a normal short screw so it counts toward neither."
+  },
+  "096.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw, nuts and washers are correct but the other screw is far too short to be the long screw."
+  },
+  "097.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw is missing and replaced by a wrong-size screw that is clearly shorter than a normal short screw."
+  },
+  "098.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains the correct parts with no damage."
+  },
+  "099.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The small screw is clearly shorter than a normal short screw so it counts toward neither, leaving the kit missing the correct short screw."
+  },
+  "100.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One screw is clearly shorter than a normal short screw so it is the wrong size, leaving the long screw missing."
+  },
+  "101.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "102.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "103.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is clearly too short and is the wrong size."
+  },
+  "104.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are clearly shorter than a normal short screw so they are the wrong size and count toward neither."
+  },
+  "105.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing and the second screw is shorter than a normal short screw so it counts toward neither."
+  },
+  "106.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Both screws are clearly shorter than a normal short screw so neither counts as the required long or short screw."
+  },
+  "107.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw is missing and replaced by a too-short wrong-size screw."
+  },
+  "108.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains two short screws and no long screw."
+  },
+  "109.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The long screw is missing because one screw is clearly too short to be either size and counts toward neither."
+  },
+  "110.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The short screw is clearly shorter than a normal short screw so it is the wrong size and the kit is missing a good short screw."
+  },
+  "111.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has two short screws and no long screw."
+  },
+  "112.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains two short screws and no long screw."
+  },
+  "113.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four nuts instead of two and is missing both washers."
+  },
+  "114.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four nuts instead of two and is missing both washers."
+  },
+  "115.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has three nuts and only one washer instead of two of each."
+  },
+  "116.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing both nuts and has four washers instead of two."
+  },
+  "117.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains only one nut instead of two and three washers instead of two."
+  },
+  "118.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has three washers and only one nut instead of two of each."
+  },
+  "119.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has three nuts instead of two and only one washer instead of two."
+  },
+  "120.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "121.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four nuts and no washers instead of two of each."
+  },
+  "122.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has only one nut instead of two and three washers instead of two."
+  },
+  "123.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit is missing one nut and contains an oversized washer that is not a listed part."
+  },
+  "124.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing both nuts and contains four washers instead of two."
+  },
+  "125.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has only one nut instead of two and three washers instead of two."
+  },
+  "126.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing both nuts and contains four washers instead of two."
+  },
+  "127.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four nuts instead of two and is missing both washers."
+  },
+  "128.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has no nuts and four washers instead of two, with both screws correct."
+  },
+  "129.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has 4 nuts instead of 2 and 0 washers instead of 2."
+  },
+  "130.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has three nuts instead of two and only one washer instead of two."
+  },
+  "131.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has 3 nuts instead of 2 and 1 washer instead of 2."
+  },
+  "132.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing both nuts and has two extra washers instead."
+  },
+  "133.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 4
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing both nuts and contains four washers instead of two."
+  },
+  "134.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four nuts instead of two and is missing both washers."
+  },
+  "135.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 3
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing one nut and has an extra washer."
+  },
+  "136.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has an extra nut and is missing a washer."
+  }
+ },
+ "test/structural_anomalies": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn in the center above the screws."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn on the left edge though all parts are present."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn on the left side."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has all correct parts but the bag is torn in the center."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn open at the top."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag has a large triangular tear in the center."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn at the upper left corner."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn along the bottom edge."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn open at the bottom although all parts are present and correct."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has the correct parts but the bag is torn near the center."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag has a tear in the center."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn at the top edge."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn in the middle near the screws."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The bag is torn along the bottom edge."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer is bent out of shape."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One nut is broken open."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is damaged with flattened/missing threads."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The longer screw has dark paint on its threads."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw has damaged threads."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One of the nuts is broken."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is broken with its head missing, leaving only a short threaded shaft."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One nut is broken."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw head is broken and deformed."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One nut is broken with a piece missing."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw is too long and one nut is broken."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw is broken with its head missing, leaving only the threaded shaft."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw is broken off and too short to count as the correct size."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One of the washers is broken."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw has a broken head."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw is missing its head."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer is severely bent out of shape."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The second screw is clearly shorter than a normal short screw so it is the wrong size and does not count."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One nut is painted green."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw has green paint on its threaded tip."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw head is painted red."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One nut is painted green."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One screw has green paint discoloration on its threads."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Counts are correct but one nut is painted orange-red."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer has green paint on it."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw head is painted green."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit has two long screws instead of one long and one short, and one screw has green paint on its threads."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct parts and no damage."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw has green paint on its threads."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer has green paint on it."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer has green paint on it."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The short screw has red paint on its threads."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "One washer is partially painted green."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The long screw head has green paint on it."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The screw, nut and washer counts are correct but there is an extra brass insert in the bag that is not a listed part."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "All listed parts are present but there is a small yellow foreign object in the bag."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains an extra flat-head screw that is not a listed part."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra small screw that is not on the packing list."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra oversized washer not on the packing list."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has the correct listed parts but contains an extra unlisted pin."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit has correct listed parts but contains an extra oversized nut that is not listed."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit has the correct screws, nuts and washers but contains an extra nail that is not a listed part."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has correct listed parts but contains an extra small screw that is not on the packing list."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit has the correct screws, nuts and washers but contains an extra unlisted rectangular part."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains extra metal parts that are not on the packing list."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra large toothed washer that is not a listed part."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains an extra small unlisted object in addition to the correct parts."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit has correct counts but contains an extra toothed washer not on the packing list."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "There is a piece of foreign paper inside the bag."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has the correct listed parts but contains an extra unlisted large component."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has correct counts but contains an extra black screw that is not a listed part."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra small threaded piece inside the bag that is not a listed part."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Counts match the list but there is an extra oversized washer inside that is not a listed part."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains an extra serrated ring that is not a listed part."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "Kit contains an extra large toothed ring that is not a listed part."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "long screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "short screw",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "nuts",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "washers",
+     "expected": 2,
+     "seen": 2
+    }
+   ],
+   "damage": true,
+   "reason": "All listed parts are present but there is an extra metal pin inside that is not a listed part."
+  }
+ }
+}

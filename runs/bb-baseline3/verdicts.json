@@ -1,0 +1,10457 @@
+{
+ "validation/good": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present with no damage."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra hazelnut among the banana chips that is not a listed part."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with 2 tangerines, 1 nectarine, granola, banana chips and almonds and no damage."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items present and undamaged."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage or foreign objects."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "2 tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "1 nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all parts present and no damage."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or extra items."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign items."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with correct counts and shows no damage."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The small red fruit is the wrong size for a nectarine so the nectarine is missing and an unlisted item is present."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains a dark plum instead of a nectarine."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all parts present and undamaged."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign objects."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage or extra items."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all expected parts present and no damage."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and undamaged."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  }
+ },
+ "test/good": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage or foreign objects."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with correct counts and no damage."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items and no damage."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items present and no damage."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items present and no damage."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with correct counts and no damage."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a non-listed hazelnut mixed in with the almonds."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains 2 tangerines, 1 nectarine, granola, banana chips and almonds with no damage."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is darkly discolored and damaged."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign items."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all parts present and no damage."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The middle fruit is dark purple-red instead of a normal yellow-red nectarine, indicating a painted or wrong part."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage or foreign items."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a dark round foreign nut among the almonds that is not a listed part."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all expected parts with no damage."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign items."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage or extras."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and undamaged."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "2 tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "1 nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The top fruit is a dark plum instead of the listed nectarine."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign objects."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "082.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "083.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "084.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign objects."
+  },
+  "085.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "086.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and no damage."
+  },
+  "087.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items present and no damage."
+  },
+  "088.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "089.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit matches the packing list with no damage."
+  },
+  "090.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "091.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "092.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "093.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "094.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "095.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "096.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "097.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "098.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "099.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "100.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "101.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has a cut in its skin."
+  }
+ },
+ "test/logical_anomalies": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is abnormally dark red compared to the reference kits."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed items and no damage."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing almonds."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing the almonds."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Almonds are missing from the kit."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing almonds."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Almonds are missing from the kit."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips are missing from the kit."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing banana chips."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips are missing from the kit."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips are missing from the kit."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "Banana chips are missing and the nectarine is abnormally dark red indicating paint or a wrong fruit."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing banana chips."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips are missing from the kit."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing all banana chips."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing banana chips."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing banana chips."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips are missing from the kit."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The granola portion is missing from the kit."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The granola is missing from the kit."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The granola portion is missing from the kit."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Granola is missing from the kit."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Granola is missing from the kit."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Granola, banana chips and almonds are missing."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Missing granola, banana chips and almonds."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Granola, banana chips and almonds are missing from the right compartment."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola, banana chips, and almonds."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing banana chips and almonds."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing banana chips and almonds."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips and almonds are missing."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing banana chips and almonds."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips and almonds are missing from the kit."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The banana chips and almonds are missing."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing banana chips and almonds."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or foreign items."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present and undamaged."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 3
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has no tangerines and has three nectarines instead of two tangerines and one nectarine."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 3
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three nectarines and no tangerines instead of two tangerines and one nectarine."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains only one tangerine instead of two and two nectarines instead of one."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three tangerines and no nectarine instead of the listed two tangerines and one nectarine."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 2
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit has only one tangerine and two nectarines instead of two tangerines and one nectarine."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has only one tangerine and contains an extra dark-red fruit that is not a listed part."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing one tangerine and the nectarine."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The nectarine is missing from the kit."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The nectarine is missing from the kit."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one tangerine and the nectarine."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing one tangerine."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 3
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three nectarines and no tangerines instead of two tangerines and one nectarine."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three tangerines instead of two and is missing the nectarine."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing both tangerines and the nectarine."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 3
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains three tangerines and no nectarine instead of two tangerines and one nectarine."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 0
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing both tangerines and the nectarine."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit has four tangerines instead of two and is missing the nectarine."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "One tangerine is missing from the kit."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 4
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Kit contains 4 tangerines instead of 2 and is missing the nectarine."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing banana chips and almonds."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "All listed parts are present with no damage or foreign objects."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a round hazelnut-like nut among the almonds that is not a listed part."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Banana chips and almonds are missing."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "Granola is missing from the kit."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": false,
+   "reason": "Kit is missing banana chips and almonds."
+  },
+  "082.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is missing granola, with the right compartment filled only with banana chips and almonds."
+  }
+ },
+ "test/structural_anomalies": {
+  "000.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "001.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage or extra items."
+  },
+  "002.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed parts with no damage or extras."
+  },
+  "003.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "004.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit is otherwise complete but contains an extra brown biscuit that is not a listed part."
+  },
+  "005.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The counts are correct but there is a dark foreign stick-like object in the granola."
+  },
+  "006.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all parts present and undamaged."
+  },
+  "007.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra small pale-orange ball beside the tangerines that is not a listed part."
+  },
+  "008.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra piece of peel in the fruit compartment that is not a listed part."
+  },
+  "009.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A small pushpin-like foreign object is mixed in with the banana chips and almonds."
+  },
+  "010.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an extra piece of tangerine peel in the tray that is not a listed part."
+  },
+  "011.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A white foreign object is present among the banana chips."
+  },
+  "012.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a foreign red and clear object in the granola."
+  },
+  "013.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A piece of clear tape foreign material is attached to one tangerine."
+  },
+  "014.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains a set of keys that is not a listed part."
+  },
+  "015.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "016.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit has all listed parts but contains an extra pale round object that is not on the packing list."
+  },
+  "017.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "An extra orange peel fragment is present beside the nectarine."
+  },
+  "018.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a white tissue inside the tray that is not a listed part."
+  },
+  "019.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an unlisted white pill-like object in the fruit compartment."
+  },
+  "020.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a foreign gray strip in the granola that is not a listed part."
+  },
+  "021.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A metal nut that is not a listed part is inside the left compartment."
+  },
+  "022.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "023.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a thin yellow foreign stick lying across the granola."
+  },
+  "024.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The kit contains an extra apple that is not on the packing list."
+  },
+  "025.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A white capsule that is not a listed part is inside the kit among the banana chips and almonds."
+  },
+  "026.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is an unlisted piece of chocolate in the granola."
+  },
+  "027.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine has gold paint on it."
+  },
+  "028.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "Dark raisins are mixed with the banana chips and almonds but are not a listed part."
+  },
+  "029.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a dark brown foreign clump in the granola."
+  },
+  "030.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is dark unlisted liquid pooled in the fruit compartment and a round non-almond nut in the mix."
+  },
+  "031.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a metal nail inside the tray that is not a listed part."
+  },
+  "032.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There are unlisted raisins mixed into the granola."
+  },
+  "033.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a metal screw in the granola."
+  },
+  "034.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The top tangerine has cuts on its peel."
+  },
+  "035.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A yellow foreign label is lying on the banana chips inside the kit."
+  },
+  "036.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has tape on it which is not a listed part."
+  },
+  "037.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There is a dark foreign clump among the banana chips and almonds that is not a listed part."
+  },
+  "038.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "Unlisted cornflake-like pieces are mixed into the granola."
+  },
+  "039.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A white foreign object is visible in the granola."
+  },
+  "040.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There are white beans on the granola that are not a listed part."
+  },
+  "041.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "There are cornflake pieces on the granola that are not a listed part."
+  },
+  "042.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A white foreign object is lying in the granola."
+  },
+  "043.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "A metal pin in the granola is not a listed part."
+  },
+  "044.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is torn open."
+  },
+  "045.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine has a torn peel."
+  },
+  "046.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The top tangerine has torn peel exposing the flesh."
+  },
+  "047.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has a large patch of skin missing."
+  },
+  "048.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is broken open with a large hole."
+  },
+  "049.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is split open."
+  },
+  "050.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is painted with a worm drawing."
+  },
+  "051.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "052.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is cracked split open."
+  },
+  "053.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is torn open exposing the interior."
+  },
+  "054.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "055.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has a chunk of skin/flesh missing on its top."
+  },
+  "056.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is cracked open."
+  },
+  "057.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The top tangerine is split open and damaged."
+  },
+  "058.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is split open with the peel torn."
+  },
+  "059.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is cut and damaged."
+  },
+  "060.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "061.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with no damage."
+  },
+  "062.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is broken open."
+  },
+  "063.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and undamaged."
+  },
+  "064.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine has a torn peel exposing the flesh."
+  },
+  "065.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is split open and the nectarine is replaced by an unlisted dark plum."
+  },
+  "066.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has a large bruised and broken area on its top."
+  },
+  "067.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is broken open at the top."
+  },
+  "068.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The lower tangerine is split open and damaged."
+  },
+  "069.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is cracked split open."
+  },
+  "070.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine has its peel torn open exposing the fruit."
+  },
+  "071.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and undamaged."
+  },
+  "072.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine has a hole in its peel."
+  },
+  "073.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine has a large cut exposing the flesh."
+  },
+  "074.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "The nectarine is cut open."
+  },
+  "075.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "076.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all parts present and undamaged."
+  },
+  "077.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine."
+  },
+  "078.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete and undamaged."
+  },
+  "079.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": true,
+   "reason": "Extra pale stick-like pieces that are not a listed part are mixed in with the granola."
+  },
+  "080.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit contains all listed items with no damage."
+  },
+  "081.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is complete with all listed parts present and no damage."
+  },
+  "082.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 1
+    }
+   ],
+   "damage": false,
+   "reason": "The kit is fine with all listed parts present and undamaged."
+  },
+  "083.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 1
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "One tangerine is undersized and the almonds and banana chips are crushed with no whole pieces visible."
+  },
+  "084.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "Banana chips are missing and the almonds are crushed instead of whole."
+  },
+  "085.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "Banana chips and whole almonds are missing and replaced by crushed fragments."
+  },
+  "086.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "The banana chips and almonds are crushed into small fragments instead of whole pieces."
+  },
+  "087.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "The almonds are crushed and no whole banana chips are visible."
+  },
+  "088.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "The almonds are crushed into pieces and no whole banana chips are present."
+  },
+  "089.png": {
+   "counts": [
+    {
+     "part": "tangerines",
+     "expected": 2,
+     "seen": 2
+    },
+    {
+     "part": "nectarine",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "granola",
+     "expected": 1,
+     "seen": 1
+    },
+    {
+     "part": "banana chips",
+     "expected": 1,
+     "seen": 0
+    },
+    {
+     "part": "almonds",
+     "expected": 1,
+     "seen": 0
+    }
+   ],
+   "damage": true,
+   "reason": "Banana chips are missing and the almonds are crushed into pieces."
+  }
+ }
+}

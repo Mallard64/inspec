@@ -8,7 +8,18 @@ __pycache__/
 *.pyc
 .orchestrator/logs/
 .muse/
-runs/
+# runs: only the ones the app and README results use are committed (JSON, no images)
+runs/*
+!runs/run3/
+!runs/bb4/
+!runs/sb-final2/
+!runs/bb5-final/
+!runs/baseline3h/
+!runs/bb-baseline3/
+!runs/sb-final2-triage/
+!runs/bb5-final-triage/
+!runs/sb-final2-examples/
+!runs/bb5-final-examples/
 
 # demo video renders (contain dataset images; never commit)
 out/

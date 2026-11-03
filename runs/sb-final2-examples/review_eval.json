@@ -1,0 +1,164 @@
+{
+  "examples": [
+    {
+      "image": "300.png",
+      "flags": [
+        "washers_damaged"
+      ]
+    },
+    {
+      "image": "102.png",
+      "flags": [
+        "washers_damaged"
+      ]
+    }
+  ],
+  "enabled": {
+    "without": [
+      "container_damaged",
+      "long_screw_damaged",
+      "short_screw_damaged",
+      "nuts_damaged",
+      "washers_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "with": [
+      "container_damaged",
+      "long_screw_damaged",
+      "short_screw_damaged",
+      "nuts_damaged",
+      "washers_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "with_recal": [
+      "container_damaged",
+      "long_screw_damaged",
+      "short_screw_damaged",
+      "nuts_damaged",
+      "washers_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ]
+  },
+  "recalibration": {
+    "enabled": [
+      "container_damaged",
+      "long_screw_damaged",
+      "short_screw_damaged",
+      "nuts_damaged",
+      "washers_damaged",
+      "item_discoloured",
+      "foreign_object"
+    ],
+    "false_alarms": {
+      "container_damaged": 0,
+      "long_screw_damaged": 0,
+      "short_screw_damaged": 0,
+      "nuts_damaged": 0,
+      "washers_damaged": 0,
+      "item_discoloured": 1,
+      "foreign_object": 0
+    },
+    "images": 58
+  },
+  "splits": {
+    "validation/good": {
+      "images": 60,
+      "without": {
+        "PASS": 57,
+        "REVIEW": 2,
+        "FAIL": 1
+      },
+      "with": {
+        "PASS": 58,
+        "FAIL": 1,
+        "REVIEW": 1
+      },
+      "with_recal": {
+        "PASS": 58,
+        "FAIL": 1,
+        "REVIEW": 1
+      }
+    },
+    "test/logical_anomalies (dev, even)": {
+      "images": 69,
+      "without": {
+        "FAIL": 69
+      },
+      "with": {
+        "FAIL": 69
+      },
+      "with_recal": {
+        "FAIL": 69
+      }
+    },
+    "test/structural_anomalies (dev, even)": {
+      "images": 41,
+      "without": {
+        "REVIEW": 18,
+        "PASS": 8,
+        "FAIL": 15
+      },
+      "with": {
+        "REVIEW": 22,
+        "PASS": 4,
+        "FAIL": 15
+      },
+      "with_recal": {
+        "REVIEW": 22,
+        "PASS": 4,
+        "FAIL": 15
+      }
+    },
+    "test/good": {
+      "images": 122,
+      "without": {
+        "PASS": 115,
+        "REVIEW": 6,
+        "FAIL": 1
+      },
+      "with": {
+        "PASS": 120,
+        "FAIL": 1,
+        "REVIEW": 1
+      },
+      "with_recal": {
+        "PASS": 120,
+        "FAIL": 1,
+        "REVIEW": 1
+      }
+    },
+    "test/logical_anomalies (held-out, odd)": {
+      "images": 68,
+      "without": {
+        "FAIL": 68
+      },
+      "with": {
+        "FAIL": 68
+      },
+      "with_recal": {
+        "FAIL": 68
+      }
+    },
+    "test/structural_anomalies (held-out, odd)": {
+      "images": 41,
+      "without": {
+        "REVIEW": 19,
+        "FAIL": 19,
+        "PASS": 3
+      },
+      "with": {
+        "REVIEW": 20,
+        "PASS": 2,
+        "FAIL": 19
+      },
+      "with_recal": {
+        "REVIEW": 20,
+        "PASS": 2,
+        "FAIL": 19
+      }
+    }
+  }
+}
