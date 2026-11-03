@@ -115,8 +115,8 @@ scripts/download_loco.sh screw_bag breakfast_box   # MVTec LOCO AD, into data/ (
 .venv/bin/streamlit run app.py                     # the demo page
 ```
 
-The app reads saved runs (`runs/run3` for Screw Bag, `runs/bb4` for Breakfast Box, made by
-`scripts/e2e.py`). In it, **"Run it live"** compiles the list and runs self-repair against the
+The app reads the saved runs in `runs/` (committed: the compiled check programs and every result
+in this README, as JSON). In it, **"Run it live"** compiles the list and runs self-repair against the
 API, and **"Live model calls"** skips every cache for one kit and lists each Meta model call with
 its time. More commands: [reproduce the results](docs/benchmarks.md#reproduce-the-results).
 
